@@ -14,7 +14,7 @@
   "packageManager": "pnpm@10.30.2",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mikan/kaidotrail.git"
+    "url": "git+https://github.com/kaidotrail/kaidotrail.github.io.git"
   },
   "prettier": {
     "printWidth": 100,
