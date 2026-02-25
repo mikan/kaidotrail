@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="author" content="kagaorange" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>旧街道足跡マップ α版 &ndash; 中原街道</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Yuji+Syuku&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-gpx/2.1.2/gpx.min.js"></script>
+    <link rel="stylesheet" href="map_style.css" />
+    <script src="map_helper.js"></script>
+  </head>
+  <body>
+    <h1>
+      <a href="./"><span class="logo-font">旧街道足跡マップ</span> α版</a>
+      <span class="sep">&gt;</span>
+      中原街道
+    </h1>
+    <div id="map"></div>
+    <script>
+      const map = L.map("map");
+      const stationOverlay = L.layerGroup();
+      stationOverlay.addTo(map);
+      const gpxOverlay = L.layerGroup();
+      gpxOverlay.addTo(map);
+      initMap(L, map, {
+        宿場: stationOverlay,
+        "kagaorange の軌跡": gpxOverlay,
+      });
+
+      // Stations
+      const markers = [
+        { name: "虎ノ門", lat: "35.671", lng: "139.74963" },
+        { name: "中原御殿", lat: "35.34383", lng: "139.33061" },
+        { name: "平塚宿", lat: "35.327507", lng: "139.337769" },
+      ];
+      const iconMarkers = L.featureGroup();
+      setMarkers(L, stationOverlay, iconMarkers, markers);
+      map.fitBounds(iconMarkers.getBounds());
+
+      // GPX
+      setGpx(L, gpxOverlay, "gpx/kagaorange_2024-06-29.gpx", "blue"); // #1 虎ノ門→中山
+      setGpx(L, gpxOverlay, "gpx/kagaorange_2024-07-20.gpx", "blue"); // #2 中山→寒川
+      setGpx(L, gpxOverlay, "gpx/kagaorange_2024-07-27.gpx", "blue"); // #3 寒川→平塚
+    </script>
+  </body>
+</html>
