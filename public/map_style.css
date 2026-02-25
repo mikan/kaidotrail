@@ -6,7 +6,11 @@ body {
 h1 {
   margin: 0;
   padding: 5px;
+  font-family: "Yuji Syuku", serif;
   font-size: 13px;
+}
+h1 a {
+  color: goldenrod;
 }
 
 #map {
@@ -15,6 +19,10 @@ h1 {
   bottom: 0;
   right: 0;
   left: 0;
+}
+
+.sep {
+  color: silver;
 }
 
 .div-icon {

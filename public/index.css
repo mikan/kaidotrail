@@ -1,0 +1,22 @@
+h1 {
+  color: goldenrod;
+}
+
+h2 {
+  font-size: 1.2em;
+  color: goldenrod;
+  background: aliceblue;
+}
+
+h3 {
+  font-size: 1.1em;
+  color: goldenrod;
+}
+
+p {
+  font-size: 0.9em;
+}
+
+.logo-font {
+  font-family: "Yuji Syuku", serif;
+}
