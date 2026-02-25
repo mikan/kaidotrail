@@ -1,0 +1,28 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  margin: 0;
+  padding: 5px;
+  font-size: 13px;
+}
+
+#map {
+  position: absolute;
+  top: 30px;
+  bottom: 0;
+  right: 0;
+  left: 0;
+}
+
+.div-icon {
+  display: table-cell;
+  color: #f00;
+  background-color: #ff4;
+  opacity: 0.7;
+  white-space: nowrap;
+  font-size: 12px;
+  font-weight: bold;
+}

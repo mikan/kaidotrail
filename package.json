@@ -1,0 +1,30 @@
+{
+  "name": "kaidotrail",
+  "version": "0.0.1",
+  "description": "kaidotrail website",
+  "scripts": {
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "lint": "eslint .",
+    "lint:fix": "eslint --fix ."
+  },
+  "keywords": [],
+  "author": "mikan",
+  "license": "ISC",
+  "packageManager": "pnpm@10.30.2",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mikan/kaidotrail.git"
+  },
+  "prettier": {
+    "printWidth": 100,
+    "trailingComma": "all"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "eslint": "^10.0.2",
+    "eslint-config-prettier": "^10.1.8",
+    "globals": "^17.3.0",
+    "prettier": "^3.8.1"
+  }
+}
