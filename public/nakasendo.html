@@ -19,6 +19,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-gpx/2.1.2/gpx.min.js"></script>
     <link rel="stylesheet" href="map_style.css" />
     <script src="map_helper.js"></script>
+    <script src="nakasendo.js"></script>
   </head>
   <body>
     <h1>
@@ -29,6 +30,8 @@
     <div id="map"></div>
     <script>
       const map = L.map("map");
+      const routeOverlay = L.layerGroup();
+      routeOverlay.addTo(map);
       const stationOverlay = L.layerGroup();
       stationOverlay.addTo(map);
       const gpxOverlay = L.layerGroup();
@@ -37,18 +40,20 @@
       gpxOverlayShoki.addTo(map);
       initMap(L, map, {
         宿場: stationOverlay,
+        推奨歩行ルート: routeOverlay,
         "kagaorange の軌跡": gpxOverlay,
         "kagaorange の軌跡 (初期中山道)": gpxOverlayShoki,
       });
 
       // Stations
-      const markers = [
-        { name: "日本橋", lat: "35.6839621", lng: "139.7743418" },
-        { name: "三条大橋", lat: "35.0082961", lng: "135.7712051" },
-      ];
+      const markers = nakasendoStations();
       const iconMarkers = L.featureGroup();
       setMarkers(L, stationOverlay, iconMarkers, markers);
       map.fitBounds(iconMarkers.getBounds());
+
+      // Route
+      const route = nakasendoRoute();
+      L.polyline(route, { color: "red", weight: 5 }).addTo(routeOverlay);
 
       // GPX
       setGpx(L, gpxOverlay, "gpx/kagaorange_2022-11-03.gpx", "blue"); // 鳥居峠ハイキング
