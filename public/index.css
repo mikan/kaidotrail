@@ -17,11 +17,15 @@ p {
   font-size: 0.9em;
 }
 
+li {
+  font-size: 0.9em;
+}
+
 .logo-font {
   font-family: "Yuji Syuku", serif;
 }
 
 .kaido-title {
-  font-size: 1.2em;
+  font-size: 1.3em;
   font-family: "Yuji Syuku", serif;
 }
