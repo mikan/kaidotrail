@@ -83,6 +83,11 @@
         const lng = Math.round(e.latlng.lng * 10000000) / 10000000;
         inputLocation.setAttribute("value", lat + "," + lng);
         navigator.clipboard.writeText(lat + "," + lng);
+        L.featureGroup().addLayer(
+          L.marker([lat, lng])
+            .addTo(map)
+            .bindPopup(lat + "," + lng),
+        );
       });
     </script>
   </body>
