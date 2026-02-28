@@ -7,12 +7,14 @@ h1 {
 h1 > img {
   float: left;
   margin-right: 10px;
+  margin-bottom: 10px;
 }
 
 h2 {
   font-size: 1.2em;
   color: goldenrod;
   background: aliceblue;
+  clear: both;
 }
 
 h3 {
