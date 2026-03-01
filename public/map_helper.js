@@ -45,6 +45,7 @@ const initMap = (leaflet, map, overlays) => {
       overlays,
     )
     .addTo(map);
+  leaflet.control.locate().addTo(map);
 };
 
 /**
