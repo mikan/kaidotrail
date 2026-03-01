@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="author" content="kagaorange" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-BHV6TYCEL3"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-BHV6TYCEL3");
+    </script>
+    <title>旧街道足跡マップ α版 &ndash; 水戸街道</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Yuji+Syuku&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css"
+      integrity="sha512-Zcn6bjR/8RZbLEpLIeOwNtzREBAJnUKESxces60Mpoj+2okopSAcSUIUOseddDm0cxnGQzxIR7vJgsLZbdLE3w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/leaflet-locatecontrol/0.85.1/L.Control.Locate.css"
+      integrity="sha512-GWoEoj+Zbl9JtrJd8dZkVO7nkAi1dXVuG9jOCv4rRL/LdL5ZdMuV8DZxRhKV12tPjIrmE1gNghWX5oBN8BrJUA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js"
+      integrity="sha512-BwHfrr4c9kmRkLw6iXFdzcdWV/PGkVgiIyIWLLlTSXzWQzxuSg4DiQUCpauz/EWjgk5TYQqX/kvn9pG1NpYfqg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-gpx/2.2.0/gpx.min.js"
+      integrity="sha512-i9cfK7mcbURqnNfNFYqNhB4/Ae5xAgrrGFPgRnVB5Ws6Xac3BbYqFwtMbyf3QZW8Nq+F7gcWGsM0HUyoA/RVIw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-locatecontrol/0.85.1/L.Control.Locate.min.js"
+      integrity="sha512-BxqrHRClEo8PNxiWPIppxGvOiOAPQ01392TXW55htg+Q3rpptqfaYGSGsfxuYQxVDyjYZOW6uXaomed1bCcSFw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <link rel="stylesheet" href="map_style.css" />
+    <script src="map_helper.js"></script>
+  </head>
+  <body>
+    <img src="logo160.png" alt="旧街道足跡マップ" />
+    <h1>
+      <a href="./"><span class="logo-font">旧街道足跡マップ</span> α版</a>
+      <span class="sep">&gt;</span>
+      水戸街道 <span style="color: indianred">※攻略中</span>
+    </h1>
+    <div id="map"></div>
+    <script>
+      const map = L.map("map");
+      const stationOverlay = L.layerGroup();
+      stationOverlay.addTo(map);
+      const gpxOverlay = L.layerGroup();
+      gpxOverlay.addTo(map);
+      initMap(L, map, {
+        宿場: stationOverlay,
+        "kagaorange の軌跡": gpxOverlay,
+      });
+
+      // Stations
+      const markers = [
+        { name: "千住宿", lat: "35.750535", lng: "139.802761" },
+        { name: "水戸宿", lat: "36.364974", lng: "140.491184" },
+      ];
+      const iconMarkers = L.featureGroup();
+      setMarkers(L, stationOverlay, iconMarkers, markers);
+      initQueryParamUpdater(map, () => map.fitBounds(iconMarkers.getBounds()));
+
+      // GPX
+      setGpx(L, gpxOverlay, "gpx/kagaorange_2025-11-22.gpx", "blue"); // #1 千住→取手
+    </script>
+  </body>
+</html>

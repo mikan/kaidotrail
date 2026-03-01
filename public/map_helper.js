@@ -108,5 +108,7 @@ const setGpx = (leaflet, overlay, path, color) => {
     async: true,
     polyline_options: { color: color, weight: 2 },
     markers: { startIcon: null, endIcon: null },
-  }).addTo(overlay);
+  })
+    .on("error", (e) => console.error("GPX の読み込みに失敗しました: " + String(e)))
+    .addTo(overlay);
 };
