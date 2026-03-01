@@ -11,31 +11,36 @@ const initMap = (leaflet, map, overlays) => {
     attribution:
       "<a href='https://maps.gsi.go.jp/development/ichiran.html' target='_blank'>地理院タイル</a>",
   });
-  tileLayers[1] = leaflet.tileLayer(
+  tileLayers[1] = leaflet.tileLayer("https://cyberjapandata.gsi.go.jp/xyz/pale/{z}/{x}/{y}.png", {
+    attribution:
+      "<a href='https://maps.gsi.go.jp/development/ichiran.html' target='_blank'>地理院タイル</a>",
+  });
+  tileLayers[2] = leaflet.tileLayer(
     "https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/{z}/{x}/{y}.jpg",
     {
       attribution:
         "<a href='https://maps.gsi.go.jp/development/ichiran.html' target='_blank'>地理院タイル</a>",
     },
   );
-  tileLayers[2] = leaflet.tileLayer("https://mt1.google.com/vt/lyrs=r&x={x}&y={y}&z={z}", {
+  tileLayers[3] = leaflet.tileLayer("https://mt1.google.com/vt/lyrs=r&x={x}&y={y}&z={z}", {
     attribution:
       "<a href='https://developers.google.com/maps/documentation' target='_blank'>Google Maps</a>",
   });
-  tileLayers[3] = leaflet.tileLayer(
+  tileLayers[4] = leaflet.tileLayer(
     "http://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}",
     {
       attribution: 'Tiles &copy; <a href="http://www.esrij.com/"> Esri Japan </a>',
     },
   );
-  tileLayers[2].addTo(map); // Google マップをデフォルトにする
+  tileLayers[3].addTo(map); // Google マップをデフォルトにする
   leaflet.control
     .layers(
       {
         "国土地理院 標準地図": tileLayers[0],
-        "国土地理院 写真": tileLayers[1],
-        "Google マップ": tileLayers[2],
-        "Esri 地形図": tileLayers[3],
+        "国土地理院 淡色地図": tileLayers[1],
+        "国土地理院 写真": tileLayers[2],
+        "Google マップ": tileLayers[3],
+        "Esri 地形図": tileLayers[4],
       },
       overlays,
     )
