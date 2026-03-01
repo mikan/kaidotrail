@@ -30,6 +30,15 @@ li {
   font-size: 0.9em;
 }
 
+footer {
+  text-align: center;
+  font-size: 0.8em;
+  border-top: 1px solid goldenrod;
+}
+footer > p {
+  margin: 1px;
+}
+
 .logo-font {
   font-family: "Yuji Syuku", serif;
 }
