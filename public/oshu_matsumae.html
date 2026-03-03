@@ -24,6 +24,13 @@
     />
     <link
       rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css"
       integrity="sha512-Zcn6bjR/8RZbLEpLIeOwNtzREBAJnUKESxces60Mpoj+2okopSAcSUIUOseddDm0cxnGQzxIR7vJgsLZbdLE3w=="
       crossorigin="anonymous"
@@ -54,8 +61,8 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     ></script>
-    <link rel="stylesheet" href="map_style.css?v=1" />
-    <script src="map_helper.js?v=1"></script>
+    <link rel="stylesheet" href="map_style.css?v=2" />
+    <script src="map_helper.js?v=2"></script>
   </head>
   <body>
     <img src="logo160.png" alt="旧街道足跡マップ" />
@@ -69,10 +76,13 @@
       const map = L.map("map");
       const stationOverlay = L.layerGroup();
       stationOverlay.addTo(map);
+      const spotOverlay = L.layerGroup();
+      spotOverlay.addTo(map);
       const gpxOverlay = L.layerGroup();
       gpxOverlay.addTo(map);
       initMap(L, map, {
         宿場: stationOverlay,
+        見どころ: spotOverlay,
         "kagaorange の軌跡": gpxOverlay,
       });
 
@@ -81,9 +91,15 @@
         { name: "白河宿", coordinate: [37.126858, 140.215489] },
         { name: "三厩宿", coordinate: [41.199096, 140.430576] },
       ];
-      const iconMarkers = L.featureGroup();
-      setMarkers(L, stationOverlay, iconMarkers, markers);
-      initQueryParamUpdater(map, () => map.fitBounds(iconMarkers.getBounds()));
+      const stationLayer = L.featureGroup();
+      setMarkers(L, stationOverlay, stationLayer, markers);
+      initQueryParamUpdater(map, () => map.fitBounds(stationLayer.getBounds()));
+
+      // Spots
+      const spots = [];
+      const spotLayer = L.featureGroup();
+      setMarkers(L, spotOverlay, spotLayer, spots);
+      initIconUpdater(L, map, stationLayer, spotLayer, spots);
 
       // GPX
       setGpx(L, gpxOverlay, "gpx/kagaorange_2025-08-23.gpx", "blue"); // #1 白河→須賀川

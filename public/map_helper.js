@@ -74,24 +74,106 @@ const initQueryParamUpdater = (map, defaultFunc) => {
   });
 };
 
+const initIconUpdater = (leaflet, map, mainLayer, subLayer, subLayerIcons, zoomThreshold = 14) => {
+  const toggle = () => {
+    if (map.getZoom() >= zoomThreshold) {
+      map.removeLayer(mainLayer);
+      updateMarkerIcon(leaflet, subLayer, subLayerIcons, false);
+    } else {
+      map.addLayer(mainLayer);
+      updateMarkerIcon(leaflet, subLayer, subLayerIcons, true);
+    }
+  };
+  toggle();
+  map.on("zoomend", () => toggle());
+};
+
+/**
+ * 指定したアイコンクラス名と色で地図用アイコンを生成します。
+ *
+ * @param leaflet Leaflet 本体
+ * @param iconName アイコン名
+ * @param color 色
+ * @return {*}
+ */
+const createIcon = (leaflet, iconName, color) => {
+  return leaflet.divIcon({
+    html: `<div class="map-icon" style="color: ${color}"><i class="fa-solid ${iconName}"></i></div>`,
+    className: "custom-leaflet-icon",
+    iconSize: [30, 30],
+    iconAnchor: [15, 30],
+    popupAnchor: [0, -30],
+  });
+};
+
+const iconTypes = new Map([
+  ["honjin", { icon: "fa-h-square", color: "#8B0000" }],
+  ["ichirizuka", { icon: "fa-tree", color: "#228B22" }],
+  ["pass", { icon: "fa-mountain", color: "#800080" }],
+  ["watashi", { icon: "fa-ship", color: "#1E90FF" }],
+  ["guide", { icon: "fa-triangle-exclamation", color: "#FF8C00" }],
+  ["building", { icon: "fa-landmark", color: "#8B4513" }],
+  ["monument", { icon: "fa-monument", color: "#696969" }],
+  ["shrine", { icon: "fa-torii-gate", color: "#FF0000" }],
+  ["temple", { icon: "fa-dharmachakra", color: "#000000" }],
+  ["stone", { icon: "fa-map-signs", color: "#708090" }],
+  ["camera", { icon: "fa-camera", color: "#DAA520" }],
+  ["default", { icon: "fa-map-pin", color: "royalblue" }],
+]);
+
 /**
  * マーカー一覧をマップに配置します。
  *
  * @param leaflet Leaflet 本体
  * @param overlay 配置対象の地図またはオーバーレイ
- * @param iconMarkers IconMarkers インスタンス
+ * @param layer レイヤー
  * @param markers マーカー一覧
  */
-const setMarkers = (leaflet, overlay, iconMarkers, markers) => {
+const setMarkers = (leaflet, overlay, layer, markers) => {
   for (let i = 0; i < markers.length; i++) {
-    const divIcon = leaflet.divIcon({
-      html: '<div class="div-icon">' + markers[i].name + "</div>",
-      iconSize: [0, 0],
-    });
-    iconMarkers.addLayer(
-      leaflet.marker(markers[i].coordinate).addTo(overlay).bindPopup(markers[i].name),
+    if (!markers[i].icon) {
+      const divIcon = leaflet.divIcon({
+        html: '<div class="div-icon">' + markers[i].name + "</div>",
+        iconSize: [0, 0],
+      });
+      leaflet.marker(markers[i].coordinate, { icon: divIcon }).addTo(overlay);
+    }
+    const iconType = iconTypes.get(markers[i].icon ?? "default");
+    layer.addLayer(
+      leaflet
+        .marker(markers[i].coordinate, { icon: createIcon(leaflet, iconType.icon, iconType.color) })
+        .addTo(overlay)
+        .bindPopup(markers[i].name),
     );
-    leaflet.marker(markers[i].coordinate, { icon: divIcon }).addTo(overlay);
+  }
+};
+
+/**
+ * アイコンを変更します。
+ *
+ * @param leaflet Leaflet 本体
+ * @param layer レイヤー
+ * @param source マーカー情報
+ * @param isDot ドットにする場合は true
+ */
+const updateMarkerIcon = (leaflet, layer, source, isDot) => {
+  const markers = layer.getLayers();
+  for (let i = 0; i < markers.length; i++) {
+    if (!(markers[i] instanceof leaflet.Marker)) {
+      continue;
+    }
+    const iconType = iconTypes.get(source[i].icon ?? "default");
+    if (isDot) {
+      markers[i].setIcon(
+        leaflet.divIcon({
+          html: `<div class="map-icon-dot" style="color: ${iconType.color}"><i class="fa-solid fa-circle-dot"></i></div>`,
+          className: "custom-leaflet-icon",
+          iconSize: [5, 5],
+        }),
+      );
+    } else {
+      markers[i].setIcon(createIcon(leaflet, iconType.icon, iconType.color));
+    }
   }
 };
 

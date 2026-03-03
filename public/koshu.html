@@ -24,6 +24,13 @@
     />
     <link
       rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css"
       integrity="sha512-Zcn6bjR/8RZbLEpLIeOwNtzREBAJnUKESxces60Mpoj+2okopSAcSUIUOseddDm0cxnGQzxIR7vJgsLZbdLE3w=="
       crossorigin="anonymous"
@@ -54,9 +61,9 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     ></script>
-    <link rel="stylesheet" href="map_style.css?v=1" />
-    <script src="map_helper.js?v=1"></script>
-    <script src="koshu.js?v=1"></script>
+    <link rel="stylesheet" href="map_style.css?v=2" />
+    <script src="map_helper.js?v=2"></script>
+    <script src="koshu.js?v=2"></script>
   </head>
   <body>
     <img src="logo160.png" alt="旧街道足跡マップ" />
@@ -76,10 +83,13 @@
       kamisuwaAltRouteOverlay.addTo(map);
       const stationOverlay = L.layerGroup();
       stationOverlay.addTo(map);
+      const spotOverlay = L.layerGroup();
+      spotOverlay.addTo(map);
       const gpxOverlay = L.layerGroup();
       gpxOverlay.addTo(map);
       initMap(L, map, {
         宿場: stationOverlay,
+        見どころ: spotOverlay,
         おすすめ歩行ルート: routeOverlay,
         分間延絵図ルート: nirasakiAltRouteOverlay,
         上諏訪宿内別ルート: kamisuwaAltRouteOverlay,
@@ -87,9 +97,63 @@
       });
 
       // Stations
-      const iconMarkers = L.featureGroup();
-      setMarkers(L, stationOverlay, iconMarkers, koshuStations);
-      initQueryParamUpdater(map, () => map.fitBounds(iconMarkers.getBounds()));
+      const stations = [
+        { name: "日本橋", coordinate: [35.684112, 139.774533] },
+        { name: "1. 内藤新宿", coordinate: [35.6885637, 139.7108442] },
+        { name: "2. 下高井戸宿", coordinate: [35.669957, 139.629294] },
+        { name: "3. 上高井戸宿", coordinate: [35.672111, 139.613883] },
+        { name: "4. 国領宿", coordinate: [35.650945, 139.557693] },
+        { name: "5. 下布田宿", coordinate: [35.651222, 139.551125] },
+        { name: "6. 上布田宿", coordinate: [35.652621, 139.545833] },
+        { name: "7. 下石田宿", coordinate: [35.655654, 139.536275] },
+        { name: "8. 上石田宿", coordinate: [35.658854, 139.529722] },
+        { name: "9. 府中宿", coordinate: [35.669941, 139.476814] },
+        { name: "10. 日野宿", coordinate: [35.6784854, 139.399724] },
+        { name: "11. 八王子宿", coordinate: [35.660202, 139.331161] },
+        { name: "12. 駒木野宿", coordinate: [35.6414, 139.266975] },
+        { name: "13. 小原宿", coordinate: [35.6215514, 139.2003071] },
+        { name: "14. 与瀬宿", coordinate: [35.6178796, 139.1841763] },
+        { name: "15. 吉野宿", coordinate: [35.6140115, 139.1687965] },
+        { name: "16. 関野宿", coordinate: [35.6184335, 139.1414809] },
+        { name: "17. 上野原宿", coordinate: [35.6281051, 139.1129851] },
+        { name: "18. 鶴川宿", coordinate: [35.6356612, 139.1022456] },
+        { name: "19. 野田尻宿", coordinate: [35.634439, 139.063061] },
+        { name: "20. 犬目宿", coordinate: [35.6264003, 139.0342838] },
+        { name: "21. 下鳥沢宿", coordinate: [35.608696, 139.009436] },
+        { name: "22. 上鳥沢宿", coordinate: [35.608824, 139.000971] },
+        { name: "23. 猿橋宿", coordinate: [35.613763, 138.978548] },
+        { name: "24. 駒橋宿", coordinate: [35.6126552, 138.954649] },
+        { name: "25. 大月宿", coordinate: [35.610065, 138.938482] },
+        { name: "26. 下花咲宿", coordinate: [35.6054328, 138.9282024] },
+        { name: "27. 上花咲宿", coordinate: [35.602624, 138.9226073] },
+        { name: "28. 下初狩宿", coordinate: [35.5963865, 138.88614] },
+        { name: "29. 中初狩宿", coordinate: [35.5963037, 138.8750464] },
+        { name: "30. 白野宿", coordinate: [35.6026545, 138.8529557] },
+        { name: "31. 阿弥陀海道宿", coordinate: [35.60424, 138.828512] },
+        { name: "32. 黒野田宿", coordinate: [35.604658, 138.820027] },
+        { name: "33. 駒飼宿", coordinate: [35.6360274, 138.7693512] },
+        { name: "34. 鶴瀬宿", coordinate: [35.6435957, 138.7687397] },
+        { name: "35. 勝沼宿", coordinate: [35.6616723, 138.7300622] },
+        { name: "36. 栗原宿", coordinate: [35.6650108, 138.6973983] },
+        { name: "37. 石和宿", coordinate: [35.650152, 138.638433] },
+        { name: "38. 甲府柳町宿", coordinate: [35.660208, 138.572386] },
+        { name: "39. 韮崎宿", coordinate: [35.706987, 138.450693] },
+        { name: "40. 台ヶ原宿", coordinate: [35.8077294, 138.3436203] },
+        { name: "41. 教来石宿", coordinate: [35.839869, 138.303013] },
+        { name: "42. 蔦木宿", coordinate: [35.869508, 138.2727295] },
+        { name: "43. 金沢宿", coordinate: [35.947759, 138.188228] },
+        { name: "44. 上諏訪宿", coordinate: [36.044157, 138.118667] },
+        { name: "45. 下諏訪宿", coordinate: [36.076148, 138.089988] },
+      ];
+      const stationLayer = L.featureGroup();
+      setMarkers(L, stationOverlay, stationLayer, stations);
+      initQueryParamUpdater(map, () => map.fitBounds(stationLayer.getBounds()));
+
+      // Spots
+      const spots = [];
+      const spotLayer = L.featureGroup();
+      setMarkers(L, spotOverlay, spotLayer, spots);
+      initIconUpdater(L, map, stationLayer, spotLayer, spots);
 
       // Route
       L.polyline(koshuRoute, { color: "red", weight: 5 }).addTo(routeOverlay);

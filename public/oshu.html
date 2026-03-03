@@ -24,6 +24,13 @@
     />
     <link
       rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css"
       integrity="sha512-Zcn6bjR/8RZbLEpLIeOwNtzREBAJnUKESxces60Mpoj+2okopSAcSUIUOseddDm0cxnGQzxIR7vJgsLZbdLE3w=="
       crossorigin="anonymous"
@@ -54,9 +61,9 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     ></script>
-    <link rel="stylesheet" href="map_style.css?v=1" />
-    <script src="map_helper.js?v=1"></script>
-    <script src="oshu.js?v=1"></script>
+    <link rel="stylesheet" href="map_style.css?v=2" />
+    <script src="map_helper.js?v=2"></script>
+    <script src="oshu.js?v=2"></script>
   </head>
   <body>
     <img src="logo160.png" alt="旧街道足跡マップ" />
@@ -72,18 +79,40 @@
       routeOverlay.addTo(map);
       const stationOverlay = L.layerGroup();
       stationOverlay.addTo(map);
+      const spotOverlay = L.layerGroup();
+      spotOverlay.addTo(map);
       const gpxOverlay = L.layerGroup();
       gpxOverlay.addTo(map);
       initMap(L, map, {
         宿場: stationOverlay,
+        見どころ: spotOverlay,
         おすすめ歩行ルート: routeOverlay,
         "kagaorange の軌跡": gpxOverlay,
       });
 
       // Stations
-      const iconMarkers = L.featureGroup();
-      setMarkers(L, stationOverlay, iconMarkers, oshuStations);
-      initQueryParamUpdater(map, () => map.fitBounds(iconMarkers.getBounds()));
+      const stations = [
+        { name: "17. 宇都宮宿", coordinate: [36.56177, 139.877192] },
+        { name: "18. 白沢宿", coordinate: [36.632525, 139.9437457] },
+        { name: "19. 氏家宿", coordinate: [36.679781, 139.967574] },
+        { name: "20. 喜連川宿", coordinate: [36.71873, 140.025853] },
+        { name: "21. 佐久山宿", coordinate: [36.807937, 140.009884] },
+        { name: "22. 大田原宿", coordinate: [36.865249, 140.02463] },
+        { name: "23. 鍋掛宿", coordinate: [36.9437096, 140.1038682] },
+        { name: "24. 越堀宿", coordinate: [36.945941, 140.104949] },
+        { name: "25. 芦野宿", coordinate: [36.989512, 140.163206] },
+        { name: "26. 白坂宿", coordinate: [37.078146, 140.1911581] },
+        { name: "27. 白河宿", coordinate: [37.126858, 140.215489] },
+      ];
+      const stationLayer = L.featureGroup();
+      setMarkers(L, stationOverlay, stationLayer, stations);
+      initQueryParamUpdater(map, () => map.fitBounds(stationLayer.getBounds()));
+
+      // Spots
+      const spots = [];
+      const spotLayer = L.featureGroup();
+      setMarkers(L, spotOverlay, spotLayer, spots);
+      initIconUpdater(L, map, stationLayer, spotLayer, spots);
 
       // Route
       L.polyline(oshuRoute, { color: "red", weight: 5 }).addTo(routeOverlay);

@@ -1,14 +1,3 @@
-const nakaharaStations = [
-  { name: "虎ノ門", coordinate: [35.671, 139.74963] },
-  { name: "小杉御殿", coordinate: [35.583699, 139.654171] },
-  { name: "佐江戸", coordinate: [35.519346, 139.560225] },
-  { name: "川井御殿", coordinate: [35.484725, 139.519156] },
-  { name: "瀬谷", coordinate: [35.457092, 139.47816] },
-  { name: "用田", coordinate: [35.40425, 139.412956] },
-  { name: "中原御殿", coordinate: [35.34383, 139.33061] },
-  { name: "平塚宿", coordinate: [35.327507, 139.337769] },
-];
-
 const nakaharaRoute = [
   [35.671, 139.74963],
   [35.6704501, 139.7492591],

@@ -39,3 +39,21 @@ h1 a {
   font-size: 12px;
   font-weight: bold;
 }
+
+.map-icon {
+  font-size: 30px;
+  line-height: 0;
+  text-indent: -2px;
+  -webkit-text-stroke: 3px white;
+  text-stroke: 3px white;
+  paint-order: stroke;
+}
+
+.map-icon-dot {
+  font-size: 5px;
+  line-height: 5px;
+  color: red;
+  -webkit-text-stroke: 1px white;
+  text-stroke: 1px white;
+  paint-order: stroke;
+}
