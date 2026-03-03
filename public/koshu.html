@@ -56,6 +56,7 @@
     ></script>
     <link rel="stylesheet" href="map_style.css?v=1" />
     <script src="map_helper.js?v=1"></script>
+    <script src="koshu.js?v=1"></script>
   </head>
   <body>
     <img src="logo160.png" alt="旧街道足跡マップ" />
@@ -67,23 +68,29 @@
     <div id="map"></div>
     <script>
       const map = L.map("map");
+      const routeOverlay = L.layerGroup();
+      routeOverlay.addTo(map);
+      const altRouteOverlay = L.layerGroup();
+      altRouteOverlay.addTo(map);
       const stationOverlay = L.layerGroup();
       stationOverlay.addTo(map);
       const gpxOverlay = L.layerGroup();
       gpxOverlay.addTo(map);
       initMap(L, map, {
         宿場: stationOverlay,
+        おすすめ歩行ルート: routeOverlay,
+        分間延絵図ルート: altRouteOverlay,
         "kagaorange の軌跡": gpxOverlay,
       });
 
       // Stations
-      const markers = [
-        { name: "日本橋", coordinate: [35.684112, 139.774533] },
-        { name: "下諏訪宿", coordinate: [36.076148, 138.089988] },
-      ];
       const iconMarkers = L.featureGroup();
-      setMarkers(L, stationOverlay, iconMarkers, markers);
+      setMarkers(L, stationOverlay, iconMarkers, koshuStations);
       initQueryParamUpdater(map, () => map.fitBounds(iconMarkers.getBounds()));
+
+      // Route
+      L.polyline(koshuRoute, { color: "red", weight: 5 }).addTo(routeOverlay);
+      L.polyline(koshuAltRouteOverlay, { color: "lightcoral", weight: 5 }).addTo(altRouteOverlay);
 
       // GPX
       setGpx(L, gpxOverlay, "gpx/kagaorange_2025-02-22.gpx", "blue"); // #1 日本橋→日野
