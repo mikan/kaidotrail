@@ -70,8 +70,10 @@
       const map = L.map("map");
       const routeOverlay = L.layerGroup();
       routeOverlay.addTo(map);
-      const altRouteOverlay = L.layerGroup();
-      altRouteOverlay.addTo(map);
+      const nirasakiAltRouteOverlay = L.layerGroup();
+      nirasakiAltRouteOverlay.addTo(map);
+      const kamisuwaAltRouteOverlay = L.layerGroup();
+      kamisuwaAltRouteOverlay.addTo(map);
       const stationOverlay = L.layerGroup();
       stationOverlay.addTo(map);
       const gpxOverlay = L.layerGroup();
@@ -79,7 +81,8 @@
       initMap(L, map, {
         宿場: stationOverlay,
         おすすめ歩行ルート: routeOverlay,
-        分間延絵図ルート: altRouteOverlay,
+        分間延絵図ルート: nirasakiAltRouteOverlay,
+        上諏訪宿内別ルート: kamisuwaAltRouteOverlay,
         "kagaorange の軌跡": gpxOverlay,
       });
 
@@ -90,7 +93,12 @@
 
       // Route
       L.polyline(koshuRoute, { color: "red", weight: 5 }).addTo(routeOverlay);
-      L.polyline(koshuAltRouteOverlay, { color: "lightcoral", weight: 5 }).addTo(altRouteOverlay);
+      L.polyline(koshuNirasakiAltRouteOverlay, { color: "lightcoral", weight: 5 }).addTo(
+        nirasakiAltRouteOverlay,
+      );
+      L.polyline(koshuKamisuwaAltRouteOverlay, { color: "lightcoral", weight: 5 }).addTo(
+        kamisuwaAltRouteOverlay,
+      );
 
       // GPX
       setGpx(L, gpxOverlay, "gpx/kagaorange_2025-02-22.gpx", "blue"); // #1 日本橋→日野
