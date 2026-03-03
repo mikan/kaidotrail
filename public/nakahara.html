@@ -92,14 +92,14 @@
 
       // Stations
       const stations = [
-        { name: "虎ノ門", coordinate: [35.671, 139.74963] },
-        { name: "小杉御殿", coordinate: [35.583699, 139.654171] },
-        { name: "佐江戸", coordinate: [35.519346, 139.560225] },
-        { name: "川井御殿", coordinate: [35.484725, 139.519156] },
-        { name: "瀬谷", coordinate: [35.457092, 139.47816] },
-        { name: "用田", coordinate: [35.40425, 139.412956] },
-        { name: "中原御殿", coordinate: [35.34383, 139.33061] },
-        { name: "平塚宿", coordinate: [35.327507, 139.337769] },
+        { name: "虎ノ門", coordinate: [35.671, 139.74963], kana: "とらのもん" },
+        { name: "小杉御殿", coordinate: [35.583699, 139.654171], kana: "こすぎごてん" },
+        { name: "佐江戸", coordinate: [35.519346, 139.560225], kana: "さえど" },
+        { name: "川井御殿", coordinate: [35.484725, 139.519156], kana: "かわいごてん" },
+        { name: "瀬谷", coordinate: [35.457092, 139.47816], kana: "せや" },
+        { name: "用田", coordinate: [35.40425, 139.412956], kana: "ようだ" },
+        { name: "中原御殿", coordinate: [35.34383, 139.33061], kana: "なかはらごてん" },
+        { name: "平塚宿", coordinate: [35.327507, 139.337769], kana: "ひらつかしゅく" },
       ];
       const stationLayer = L.featureGroup();
       setMarkers(L, stationOverlay, stationLayer, stations);
@@ -107,12 +107,47 @@
 
       // Spots
       const spots = [
-        { name: "丸子の渡し跡", coordinate: [35.583029, 139.671413], icon: "watashi" },
-        { name: "御主殿稲荷 (小杉御殿跡)", coordinate: [35.583706, 139.654165], icon: "shrine" },
+        {
+          name: "丸子の渡し跡",
+          coordinate: [35.583029, 139.671413],
+          icon: "watashi",
+          pictures: [
+            {
+              url: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh6Cz_DrwRh2jvHDKySlcv5XHZG0czKdBQlxP_vJQQ3mdtOsOGFOONBuzBBAESF05s-3BucRGGGsSMQ7dcijChaHRDJykQtgIcIk1RtoxE0-x0_5nJQc2ehN6Kk1GT-0gf15Q0HhpBO2pMmiyGkwzE7c25o_t6bhbY_5-GagtYO52ydZZFFrvlqkhyphenhyphenq3iw/w640-h480-rw/PXL_20240629_055137395.jpg",
+              author: "kagaorange",
+              date: "2024/6/29",
+              comment: "説明板",
+            },
+          ],
+        },
+        {
+          name: "御主殿稲荷 (小杉御殿跡)",
+          kana: "ごしゅでんいなり (こすぎごてんあと)",
+          coordinate: [35.583706, 139.654165],
+          icon: "shrine",
+          description:
+            "小杉御殿の御主殿跡には小さな稲荷社が鎮座しています。<br/>" +
+            "説明板には、小杉御殿は二代目将軍秀忠が建てたこと、家康の送迎や鷹狩りの休憩所などに使われていたことなどが紹介されています。",
+          pictures: [
+            {
+              url: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgZaA4y0lJ1WxBT051NbJiJXWsaDB-TS5YSBNJ4QeJZBnXUZ9I7FWLFxamTq-YTrcPu7w2nhEP3RXr3H2ALl0ORMPKAv3-Io_YEY3BgB-WiWBotKIlqG-Be-JCBWp40YoLZY9vISHGVvGmu09vR1POgpwjhWz_ENC3EPTj1zG3lwQiN2GFIaavMKCp9Nv0/w640-h480-rw/PXL_20240629_063033968.jpg",
+              author: "kagaorange",
+              date: "2024/6/29",
+              comment: "稲荷社",
+            },
+            {
+              url: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjrBQQBXfLL2O-bpvZp6kpEH8MzT4DtGn7K5K6P5g6Xiii2mCd7KJe_mFgIDJLBmwMjpbwjADVqab4N7xjE_biWlyuch5D6DfT-UBf_uZh5r3kaoaW_EI1qVoYtP4oh0f9zKmPRchOJAYWx8l-IxyjLcCTj-5TOe1hhzuKWXSIlpVWDxDfmBgIh5ZHZTZQ/w640-h480-rw/PXL_20240629_063120907.jpg",
+              author: "kagaorange",
+              date: "2024/6/29",
+              comment: "説明板",
+            },
+          ],
+        },
       ];
       const spotLayer = L.featureGroup();
       setMarkers(L, spotOverlay, spotLayer, spots);
       initIconUpdater(L, map, stationLayer, spotLayer, spots);
+      initPopupSlider(spotLayer);
 
       // Route
       L.polyline(nakaharaRoute, { color: "red", weight: 5 }).addTo(routeOverlay);

@@ -57,3 +57,36 @@ h1 a {
   text-stroke: 1px white;
   paint-order: stroke;
 }
+
+.popup-content {
+  font-size: 0.9em;
+}
+.popup-content h1 {
+  font-size: 1.5em;
+  padding-left: 0;
+  font-family: "Yuji Syuku", serif;
+}
+.popup-content h2 {
+  font-size: 1.1em;
+  margin: 0;
+  padding: 0;
+  font-family: "Yuji Syuku", serif;
+}
+.popup-content p {
+  margin: 0;
+  padding: 5px 0;
+}
+.popup-content .popup-text {
+  text-align: center;
+}
+.popup-content .credit {
+  color: gray;
+}
+
+.popup-arrows {
+  text-align: center;
+  font-size: 3em;
+}
+.popup-arrows i:hover {
+  color: gray;
+}

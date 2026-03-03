@@ -113,6 +113,7 @@
       const spotLayer = L.featureGroup();
       setMarkers(L, spotOverlay, spotLayer, spots);
       initIconUpdater(L, map, stationLayer, spotLayer, spots);
+      initPopupSlider(spotLayer);
 
       // Route
       L.polyline(oshuRoute, { color: "red", weight: 5 }).addTo(routeOverlay);

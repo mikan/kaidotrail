@@ -1,3 +1,9 @@
+/** ポップアップの画像スライダーの状態 */
+let current = 0;
+
+/** ポップアップの画像スライダーのボタン */
+let arrowRight, arrowLeft;
+
 /**
  * タイルやコントロールなどを初期化します。
  *
@@ -99,6 +105,51 @@ const initIconUpdater = (leaflet, map, mainLayer, subLayer, subLayerIcons, zoomT
 };
 
 /**
+ * ポップアップ内の画像スライダー機能を初期化します。
+ *
+ * @param layer 対象レイヤー
+ */
+const initPopupSlider = (layer) => {
+  const arrowRightClickHandler = () => {
+    if (!document.getElementById(`popup-pic-${current + 1}`)) {
+      return;
+    }
+    document.getElementById(`popup-pic-${current}`).style.display = "none";
+    current++;
+    document.getElementById(`popup-pic-${current}`).style.display = "block";
+  };
+  const arrowLeftClickHandler = () => {
+    if (!document.getElementById(`popup-pic-${current - 1}`)) {
+      return;
+    }
+    document.getElementById(`popup-pic-${current}`).style.display = "none";
+    current--;
+    document.getElementById(`popup-pic-${current}`).style.display = "block";
+  };
+  layer.on("popupopen", () => {
+    arrowRight = document.getElementById("arrow-right");
+    arrowLeft = document.getElementById("arrow-left");
+    if (arrowRight) {
+      arrowRight.addEventListener("click", arrowRightClickHandler);
+    }
+    if (arrowLeft) {
+      arrowLeft.addEventListener("click", arrowLeftClickHandler);
+    }
+  });
+  layer.on("popupclose", () => {
+    current = 0;
+    if (arrowRight) {
+      arrowRight.removeEventListener("click", arrowRightClickHandler);
+      arrowRight = null;
+    }
+    if (arrowLeft) {
+      arrowLeft.removeEventListener("click", arrowLeftClickHandler);
+      arrowLeft = null;
+    }
+  });
+};
+
+/**
  * 指定したアイコンクラス名と色で地図用アイコンを生成します。
  *
  * @param leaflet Leaflet 本体
@@ -132,6 +183,39 @@ const iconTypes = new Map([
 ]);
 
 /**
+ * マーカー情報をもとにポップアップの内容を構築します。
+ *
+ * @param markerData マーカー情報
+ * @return {string} HTML 文字列
+ */
+const buildPopupContent = (markerData) => {
+  let content = `<div class="popup-content">`;
+  content += `<h1>${markerData.name}</h1>`;
+  if (markerData.kana) {
+    content += `<h2>${markerData.kana}</h2>`;
+  }
+  if (markerData.description) {
+    content += `<p>${markerData.description}</p>`;
+  }
+  if (markerData.pictures && markerData.pictures.length > 0) {
+    for (let i = 0; i < markerData.pictures.length; i++) {
+      content += `<div id="popup-pic-${i}" style="display:${i === 0 ? "block" : "none"}">`;
+      content += `<img src="${markerData.pictures[i].url}" width="300" alt="${markerData.pictures[i].comment}"/>`;
+      content += `<div class="popup-text">${i + 1}/${markerData.pictures.length} ${markerData.pictures[i].comment}<br/><span class="credit">${markerData.pictures[i].date} ${markerData.pictures[i].author}</span></div>`;
+      content += `</div>`;
+    }
+    if (markerData.pictures.length > 1) {
+      content += `<div class="popup-arrows">`;
+      content += `<i id="arrow-left" class="fa-solid fa-circle-chevron-left"></i>`;
+      content += `<i id="arrow-right" class="fa-solid fa-circle-chevron-right"></i>`;
+      content += `</div>`;
+    }
+  }
+  content += `</div>`;
+  return content;
+};
+
+/**
  * マーカー一覧をマップに配置します。
  *
  * @param leaflet Leaflet 本体
@@ -153,7 +237,7 @@ const setMarkers = (leaflet, overlay, layer, markers) => {
       leaflet
         .marker(markers[i].coordinate, { icon: createIcon(leaflet, iconType.icon, iconType.color) })
         .addTo(overlay)
-        .bindPopup(markers[i].name),
+        .bindPopup(buildPopupContent(markers[i])),
     );
   }
 };

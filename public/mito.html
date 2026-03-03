@@ -100,6 +100,7 @@
       const spotLayer = L.featureGroup();
       setMarkers(L, spotOverlay, spotLayer, spots);
       initIconUpdater(L, map, stationLayer, spotLayer, spots);
+      initPopupSlider(spotLayer);
 
       // GPX
       setGpx(L, gpxOverlay, "gpx/kagaorange_2025-11-22.gpx", "blue"); // #1 千住→取手
