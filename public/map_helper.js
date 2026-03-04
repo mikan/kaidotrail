@@ -168,16 +168,15 @@ const createIcon = (leaflet, iconName, color) => {
 };
 
 const iconTypes = new Map([
-  ["honjin", { icon: "fa-h-square", color: "#8B0000" }],
+  ["honjin", { icon: "fa-landmark-flag", color: "#8B0000" }],
   ["ichirizuka", { icon: "fa-tree", color: "#228B22" }],
   ["pass", { icon: "fa-mountain", color: "#800080" }],
   ["watashi", { icon: "fa-ship", color: "#1E90FF" }],
-  ["guide", { icon: "fa-triangle-exclamation", color: "#FF8C00" }],
+  ["guide", { icon: "fa-signs-post", color: "#FF8C00" }],
   ["building", { icon: "fa-landmark", color: "#8B4513" }],
   ["monument", { icon: "fa-monument", color: "#696969" }],
   ["shrine", { icon: "fa-torii-gate", color: "#FF0000" }],
   ["temple", { icon: "fa-dharmachakra", color: "#000000" }],
-  ["stone", { icon: "fa-map-signs", color: "#708090" }],
   ["camera", { icon: "fa-camera", color: "#DAA520" }],
   ["default", { icon: "fa-map-pin", color: "royalblue" }],
 ]);
@@ -200,7 +199,7 @@ const buildPopupContent = (markerData) => {
   if (markerData.pictures && markerData.pictures.length > 0) {
     for (let i = 0; i < markerData.pictures.length; i++) {
       content += `<div id="popup-pic-${i}" style="display:${i === 0 ? "block" : "none"}">`;
-      content += `<img src="${markerData.pictures[i].url}" width="300" alt="${markerData.pictures[i].comment}"/>`;
+      content += `<img src="${markerData.pictures[i].url}" width="300" height="225" alt="${markerData.pictures[i].comment}"/>`;
       content += `<div class="popup-text">`;
       content += `${i + 1}/${markerData.pictures.length} ${markerData.pictures[i].comment ?? ""}<br/>`;
       content += `<span class="credit">${markerData.pictures[i].date} ${markerData.pictures[i].author}</span>`;
