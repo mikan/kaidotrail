@@ -111,27 +111,27 @@ const initIconUpdater = (leaflet, map, mainLayer, subLayer, subLayerIcons, zoomT
  */
 const initPopupSlider = (layer) => {
   const arrowRightClickHandler = () => {
-    if (!document.getElementById(`popup-pic-${current + 1}`)) {
-      return;
+    const nextElement = document.getElementById(`popup-pic-${current + 1}`);
+    if (nextElement) {
+      document.getElementById(`popup-pic-${current}`).style.display = "none";
+      nextElement.style.display = "block";
+      current++;
     }
-    document.getElementById(`popup-pic-${current}`).style.display = "none";
-    current++;
-    document.getElementById(`popup-pic-${current}`).style.display = "block";
   };
   const arrowLeftClickHandler = () => {
-    if (!document.getElementById(`popup-pic-${current - 1}`)) {
-      return;
+    const prevElement = document.getElementById(`popup-pic-${current - 1}`);
+    if (prevElement) {
+      document.getElementById(`popup-pic-${current}`).style.display = "none";
+      prevElement.style.display = "block";
+      current--;
     }
-    document.getElementById(`popup-pic-${current}`).style.display = "none";
-    current--;
-    document.getElementById(`popup-pic-${current}`).style.display = "block";
   };
   layer.on("popupopen", () => {
     arrowRight = document.getElementById("arrow-right");
-    arrowLeft = document.getElementById("arrow-left");
     if (arrowRight) {
       arrowRight.addEventListener("click", arrowRightClickHandler);
     }
+    arrowLeft = document.getElementById("arrow-left");
     if (arrowLeft) {
       arrowLeft.addEventListener("click", arrowLeftClickHandler);
     }
