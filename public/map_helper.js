@@ -167,6 +167,7 @@ const createIcon = (leaflet, iconName, color) => {
   });
 };
 
+/** アイコン種別の定義 */
 const iconTypes = new Map([
   ["honjin", { icon: "fa-landmark-flag", color: "#8B0000" }],
   ["ichirizuka", { icon: "fa-tree", color: "#228B22" }],

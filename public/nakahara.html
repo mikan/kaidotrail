@@ -63,7 +63,7 @@
     ></script>
     <link rel="stylesheet" href="map_style.css?v=2" />
     <script src="map_helper.js?v=3"></script>
-    <script src="nakahara.js?v=2"></script>
+    <script src="nakahara.js?v=3"></script>
   </head>
   <body>
     <img src="logo160.png" alt="旧街道足跡マップ" />
@@ -77,6 +77,8 @@
       const map = L.map("map");
       const routeOverlay = L.layerGroup();
       routeOverlay.addTo(map);
+      const altRouteOverlay = L.layerGroup();
+      altRouteOverlay.addTo(map);
       const stationOverlay = L.layerGroup();
       stationOverlay.addTo(map);
       const spotOverlay = L.layerGroup();
@@ -87,6 +89,7 @@
         宿場: stationOverlay,
         見どころ: spotOverlay,
         おすすめ歩行ルート: routeOverlay,
+        一之宮直線ルート: altRouteOverlay,
         "kagaorange の軌跡": gpxOverlay,
       });
 
@@ -486,7 +489,8 @@
           coordinate: [35.585664, 139.675147],
           icon: "camera",
           description:
-            "桜が植えられたのは昭和5年 (1930) で昔から桜の名所ですが、近年では福山雅治の曲「桜坂」のモデルとしても有名になりました。" +
+            "桜が植えられたのは昭和5年 (1930) で、現代では桜の名所として有名です。" +
+            "近年では福山雅治の曲「桜坂」のモデルとしても有名になりました。" +
             "アニメ「CLANNAD」の聖地でもあります。徒歩の場合は車道の脇にある側道を歩きます。" +
             "坂の中腹にある桜橋を下ったところに旧中原街道の説明板があり、中原産の食酢の運搬にも使われたことから御酢街道とも呼ばれていたことや、かつてこの坂は沼部大坂と呼ばれ難所であったことなどが解説されています。",
           pictures: [
@@ -650,7 +654,7 @@
           coordinate: [35.583706, 139.654165],
           icon: "shrine",
           description:
-            "小杉御殿の御主殿跡には小さな稲荷社が鎮座しています。<br/>" +
+            "小杉御殿の御主殿跡には小さな稲荷社が鎮座しています。" +
             "説明板には、小杉御殿は二代目将軍秀忠が建てたこと、家康の送迎や鷹狩りの休憩所などに使われていたことなどが紹介されています。",
           pictures: [
             {
@@ -882,7 +886,7 @@
           icon: "monument",
           description:
             "原庭バス停の近くに立派な屋根のついた石像があります。" +
-            "青面金剛が掘られているように見えます。" +
+            "青面金剛が彫られているように見えます。" +
             "道路の反対側 (南側) には馬頭観世音もあります。",
           pictures: [
             {
@@ -904,7 +908,7 @@
           coordinate: [35.525496, 139.565795],
           icon: "shrine",
           description:
-            "開戸バス停の近くに小さな祠があります。右手には青面金剛が掘られた庚申塔があります。",
+            "開戸バス停の近くに小さな祠があります。右手には青面金剛が彫られた庚申塔があります。",
           pictures: [
             {
               url: "https://kaidotrail.github.io/img/kagaorange/2024/06-29/PXL_20240629_093956781.webp",
@@ -961,6 +965,91 @@
           ],
         },
         {
+          name: "指差観音道標",
+          kana: "ゆびさしかんのんどうひょう",
+          coordinate: [35.487412, 139.523131],
+          icon: "monument",
+          description:
+            "天明4年 (1784) に建立されたもので、正面に彫られている文字は左から「秩父」「坂東」「西国」となっており百番観音巡礼に関係していることがわかります。" +
+            "左側面に指差しマークと「江戸みち」が彫られています。" +
+            "右側にも指差しマークと「かな川みち」が彫られているほか、裏面には道祖神と書かれているそうです。",
+          pictures: [
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2024/07-20/PXL_20240719_221354460.webp",
+              comment: "指差観音道標と標柱",
+            },
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2024/07-20/PXL_20240719_221359577.webp",
+              comment: "標柱",
+            },
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2024/07-20/PXL_20240719_221416460.webp",
+              comment: "指差観音道標",
+            },
+          ],
+        },
+        {
+          name: "日蓮大菩薩天拝碑",
+          kana: "にちれんだいぼさつてんぱいひ",
+          coordinate: [35.487293, 139.522968],
+          icon: "monument",
+          description:
+            "鎌倉時代の弘安5年 (1282) に日蓮上人が中原街道を通って池上に行ったことを記念し建立されたそうです。" +
+            "中原街道という名前になったのは江戸時代以後ですので、当時は鎌倉街道の中道あたりになるはずです。",
+          pictures: [
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2024/07-20/PXL_20240719_221437787.MP.webp",
+              comment: "石碑",
+            },
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2024/07-20/PXL_20240719_221443957.webp",
+              comment: "標柱",
+            },
+          ],
+        },
+        {
+          name: "川井御殿跡",
+          kana: "かわいごてんあと",
+          coordinate: [35.484714, 139.519164],
+          icon: "monument",
+          description:
+            "品川歴史館の資料によると、かつてこのあたりに家康が休憩に利用する御茶屋があり、御殿場と呼ばれたそうです。" +
+            "近くを流れる帷子川 (かたびらがわ) に架かる橋が御殿橋と名付けられていたり、付近の施設等で御殿山、御殿丸といった名前を見かけるあたりに名残を感じます。<br/>" +
+            "道端には宝永4年 (1707) 建立の庚申塔があります。宝永4年は富士山の側面で噴火が発生し宝永山ができた年になります。",
+          pictures: [
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2024/07-20/PXL_20240719_221923648.webp",
+              comment: "御殿橋",
+            },
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2024/07-20/PXL_20240719_222649485.webp",
+              comment: "青面金剛 庚申地蔵尊 三猿",
+            },
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2024/07-20/PXL_20240719_223216555.webp",
+              comment: '"御殿山"クリニック',
+            },
+          ],
+        },
+        {
+          name: "下川井庚申塔・石仏群",
+          kana: "しもかわい こうしんとう・せきぶつぐん",
+          coordinate: [35.482993, 139.514826],
+          icon: "monument",
+          description:
+            "享保15年 (1730) の庚申塔、正徳2年 (1712) の六十六部高顕所、明治4年 (1871) の神馬祭記念碑が並んでいます。",
+          pictures: [
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2024/07-20/PXL_20240719_223520677.webp",
+              comment: "庚申塔・石仏群",
+            },
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2024/07-20/PXL_20240719_223532454.webp",
+              comment: "標柱",
+            },
+          ],
+        },
+        {
           name: "案内標柱",
           coordinate: [35.481981, 139.513219],
           icon: "guide",
@@ -976,19 +1065,47 @@
               url: "https://kaidotrail.github.io/img/kagaorange/2024/07-20/PXL_20240719_223945985.webp",
               comment: "標柱",
             },
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2024/07-20/PXL_20240719_224050996.webp",
+              comment: "階段を上った先の道路の様子",
+            },
           ],
         },
         {
           name: "矢指一里塚跡",
+          kana: "やさしいちりづかあと",
           coordinate: [35.479254, 139.510495],
           icon: "ichirizuka",
           description:
             "標柱によると、中山の宮下 (現緑区中山町) へ一里、桜株 (現大和市上和田) へ一里とのことですが、江戸からは何里なのかは言及がありません。" +
-            "手元の地図で測った限りでは9里ほどでしょうか。",
+            "手元の地図で測った限りでは9里ほどでしょうか。<br/>" +
+            "標柱の反対側には晴らしポケットパークがあり、二俣川ニュータウンを一望できます。",
           pictures: [
             {
               url: "https://kaidotrail.github.io/img/kagaorange/2024/07-20/PXL_20240719_224934486.webp",
               comment: "標柱",
+            },
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2024/07-20/PXL_20240719_224920250.webp",
+              comment: "標柱の左側面",
+            },
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2024/07-20/PXL_20240719_225415928.webp",
+              comment: "見晴らしポケットパークからの二俣川ニュータウンの眺め",
+            },
+          ],
+        },
+        {
+          name: "岩船地蔵尊",
+          kana: "いわふねじぞうそん",
+          coordinate: [35.478882, 139.510224],
+          icon: "building",
+          description:
+            "享保9年 (1724) に建てられたお地蔵様で、腫れ物・病気全快にご利益があり、別名イボ取り地蔵とも呼ばれているそうです。",
+          pictures: [
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2024/07-20/PXL_20240719_230140490.webp",
+              comment: "岩船地蔵尊",
             },
           ],
         },
@@ -999,10 +1116,89 @@
           description: "地下道で線路の反対側に行くことができます。",
         },
         {
+          name: "二ツ橋地名由来の碑・石橋供養塔",
+          coordinate: [35.4680189, 139.4935691],
+          icon: "monument",
+          description:
+            "二ツ橋地名由来の碑と書かれた石碑といくつかの石碑が並んでいます。" +
+            "家康が詠んだ和歌に二ツ橋と読まれていたことが由来とのことです。" +
+            "説明文の後半には、幕末の文久3年 (1863) に山名平左衛門義実が建てた二ツ橋学舎があったことも記されています。<br/>" +
+            "中原街道の道標もあり、品川歴史館の資料によるとここは厚木街道との交差点でもあるとのことです。",
+          pictures: [
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2024/07-20/PXL_20240719_234610113.webp",
+              comment: "二ツ橋地名由来の碑",
+            },
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2024/07-20/PXL_20240719_234621147.webp",
+              comment: "家康歌碑・石橋供養塔・瀬谷村石碑",
+            },
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2024/07-20/PXL_20240719_234644407.webp",
+              comment: "左 神奈川往来 右 八王子往来",
+            },
+          ],
+        },
+        {
+          name: "梛の木石碑",
+          kana: "なぎのきせきひ",
+          coordinate: [35.462394, 139.486043],
+          icon: "monument",
+          description:
+            "その名の通り梛の木石碑前バス停の前にあります。" +
+            "江戸時代、薩摩国から取り寄せた梛の木をここで育てており、江戸城の大火の際には復興のため良材として提供したそうです。",
+          pictures: [
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2024/07-20/PXL_20240719_235850703.webp",
+              comment: "梛の木石碑",
+            },
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2024/07-20/PXL_20240719_235841395.webp",
+              comment: "石碑周辺",
+            },
+          ],
+        },
+        {
+          name: "地神塔",
+          kana: "じじんとう",
+          coordinate: [35.45806, 139.479852],
+          icon: "monument",
+          description:
+            "地神前バス停の近くにいくつかの石碑が並んでいます。" +
+            "一番左側の石碑は1文字目がほぼ消え掛かっていますが、どうやら地神塔と書かれているそうです。" +
+            "台座には講中と彫られているのも読めます。右の2基は詳細不明ですが、道祖神でしょうか。",
+          pictures: [
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2024/07-20/PXL_20240720_000941355.webp",
+              comment: "石塔群",
+            },
+          ],
+        },
+        {
+          name: "桜株十一面観世音菩薩像",
+          kana: "さくらかぶじゅういちめんかんぜおんぼさつぞう",
+          coordinate: [35.4480764, 139.465422],
+          icon: "monument",
+          description:
+            "昭和11年 (1936) に秋祭兼運動会の帰途の自動三輪車が江ノ島行電車と衝突し11名死亡の大惨事が起きたことから、御霊の冥福を祈るために建立されたとのことです。",
+          pictures: [
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2024/07-20/PXL_20240720_003336081.webp",
+              comment: "桜株十一面観世音菩薩像",
+            },
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2024/07-20/PXL_20240720_003343518.webp",
+              comment: "桜株十一面観世音菩薩像の由来",
+            },
+          ],
+        },
+        {
           name: "立川橋の廃道",
           coordinate: [35.438737, 139.445716],
           icon: "guide",
-          description: "立川橋を経由するかつての道筋は廃道になり現在は通行できません。",
+          description:
+            "立川橋を経由するかつての道筋は廃道になり現在は通行できません。" +
+            "付近は産廃処理のトラックが行き交うので、見学の際は通行にご注意ください。",
           pictures: [
             {
               url: "https://kaidotrail.github.io/img/kagaorange/2024/07-20/PXL_20240720_014751848.MP.webp",
@@ -1015,14 +1211,521 @@
           ],
         },
         {
+          name: "堅牢大地神・庚申塔",
+          kana: "けんろうだいじじん・こうしんとう",
+          coordinate: [35.43331, 139.440168],
+          icon: "monument",
+          description:
+            "左の石仏は右側面に「天下泰平 相州高座郡」と彫られているように見えます。" +
+            "中央は「堅牢大地神」と彫られており、右側面の記載から慶應3年 (1867) に建てられたようです。" +
+            "右の石碑は庚申塔と彫られており、左側面には「文化十一年 (1814) 十一月」「南 大山道」、右側面には「北 江戸道」「西 厚木」と彫られているようです。" +
+            "道標を兼ねた石塔であることがわかります。",
+          pictures: [
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2024/07-20/PXL_20240720_024614030.webp",
+              comment: "3基の石塔群",
+            },
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2024/07-20/PXL_20240720_024628440.webp",
+              comment: "右側面",
+            },
+          ],
+        },
+        {
+          name: "大法寺ぴらみ堂",
+          kana: "だいほうじぴらみどう",
+          coordinate: [35.430773, 139.436418],
+          icon: "temple",
+          description:
+            "交差点に大小のピラミッドが建っています。" +
+            "この奥は大法寺というお寺で、付近にある日蓮聖人ゆかりの遺跡「<b>び</b>わみ堂」にちなんで建てられた「<b>ぴ</b>らみ堂」という永代供養塔 (納骨堂) がこのピラミッドの正体のようです。",
+          pictures: [
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2024/07-20/PXL_20240720_025253590.MP.webp",
+              comment: "ぴらみ堂",
+            },
+          ],
+        },
+        {
+          name: "石塔群と記念碑",
+          coordinate: [35.429636, 139.434913],
+          icon: "monument",
+          description:
+            "宝暦9年 (1759) の五輪塔を掘った石碑、文政2年 (1819) の堅牢大地神、萬延元年 (1860) の庚申塔の3基と耕地整理記念碑、真新しい感じの不動明王像が並んでいます。",
+          pictures: [
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2024/07-20/PXL_20240720_025446475.webp",
+              comment: "石塔群",
+            },
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2024/07-20/PXL_20240720_025452226.MP.webp",
+              comment: "耕地整理記念碑",
+            },
+          ],
+        },
+        {
+          name: "佐要坊塚",
+          kana: "さいほうづか",
+          coordinate: [35.4175456, 139.4187409],
+          icon: "monument",
+          description:
+            "女坂の交差点に鎮座しているだいぶ古そうな石碑状の物体、奥には卒塔婆のような木板があり、「南無妙法蓮華経為 佐要坊塚」と書かれているようです。" +
+            "側面には「右 江戸」「左 一之宮」と書かれているらしく、道標を兼ねていたようです。",
+          pictures: [
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2024/07-20/PXL_20240720_032859691.webp",
+              comment: "佐要坊塚",
+            },
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2024/07-20/PXL_20240720_032806530.webp",
+              comment: "女坂交差点",
+            },
+          ],
+        },
+        {
+          name: "双体道祖神",
+          kana: "そうたいどうそじん",
+          coordinate: [35.4086836, 139.4146585],
+          icon: "monument",
+          description:
+            "あちこち崩れてしまって「伊藤氏」など一部の文字が読み取れるのみとなっています。" +
+            "「？暦十三？」と彫られているようにも見えるので、宝暦13年 (1763) のものかもしれません。",
+          pictures: [
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2024/07-20/PXL_20240720_040035043.webp",
+              comment: "双体道祖神",
+            },
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2024/07-20/PXL_20240720_040033244.webp",
+              comment: "双体道祖神 アップ",
+            },
+          ],
+        },
+        {
+          name: "大山道標",
+          kana: "おおやまみちしるべ",
+          coordinate: [35.404157, 139.412785],
+          icon: "monument",
+          description:
+            "正面に「右 大山道」と彫られているようです。" +
+            "ここ用田は旧東海道の戸塚宿の不動坂から大山へと至る「柏尾通り大山道」と中原街道の辻にあたるようです。",
+          pictures: [
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2024/07-20/PXL_20240720_040818326.webp",
+              comment: "大山道標",
+            },
+          ],
+        },
+        {
+          name: "十三塚",
+          kana: "じゅうさんづか",
+          coordinate: [35.3750368, 139.3960494],
+          icon: "monument",
+          description:
+            "十三塚と呼ばれる由来不明な塚ファミリーの1つ (写真はNo.5)。" +
+            "頂上にある石碑には「無縁諸精霊成三菩薩也 施主 三留未覺」と彫られているようです。",
+          pictures: [
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2024/07-20/PXL_20240720_055541709.MP.webp",
+              comment: "十三塚 (No.5)",
+            },
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2024/07-20/PXL_20240720_055545897.webp",
+              comment: "十三塚 (No.5) アップ",
+            },
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2024/07-20/PXL_20240720_055757936.webp",
+              comment: "十三塚 (無名塚) 標柱",
+            },
+          ],
+        },
+        {
+          name: "寒川神社",
+          kana: "さむかわじんじゃ",
+          coordinate: [35.3794326, 139.3832284],
+          icon: "shrine",
+          description:
+            "相模国の一之宮で、初詣では大勢の参拝客が訪れます。" +
+            "中原街道の道標にも出現するため、街道は寒川神社の参詣の道としても機能していたことが伺えます。",
+          pictures: [
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2024/07-27/PXL_20240727_054747896.webp",
+              comment: "社殿",
+            },
+          ],
+        },
+        {
+          name: "景観寺前 (交差点)",
+          kana: "けいかんじまえ",
+          coordinate: [35.363408, 139.387796],
+          icon: "guide",
+          description:
+            "現代の中原街道である県道45号はこの交差点から南東に伸び茅ヶ崎に至りますが、江戸時代の道筋は西に向かい相模川を超えます。" +
+            "南東から合流する道筋は東海道藤沢宿から大山に至る「田村通り大山道」の経路でもあり、途中まで旧中原街道の経路と重なります。",
+          pictures: [
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2024/07-27/PXL_20240727_062220427.MP.webp",
+              comment: "北方から見た景観寺前交差点",
+            },
+          ],
+        },
+        {
+          name: "松戸橋跡",
+          kana: "まつどばしあと",
+          coordinate: [35.363839, 139.383122],
+          icon: "monument",
+          description:
+            "交差点の角に松戸橋と書かれた石碑があります。" +
+            "右側には寒川町南部教育発祥の地と彫られた石碑があり、大山街道の宿場町として栄えたことなどが記されています。",
+          pictures: [
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2024/07-27/PXL_20240727_062757523.webp",
+              comment: "松戸橋碑・石碑",
+            },
+          ],
+        },
+        {
+          name: "浜降祭駐興記",
+          kana: "はまおりさいちゅうこうき",
+          coordinate: [35.363958, 139.382852],
+          icon: "monument",
+          description:
+            "昭和8年 (1933) に建てられた石碑で、寒川神社の宮司の名が刻まれています。" +
+            "神輿を担いだまま海に入るお祭り「浜降祭」について記したもののようです。",
+          pictures: [
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2024/07-27/PXL_20240727_062847591.webp",
+              comment: "浜降祭駐興記",
+            },
+          ],
+        },
+        {
+          name: "梶原氏一族郎党 (七士) の墓",
+          kana: "かじわらしいちぞくろうとうのはか",
+          coordinate: [35.363649, 139.382339],
+          icon: "monument",
+          description:
+            "鎌倉時代の正治2年 (1200) に討死してしまった頼朝の家来、梶原景時一族を弔ったものと伝わっています。",
+          pictures: [
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2024/07-27/PXL_20240727_063011070.webp",
+              comment: "梶原氏一族郎党(七士)の墓",
+            },
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2024/07-27/PXL_20240727_063033357.webp",
+              comment: "説明板・墓石群",
+            },
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2024/07-27/PXL_20240727_063247794.MP.webp",
+              comment: "梶原景時と一宮館址 説明板",
+            },
+          ],
+        },
+        {
+          name: "一之宮天満宮",
+          kana: "いちのみやてんまんぐう",
+          coordinate: [35.3643546, 139.3815923],
+          icon: "shrine",
+          description:
+            "一之宮小入口交差点の角に一之宮天満宮があり、梶原景時館跡碑もありました。" +
+            "説明板には案内図があり、かつては広大な敷地であったことがわかります。<br/>" +
+            "境内にある「角落とし」は、水流を調節したり、堰き止めたりする装置とのことです。",
+          pictures: [
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2024/07-27/PXL_20240727_063518411.MP.webp",
+              comment: "鳥居・梶原景時館跡碑",
+            },
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2024/07-27/PXL_20240727_063553658.webp",
+              comment: "天満宮 社殿",
+            },
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2024/07-27/PXL_20240727_063530313.webp",
+              comment: "梶原景時館跡 説明板",
+            },
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2024/07-27/PXL_20240727_064050731.webp",
+              comment: "角落とし",
+            },
+          ],
+        },
+        {
+          name: "一之宮不動堂 (河原不動尊)",
+          kana: "いちのみやふどうどう",
+          coordinate: [35.365648, 139.373993],
+          icon: "building",
+          description:
+            "大山詣の講社が建てたお堂で、「大山街道と一之宮不動堂」と書かれた説明板には大山街道の案内図も記されています。<br/>" +
+            "「河原不動尊」と書かれた説明板もあり、不動明王坐像と二体の眷属からなる三尊像とのことです。" +
+            "この説明板の下には江戸時代に設置された力石と道標があります。",
+          pictures: [
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2024/07-27/PXL_20240727_065127386.webp",
+              comment: "一之宮不動堂",
+            },
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2024/07-27/PXL_20240727_065134923.webp",
+              comment: "大山街道と一之宮不動堂 説明板",
+            },
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2024/07-27/PXL_20240727_065220401.webp",
+              comment: "河原不動尊 説明板",
+            },
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2024/07-27/PXL_20240727_065254276.webp",
+              comment: "大山道標",
+            },
+          ],
+        },
+        {
+          name: "田村の渡し場跡",
+          coordinate: [35.373407, 139.368663],
+          icon: "watashi",
+          description:
+            "説明板には中原街道と大山道だけでなく、八王子道についても言及があります。" +
+            "渡場でもあり、宿場でもあり、景勝地でもあったことがわかります。<br/>" +
+            "近くには「阿夫利嶺をまともに仰ぎ旅人ら・・・」と綴られた歌碑もあります。阿夫利嶺とは大山のことを指します。",
+          pictures: [
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2024/07-27/PXL_20240727_073352214.MP.webp",
+              comment: "田村の渡場跡碑",
+            },
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2024/07-27/PXL_20240727_073402950.webp",
+              comment: "説明板",
+            },
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2024/07-27/PXL_20240727_073336999.webp",
+              comment: "歌碑",
+            },
+          ],
+        },
+        {
+          name: "十王堂跡・道標",
+          kana: "じゅうおうどうあと・みちしるべ",
+          coordinate: [35.374758, 139.365077],
+          icon: "monument",
+          description:
+            "十王堂は天文6年 (1537) に相模川で起きた合戦の戦死者を弔うためこの地に建てられたそうです。<br/>" +
+            "付近には「右 大山みち」「ふじさわ えのしま かまくらみち」などと彫られた道標・供養塔もあります。" +
+            "ここは田村の辻と呼ばれ、厚木八王子道との交差点とのことです。" +
+            "中原街道もここから八王子道に乗っかって南に針路を変えていたと考えられます。",
+          pictures: [
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2024/07-27/PXL_20240727_074033012.webp",
+              comment: "十王堂跡碑",
+            },
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2024/07-27/PXL_20240727_074056357.webp",
+              comment: "田村十王堂 説明板",
+            },
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2024/07-27/PXL_20240727_074045697.webp",
+              comment: "大山道標",
+            },
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2024/07-27/PXL_20240727_074110028.webp",
+              comment: "大山道標 別角度",
+            },
+          ],
+        },
+        {
+          name: "田村駒返橋跡",
+          kana: "たむらこまがえしばしあと",
+          coordinate: [35.37079, 139.364116],
+          icon: "monument",
+          description:
+            "家康が鷹狩に訪れた際、雨で悪くなった道に村人が畳を敷いて便宜を図ったことから、それを慮った家康がここから馬を返したとの伝説があるそうです。<br/>" +
+            "道祖神や庚申供養塔も並んでいました。",
+          pictures: [
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2024/07-27/PXL_20240727_080211095.webp",
+              comment: "田村駒返橋跡碑・道祖神",
+            },
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2024/07-27/PXL_20240727_080126246.webp",
+              comment: "田村駒返橋跡 説明板",
+            },
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2024/07-27/PXL_20240727_080158080.webp",
+              comment: "庚申供養塔",
+            },
+          ],
+        },
+        {
+          name: "田村一里塚跡",
+          kana: "たむらいちりづかあと",
+          coordinate: [35.367748, 139.36296],
+          icon: "ichirizuka",
+          description:
+            "道祖神と、昭和48年 (1973) 製の「南 中原道 北 奥州道 ゑの木処 一里塚跡」と彫られた石碑があります。<br/>" +
+            "説明板はかすれて読みづらいですが「平塚で最も古い道の一つで、平安の昔の奥州道であった」とあります。" +
+            "「新編相模国風土記稿」には八王子道にかかる一里塚であるとの記述もあるそうです。",
+          pictures: [
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2024/07-27/PXL_20240727_080625269.webp",
+              comment: "田村一里塚跡碑・道祖神",
+            },
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2024/07-27/PXL_20240727_080647400.webp",
+              comment: "田村の一里塚の跡 説明板",
+            },
+          ],
+        },
+        {
+          name: "中原街道碑",
+          coordinate: [35.359744, 139.35617],
+          icon: "monument",
+          description:
+            "真土方面に向かう旧道の道筋が復活するあたりに地元の研究会の方が建てられた中原街道碑と水戸光圀公礼状受領記念碑があります。",
+          pictures: [
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2024/07-27/PXL_20240727_082550205.webp",
+              comment: "中原街道碑",
+            },
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2024/07-27/PXL_20240727_082604409.webp",
+              comment: "水戸光圀公礼状受領記念碑",
+            },
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2024/07-27/PXL_20240727_082724509.webp",
+              comment: "[京方] 真土方面の旧道の道筋",
+            },
+          ],
+        },
+        {
+          name: "庚申供養塔",
+          kana: "こうしんくようとう",
+          coordinate: [35.358183, 139.354993],
+          icon: "monument",
+          description:
+            "交差点の角に少し変わった形の庚申供養塔があります。" +
+            "読みづらいですが、彫られている年代は嘉永3年 (1850) でしょうか。" +
+            "下のほうには「あつぎ」と彫られているようにも見えます。",
+          pictures: [
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2024/07-27/PXL_20240727_082950238.MP.webp",
+              comment: "庚申塔",
+            },
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2024/07-27/PXL_20240727_082958428.webp",
+              comment: "庚申塔 左側面",
+            },
+          ],
+        },
+        {
+          name: "古道中原街道碑",
+          coordinate: [35.357378, 139.351561],
+          icon: "monument",
+          description:
+            "真土神社の参道入口に中原街道のシンボル的存在といっても過言ではない美しい石碑があります。" +
+            "説明板には、大磯から中原を通り真土・用田・小杉を経て江戸に入り、さらに奥州へ至る古道が通っていたことが記されています。" +
+            "中原街道で最も良く昔の面影を残しているのがここ真土地区であるともいわれているそうです。<br/>" +
+            "隣りにある真土大塚山神獣鏡の碑は古墳から出土した鏡について記されています。",
+          pictures: [
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2024/07-27/PXL_20240727_083606770.webp",
+              comment: "古道中原街道碑",
+            },
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2024/07-27/PXL_20240727_083612252.webp",
+              comment: "古道中原街道 説明板",
+            },
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2024/07-27/PXL_20240727_083627988.webp",
+              comment: "真土大塚山神獣鏡の碑",
+            },
+          ],
+        },
+        {
+          name: "真土神社",
+          kana: "しんどじんじゃ",
+          coordinate: [35.356889, 139.352331],
+          icon: "shrine",
+          description:
+            "明治3年に地域の様々な神社を合祀してできた神社。" +
+            "社殿が北西を向いているのは珍しいですが、境内から参道を振り返ると正面に大山を望めます。" +
+            "境内にある宮鐘は昭和36年 (1961) 鋳造の4代目、鐘楼は江戸時代の中頃に作られ、大正6年 (1917) にここへ移築されたそうです。",
+          pictures: [
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2024/07-27/PXL_20240727_083944079.webp",
+              comment: "社殿",
+            },
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2024/07-27/PXL_20240727_083916846.MP.webp",
+              comment: "境内から望む大山",
+            },
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2024/07-27/PXL_20240727_083753423.webp",
+              comment: "宮鐘",
+            },
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2024/07-27/PXL_20240727_083800259.webp",
+              comment: "宮鐘と鐘楼の由来 説明板",
+            },
+          ],
+        },
+        {
+          name: "中原上宿の道祖神",
+          coordinate: [35.348264, 139.333946],
+          icon: "monument",
+          description: "平成29年 (2017) 建立の道祖神があります。",
+          pictures: [
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2024/07-27/PXL_20240727_091040989.webp",
+              comment: "道祖神",
+            },
+          ],
+        },
+        {
           name: "中原一里塚跡",
           coordinate: [35.3476156, 139.3321753],
           icon: "ichirizuka",
-          description: "この場所の道の両側に塚があったそうですが、現存しません。",
+          description:
+            "この場所の道の両側に塚があったそうですが、現存しません。" +
+            '近くには "一里塚" 公園がありますが、名前だけ借りているようです。',
           pictures: [
             {
               url: "https://kaidotrail.github.io/img/kagaorange/2024/07-27/PXL_20240727_091336719.webp",
               comment: "標柱",
+            },
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2024/07-27/PXL_20240727_091131931.webp",
+              comment: "一里塚公園",
+            },
+          ],
+        },
+        {
+          name: "谷川橋跡",
+          kana: "やがわばしあと",
+          coordinate: [35.346569, 139.331516],
+          icon: "monument",
+          description:
+            "かつてここに谷川 (やがわ) という排水路が流れており、中原街道上に橋が架かっていたとのことです。",
+          pictures: [
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2024/07-27/PXL_20240727_091648332.webp",
+              comment: "谷川と谷川橋の跡 説明板",
+            },
+          ],
+        },
+        {
+          name: "中原宿高札場跡",
+          kana: "なかはらしゅくこうさつばあと",
+          coordinate: [35.344455, 139.332401],
+          icon: "monument",
+          description:
+            "(江戸時代の) 幹線道路から中原御殿方面へ分岐する道の角に高札場跡があります。" +
+            "説明板には御殿とその周辺の絵があり、絵の下部分を左右に走る道が中原街道、その左側から上に分岐し四角い敷地に向かう地点が現在いる場所かつ高札場があった場所ということになります。" +
+            "街道から中原御殿へと分岐する道は大手道と呼ばれていたそうです。",
+          pictures: [
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2024/07-27/PXL_20240727_091957576.webp",
+              comment: "中原宿高札場跡 標柱",
+            },
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2024/07-27/PXL_20240727_092002819.webp",
+              comment: "中原宿高札場跡 説明板",
             },
           ],
         },
@@ -1031,11 +1734,13 @@
           coordinate: [35.3438088, 139.3305552],
           icon: "monument",
           description:
-            "中原御殿跡は現在小学校になっていますが、体育館建設に伴う発掘調査が行われ井戸跡などの遺構が見つかったそうです。",
+            "江戸時代初期に徳川家の御殿があった地。" +
+            "江戸・駿府間の往復や鷹狩の際の宿舎として活用されていたそうです。" +
+            "現在は小学校になっていますが、体育館建設に伴う発掘調査が行われ井戸跡などの遺構が見つかったそうです。",
           pictures: [
             {
               url: "https://kaidotrail.github.io/img/kagaorange/2024/07-27/PXL_20240727_092235075.webp",
-              comment: "石碑・説明板",
+              comment: "相州中原御殿之碑・中原御殿 説明板",
             },
             {
               url: "https://kaidotrail.github.io/img/kagaorange/2024/07-27/PXL_20240727_092256924.webp",
@@ -1049,6 +1754,7 @@
         },
         {
           name: "善徳寺",
+          kana: "ぜんとくじ",
           coordinate: [35.3410871, 139.3255341],
           icon: "temple",
           description: "浄土宗のお寺。山門は中原御殿の屋敷門を移築したものと伝わっています。",
@@ -1063,6 +1769,40 @@
             },
           ],
         },
+        {
+          name: "相州中原富士之碑",
+          kana: "そうしゅうなかはらふじのひ",
+          coordinate: [35.340391, 139.336086],
+          icon: "monument",
+          description:
+            "富士見町に差し掛かる六本交差点に相州中原富士之碑があり、江戸時代は富士山も臨める景勝地だったことが伺えます。" +
+            "中原之碑と彫られた中原の由来が記された石碑もあります。",
+          pictures: [
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2024/07-27/PXL_20240727_095743906.webp",
+              comment: "相州中原富士之碑",
+            },
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2024/07-27/PXL_20240727_095753981.webp",
+              comment: "中原之碑",
+            },
+          ],
+        },
+        {
+          name: "平塚宿本陣旧跡",
+          kana: "ひらつかしゅくほんじんきゅうせき",
+          coordinate: [35.327518, 139.337779],
+          icon: "honjin",
+          description:
+            "古地図を頼りに旧豊田道を南下し旧東海道にぶつかったところにちょうど平塚宿の本陣跡があります。" +
+            "近くには豊田道バス停があります。",
+          pictures: [
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2024/07-27/PXL_20240727_102000894.MP.webp",
+              comment: "標柱",
+            },
+          ],
+        },
       ];
       const spotLayer = L.featureGroup();
       setMarkers(L, spotOverlay, spotLayer, spots);
@@ -1071,6 +1811,7 @@
 
       // Route
       L.polyline(nakaharaRoute, { color: "red", weight: 5 }).addTo(routeOverlay);
+      L.polyline(nakaharaAltRoute, { color: "lightcoral", weight: 5 }).addTo(altRouteOverlay);
 
       // GPX
       setGpx(L, gpxOverlay, "gpx/kagaorange_2024-06-29.gpx", "blue"); // #1 虎ノ門→中山
