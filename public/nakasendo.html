@@ -61,8 +61,8 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     ></script>
-    <link rel="stylesheet" href="map_style.css?v=2" />
-    <script src="map_helper.js?v=2"></script>
+    <link rel="stylesheet" href="map_style.css?v=3" />
+    <script src="map_helper.js?v=3"></script>
     <script src="nakasendo.js?v=2"></script>
   </head>
   <body>
@@ -176,7 +176,7 @@
       const spots = [];
       const spotLayer = L.featureGroup();
       setMarkers(L, spotOverlay, spotLayer, spots);
-      initIconUpdater(L, map, stationLayer, spotLayer, spots);
+      initIconUpdater(L, map, spotLayer, spots);
       initPopupSlider(spotLayer);
 
       // Route

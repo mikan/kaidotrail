@@ -85,19 +85,16 @@ const initQueryParamUpdater = (map, defaultFunc) => {
  *
  * @param leaflet Leaflet 本体
  * @param map 地図インスタンス
- * @param mainLayer 深いズームレベルではアイコンを非表示にするレイヤー
- * @param subLayer 浅いズームレベルでは点のようにしておき、深いズームレベルでアイコンを表示するレイヤー
- * @param subLayerIcons 深いズームレベルで表示するアイコンの情報が格納された配列
+ * @param layer 浅いズームレベルでは点のようにしておき、深いズームレベルでアイコンを表示するレイヤー
+ * @param layerIcons 深いズームレベルで表示するアイコンの情報が格納された配列
  * @param zoomThreshold アイコンを切り替えるズームレベル
  */
-const initIconUpdater = (leaflet, map, mainLayer, subLayer, subLayerIcons, zoomThreshold = 14) => {
+const initIconUpdater = (leaflet, map, layer, layerIcons, zoomThreshold = 12) => {
   const toggle = () => {
-    if (map.getZoom() >= zoomThreshold) {
-      map.removeLayer(mainLayer);
-      updateMarkerIcon(leaflet, subLayer, subLayerIcons, false);
-    } else {
-      map.addLayer(mainLayer);
-      updateMarkerIcon(leaflet, subLayer, subLayerIcons, true);
+    updateMarkerIcon(leaflet, layer, layerIcons, map.getZoom() < zoomThreshold);
+    const zoomInMessage = document.getElementById("zoom-in-message");
+    if (zoomInMessage) {
+      zoomInMessage.style.display = map.getZoom() < zoomThreshold ? "block" : "none";
     }
   };
   toggle();
@@ -243,7 +240,8 @@ const setMarkers = (leaflet, overlay, layer, markers) => {
         html: '<div class="div-icon">' + markers[i].name + "</div>",
         iconSize: [0, 0],
       });
-      leaflet.marker(markers[i].coordinate, { icon: divIcon }).addTo(overlay);
+      layer.addLayer(leaflet.marker(markers[i].coordinate, { icon: divIcon }).addTo(overlay));
+      continue;
     }
     const iconType = iconTypes.get(markers[i].icon ?? "default");
     layer.addLayer(

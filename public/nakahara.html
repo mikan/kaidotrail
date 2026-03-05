@@ -61,8 +61,8 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     ></script>
-    <link rel="stylesheet" href="map_style.css?v=2" />
-    <script src="map_helper.js?v=4"></script>
+    <link rel="stylesheet" href="map_style.css?v=4" />
+    <script src="map_helper.js?v=5"></script>
     <script src="nakahara.js?v=4"></script>
   </head>
   <body>
@@ -72,6 +72,7 @@
       <span class="sep">&gt;</span>
       中原街道
     </h1>
+    <div id="zoom-in-message"><span>ズームインすると見どころが表示されます</span></div>
     <div id="map"></div>
     <script>
       const map = L.map("map");
@@ -85,24 +86,29 @@
       spotOverlay.addTo(map);
       const gpxOverlay = L.layerGroup();
       gpxOverlay.addTo(map);
-      initMap(L, map, {
-        宿場: stationOverlay,
-        見どころ: spotOverlay,
-        おすすめ歩行ルート: routeOverlay,
-        宮山ルート: altRouteOverlay,
-        "kagaorange の軌跡": gpxOverlay,
-      });
+      initMap(
+        L,
+        map,
+        {
+          宿場: stationOverlay,
+          見どころ: spotOverlay,
+          おすすめ歩行ルート: routeOverlay,
+          宮山ルート: altRouteOverlay,
+          "kagaorange の軌跡": gpxOverlay,
+        },
+        true,
+      );
 
       // Stations
       const stations = [
-        { name: "虎ノ門", coordinate: [35.671, 139.74963], kana: "とらのもん" },
-        { name: "小杉御殿", coordinate: [35.583699, 139.654171], kana: "こすぎごてん" },
-        { name: "佐江戸", coordinate: [35.519346, 139.560225], kana: "さえど" },
-        { name: "川井御殿", coordinate: [35.484725, 139.519156], kana: "かわいごてん" },
-        { name: "瀬谷", coordinate: [35.457092, 139.47816], kana: "せや" },
-        { name: "用田", coordinate: [35.40425, 139.412956], kana: "ようだ" },
-        { name: "中原御殿", coordinate: [35.34383, 139.33061], kana: "なかはらごてん" },
-        { name: "平塚宿", coordinate: [35.327507, 139.337769], kana: "ひらつかしゅく" },
+        { name: "虎ノ門", coordinate: [35.671, 139.74963] },
+        { name: "小杉御殿", coordinate: [35.583699, 139.654171] },
+        { name: "佐江戸", coordinate: [35.519346, 139.560225] },
+        { name: "川井御殿", coordinate: [35.484725, 139.519156] },
+        { name: "瀬谷", coordinate: [35.457092, 139.47816] },
+        { name: "用田", coordinate: [35.40425, 139.412956] },
+        { name: "中原御殿", coordinate: [35.34383, 139.33061] },
+        { name: "平塚宿", coordinate: [35.327507, 139.337769] },
       ];
       const stationLayer = L.featureGroup();
       setMarkers(L, stationOverlay, stationLayer, stations);
@@ -1857,7 +1863,7 @@
       ];
       const spotLayer = L.featureGroup();
       setMarkers(L, spotOverlay, spotLayer, spots);
-      initIconUpdater(L, map, stationLayer, spotLayer, spots);
+      initIconUpdater(L, map, spotLayer, spots);
       initPopupSlider(spotLayer);
 
       // Route
