@@ -180,6 +180,7 @@ const iconTypes = new Map([
   ["shrine", { icon: "fa-torii-gate", color: "#FF0000" }],
   ["temple", { icon: "fa-dharmachakra", color: "#000000" }],
   ["camera", { icon: "fa-camera", color: "#DAA520" }],
+  ["food", { icon: "fa-utensils", color: "#20b2aa" }],
   ["default", { icon: "fa-map-pin", color: "royalblue" }],
 ]);
 
