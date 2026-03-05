@@ -1,9 +1,6 @@
 /** ポップアップの画像スライダーの状態 */
 let current = 0;
 
-/** ポップアップの画像スライダーのボタン */
-let arrowRight, arrowLeft;
-
 /**
  * タイルやコントロールなどを初期化します。
  *
@@ -108,40 +105,46 @@ const initIconUpdater = (leaflet, map, layer, layerIcons, zoomThreshold = 12) =>
  */
 const initPopupSlider = (layer) => {
   const arrowRightClickHandler = () => {
-    const nextElement = document.getElementById(`popup-pic-${current + 1}`);
-    if (nextElement) {
-      document.getElementById(`popup-pic-${current}`).style.display = "none";
-      nextElement.style.display = "block";
-      current++;
+    const nextElements = document.getElementsByClassName(`popup-pic-${current + 1}`);
+    if (nextElements.length > 0) {
+      const elements = document.getElementsByClassName(`popup-pic-${current}`);
+      if (elements.length > 0) {
+        elements[0].style.display = "none";
+        nextElements[0].style.display = "block";
+        current++;
+      }
     }
   };
   const arrowLeftClickHandler = () => {
-    const prevElement = document.getElementById(`popup-pic-${current - 1}`);
-    if (prevElement) {
-      document.getElementById(`popup-pic-${current}`).style.display = "none";
-      prevElement.style.display = "block";
-      current--;
+    const prevElements = document.getElementsByClassName(`popup-pic-${current - 1}`);
+    if (prevElements.length > 0) {
+      const elements = document.getElementsByClassName(`popup-pic-${current}`);
+      if (elements.length > 0) {
+        elements[0].style.display = "none";
+        prevElements[0].style.display = "block";
+        current--;
+      }
     }
   };
   layer.on("popupopen", () => {
-    arrowRight = document.getElementById("arrow-right");
-    if (arrowRight) {
-      arrowRight.addEventListener("click", arrowRightClickHandler);
+    const arrowRightElements = document.getElementsByClassName("arrow-right");
+    for (let i = 0; i < arrowRightElements.length; i++) {
+      arrowRightElements[i].addEventListener("click", arrowRightClickHandler);
     }
-    arrowLeft = document.getElementById("arrow-left");
-    if (arrowLeft) {
-      arrowLeft.addEventListener("click", arrowLeftClickHandler);
+    const arrowLeftElements = document.getElementsByClassName("arrow-left");
+    for (let i = 0; i < arrowLeftElements.length; i++) {
+      arrowLeftElements[i].addEventListener("click", arrowLeftClickHandler);
     }
   });
   layer.on("popupclose", () => {
     current = 0;
-    if (arrowRight) {
-      arrowRight.removeEventListener("click", arrowRightClickHandler);
-      arrowRight = null;
+    const arrowRightElements = document.getElementsByClassName("arrow-right");
+    for (let i = 0; i < arrowRightElements.length; i++) {
+      arrowRightElements[i].removeEventListener("click", arrowRightClickHandler);
     }
-    if (arrowLeft) {
-      arrowLeft.removeEventListener("click", arrowLeftClickHandler);
-      arrowLeft = null;
+    const arrowLeftElements = document.getElementsByClassName("arrow-left");
+    for (let i = 0; i < arrowLeftElements.length; i++) {
+      arrowLeftElements[i].removeEventListener("click", arrowLeftClickHandler);
     }
   });
 };
@@ -197,7 +200,7 @@ const buildPopupContent = (markerData) => {
   }
   if (markerData.pictures && markerData.pictures.length > 0) {
     for (let i = 0; i < markerData.pictures.length; i++) {
-      content += `<div id="popup-pic-${i}" style="display:${i === 0 ? "block" : "none"}">`;
+      content += `<div class="popup-pic-${i}" style="display:${i === 0 ? "block" : "none"}">`;
       content += `<img src="${markerData.pictures[i].url}" width="300" height="225" alt="${markerData.pictures[i].comment}"/>`;
       content += `<div class="popup-text">`;
       if (markerData.pictures.length > 1) {
@@ -216,8 +219,8 @@ const buildPopupContent = (markerData) => {
     }
     if (markerData.pictures.length > 1) {
       content += `<div class="popup-arrows">`;
-      content += `<i id="arrow-left" class="fa-solid fa-circle-chevron-left"></i>`;
-      content += `<i id="arrow-right" class="fa-solid fa-circle-chevron-right"></i>`;
+      content += `<i class="arrow-left fa-solid fa-circle-chevron-left"></i>`;
+      content += `<i class="arrow-right fa-solid fa-circle-chevron-right"></i>`;
       content += `</div>`;
     }
   }
