@@ -43,3 +43,9 @@
   font-weight: bold;
   font-size: 1.2em;
 }
+#spot-list .other-pics {
+  color: gray;
+  font-size: 0.5em;
+  line-height: 10px;
+  text-align: right;
+}

@@ -40,9 +40,11 @@ const buildTable = (spots, name, parent, iconTypes) => {
       td1.innerHTML += `${spot.kana}<br/>`;
     }
     if (spot.pictures) {
-      spot.pictures.forEach((pic) => {
-        td1.innerHTML += `<img src="${pic.url}" alt="${pic.comment}" width="200px"/><br/>`;
-      });
+      const pic = spot.pictures[0];
+      td1.innerHTML += `<img src="${pic.url}" alt="${pic.comment}" width="200px"/><br/>`;
+      if (spot.pictures.length > 1) {
+        td1.innerHTML += `<div class="other-pics">(他${spot.pictures.length - 1}枚)</div>`;
+      }
     }
     tr.appendChild(td1);
     const td2 = document.createElement("td");
