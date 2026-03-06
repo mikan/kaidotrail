@@ -61,6 +61,7 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     ></script>
+    <script src="https://cdn.jsdelivr.net/npm/isbot@5/index.iife.min.js"></script>
     <link rel="stylesheet" href="map_style.css?v=3" />
     <link rel="stylesheet" href="spot_list.css?v=1" />
     <script src="map_helper.js?v=3"></script>
@@ -969,6 +970,9 @@
 
       // Spot list
       initSpotList(spots, iconTypes);
+      if (isbot(navigator.userAgent)) {
+        toggleSpotList();
+      }
     </script>
   </body>
 </html>
