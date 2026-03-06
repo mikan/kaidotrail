@@ -63,7 +63,8 @@
     ></script>
     <link rel="stylesheet" href="map_style.css?v=3" />
     <script src="map_helper.js?v=3"></script>
-    <script src="tokaido.js?v=2"></script>
+    <script src="tokaido.js?v=3"></script>
+    <script src="section_kusatsu.js?v=1"></script>
   </head>
   <body>
     <img src="logo160.png" alt="旧街道足跡マップ" />
@@ -165,6 +166,7 @@
       // Route
       L.polyline(tokaidoEastRoute, { color: "red", weight: 5 }).addTo(routeOverlay);
       L.polyline(tokaidoWestRoute, { color: "red", weight: 5 }).addTo(routeOverlay);
+      L.polyline(kusatsuToSanjyoRoute, { color: "red", weight: 5 }).addTo(routeOverlay);
       L.polyline(sayaRoute, { color: "lightcoral", weight: 5 }).addTo(sayaRouteOverlay);
 
       // GPX

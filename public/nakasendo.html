@@ -66,6 +66,9 @@
     <script src="map_helper.js?v=3"></script>
     <script src="spot_list.js?v=1"></script>
     <script src="nakasendo.js?v=2"></script>
+    <script src="spot_nihonbashi.js?v=1"></script>
+    <script src="section_hirao.js?v=1"></script>
+    <script src="section_kusatsu.js?v=1"></script>
   </head>
   <body>
     <img src="logo160.png" alt="旧街道足跡マップ" />
@@ -179,14 +182,455 @@
       initQueryParamUpdater(map, () => map.fitBounds(stationLayer.getBounds()));
 
       // Spots
-      const spots = [];
+      const spots = [
+        // 日本橋
+        nihonbashiSpot,
+        ...nihonbashiToHiraoSpots,
+        {
+          name: "板橋宿本陣飯田新左衛門家跡",
+          coordinate: [35.75509, 139.709155],
+          icon: "honjin",
+          description:
+            "建物は明治23年 (1890) の火災で消失しました。跡地には標柱と説明板があります。",
+        },
+        {
+          name: "板橋",
+          coordinate: [35.7572959, 139.7088861],
+          icon: "bridge",
+          description: "板橋の地名の由来となった橋です。石神井川に架かっています。",
+          pictures: [
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2022/12-04/IMG_20221204_081535.webp",
+              comment: "板橋",
+            },
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2022/12-04/IMG_20221204_081556.webp",
+              comment: "説明板",
+            },
+          ],
+        },
+        {
+          name: "中山道板橋上宿",
+          coordinate: [35.759272, 139.707738],
+          icon: "monument",
+          description:
+            "板橋宿は日本橋方面から平尾宿・中宿・上宿に分かれており、板橋から北が上宿だったそうです。" +
+            "京方を上、江戸方を下とした命名パターンは街道全体のあちこちに出現します。",
+          pictures: [
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2022/12-04/IMG_20221204_082011.webp",
+              comment: "石碑・説明板",
+            },
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2022/12-04/IMG_20221204_081929.webp",
+              comment: "本町にぎわい広場",
+            },
+          ],
+        },
+        {
+          name: "縁切榎",
+          kana: "えんきりえのき",
+          coordinate: [35.759585, 139.707659],
+          icon: "shrine",
+          description:
+            "厄災から縁を切る、悪い縁を断ち切るといったポジティブな願いを込めるスポットですが、" +
+            "江戸時代に皇女和宮が江戸に下る際には縁が短くなることを恐れてここを迂回して板橋宿に入ったとのことです。",
+          pictures: [
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2022/12-04/IMG_20221204_082049.webp",
+              comment: "縁切榎",
+            },
+          ],
+        },
+        {
+          name: "志村一里塚",
+          kana: "しむらいちりづか",
+          coordinate: [35.775179, 139.696058],
+          icon: "ichirizuka",
+          description:
+            "日本橋から3里 (約11.8km) の一里塚で、道路の両脇に土を盛って木を植えた本来の形をした一里塚がしっかり立っています。" +
+            "この塚は近代化された幹線道路の脇にありながら、江戸時代以来両脇の塚が形を保って維持されている大変貴重な一里塚です。",
+          pictures: [
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2022/12-04/IMG_20221204_084709.webp",
+              comment: "南塚・説明板",
+            },
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2022/12-04/IMG_20221204_084742.webp",
+              comment: "南塚 裏側",
+            },
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2022/12-04/IMG_20221204_084845.webp",
+              comment: "北塚",
+            },
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2022/12-04/IMG_20221204_084858.webp",
+              comment: "両塚を絡めた様子",
+            },
+          ],
+        },
+        {
+          name: "富士大山道道標・庚申塔",
+          kana: "ふじおおやまどうみちしるべ・こうしんとう",
+          coordinate: [35.777048, 139.692968],
+          icon: "monument",
+          description:
+            "富士山や神奈川の大山に向かう道がここから西へ分岐していたことを示します。" +
+            "道標は寛政4年 (1792)、横に並ぶ庚申塔は万延元年 (1860) のものです。",
+          pictures: [
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2022/12-04/IMG_20221204_085419.webp",
+              comment: "道標・庚申塔",
+            },
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2022/12-04/IMG_20221204_085346.webp",
+              comment: "説明板",
+            },
+          ],
+        },
+        {
+          name: "清水坂",
+          kana: "しみずざか",
+          coordinate: [35.777891, 139.69172],
+          icon: "monument",
+          description:
+            "中山道最初の難所と言われた坂道で、かつては志村名主屋敷や立場茶屋が置かた間の宿 (あいのしゅく) だったそうです。" +
+            "三田線の開通などによって姿を大きく変えたとあります。",
+          pictures: [
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2022/12-04/IMG_20221204_085649.webp",
+              comment: "清水坂碑・説明板",
+            },
+          ],
+        },
+        {
+          name: "戸田の渡し跡 (左岸)",
+          kana: "とだのわたし",
+          coordinate: [35.801618, 139.685921],
+          icon: "watashi",
+          description:
+            "明治8年 (1875) に初代の戸田橋ができるまでの間、ここに戸田の渡しがありました。" +
+            "右岸に石碑、左岸に石碑と説明板がありますが、正面にたどり着くには迂回する必要があります。" +
+            "すぐ北側にある川岸ミニパークには、北側の中山道の道筋に関する説明板もあります。",
+          pictures: [
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2022/12-04/IMG_20221204_095032.webp",
+              comment: "石碑・説明板 (裏側)",
+            },
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2022/12-04/IMG_20221204_095054.webp",
+              comment: "渡場跡から北に伸びる旧道",
+            },
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2022/12-04/IMG_20221204_095207.webp",
+              comment: "歴史のみち 中山道 説明板",
+            },
+          ],
+        },
+        // 2. 蕨宿
+        {
+          name: "蕨市立歴史民俗資料館分館",
+          coordinate: [35.8230416, 139.6801114],
+          icon: "building",
+          description: "明治20年 (1887) に建てられた織物商の建物が保存されています。",
+          pictures: [
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2022/12-04/IMG_20221204_103523.webp",
+              comment: "蕨市立歴史民俗資料館分館",
+            },
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2022/12-04/IMG_20221204_103420.webp",
+              comment: "蕨宿界隈史跡めぐり 案内板",
+            },
+          ],
+        },
+        {
+          name: "蕨町道路元標",
+          kana: "わらびまちどうろげんぴょう",
+          coordinate: [35.823981, 139.679627],
+          icon: "monument",
+          description:
+            "道路元標は大正9年 (1920) の旧道路法施工に合わせて全国各市町村に設置されたましたが、" +
+            "蕨町 (現在は蕨市) のものは旧中山道と駅前通りの交差点に設置されています。",
+          pictures: [
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2022/12-04/IMG_20221204_103705.webp",
+              comment: "道路元標・説明",
+            },
+          ],
+        },
+        {
+          name: "蕨宿岡田本陣跡",
+          kana: "わらびしゅくおかだほんじんあと",
+          coordinate: [35.8249336, 139.6786577],
+          icon: "honjin",
+          description:
+            "本陣跡には蕨市立歴史民俗資料館本館が建っています。" +
+            "江戸時代の蕨宿の様子をうかがえる資料が多数展示されています。",
+          pictures: [
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2022/12-04/IMG_20221204_103910.webp",
+              comment: "本陣跡",
+            },
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2022/12-04/IMG_20221204_103853.webp",
+              comment: "蕨市立歴史民俗資料館本館",
+            },
+          ],
+        },
+        {
+          name: "中山道蕨宿石碑",
+          coordinate: [35.828143, 139.675546],
+          icon: "monument",
+          description: "国道17号と交差するところに中山道ふれあい広場が整備されています。",
+          pictures: [
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2022/12-04/IMG_20221204_111848.webp",
+              comment: "中山道蕨宿石碑",
+            },
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2022/12-04/IMG_20221204_111809.webp",
+              comment: "中山道ふれあい広場",
+            },
+          ],
+        },
+        {
+          name: "辻一里塚跡",
+          kana: "つじいちりづかあと",
+          coordinate: [35.834635, 139.664648],
+          icon: "ichirizuka",
+          description: "日本橋から5里 (約19.6km) の一里塚で、公園に大きな石碑があります。",
+          pictures: [
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2022/12-04/IMG_20221204_113832.webp",
+              comment: "一里塚の跡 石碑",
+            },
+          ],
+        },
+        {
+          name: "焼米坂",
+          kana: "やきごめざか",
+          coordinate: [35.845365, 139.658711],
+          icon: "monument",
+          description:
+            "かつてこの坂道には焼米 (炒った米) を売るお店があったそうです。" +
+            "焼米は旅人向けの携帯食として消費されていたようです。",
+          pictures: [
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2022/12-04/IMG_20221204_115719.webp",
+              comment: "焼米坂碑",
+            },
+          ],
+        },
+        {
+          name: "調神社",
+          kana: "つきじんじゃ",
+          coordinate: [35.8534701, 139.6556604],
+          icon: "shrine",
+          description:
+            "今からおよそ2千年前の第10代崇神天皇の頃に創建されたと伝わるとても歴史ある神社です。" +
+            "調を「つき」と読むことから「月」にかけて兎 (うさぎ) の神社としても親しまれており、狛犬の代わりに兎の像があります。" +
+            "由緒によると、調物 (貢物) 搬入の妨げになるので参道には鳥居がないそうです。ただし裏参道にはあります。",
+          pictures: [
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2022/12-04/IMG_20221204_121021.webp",
+              comment: "社殿",
+            },
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2022/12-04/IMG_20221204_121308.webp",
+              comment: "由緒",
+            },
+          ],
+        },
+        // 3. 浦和宿
+        {
+          name: "浦和宿本陣跡",
+          kana: "うらわしゅくほんじんあと",
+          coordinate: [35.861349, 139.652543],
+          icon: "honjin",
+          description:
+            "街道から少し脇に入った仲町公園というところに浦和宿本陣跡があります。" +
+            "明治天皇が大宮の氷川神社に行幸された際の行在所でもあったそうで、石碑も建てられています。",
+          pictures: [
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2022/12-04/IMG_20221204_122536.webp",
+              comment: "明治天皇行在所阯 石碑・浦和宿本陣 説明板",
+            },
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2022/12-04/IMG_20221204_122554.webp",
+              comment: "浦和宿本陣跡 説明板",
+            },
+          ],
+        },
+        {
+          name: "一本杉の仇討ち跡",
+          kana: "いっぽんすぎのあだうちあと",
+          coordinate: [35.883043, 139.641278],
+          icon: "monument",
+          description:
+            "喧嘩の斬り合いで命を落としたほうの息子が動静を聞きつけここにあった一本杉で待ち伏せ、みごと仇討ちを成し遂げたと語り継がれている場所とのことです。" +
+            "石碑は車道側を向いて一本杉と彫られています。",
+          pictures: [
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2022/12-04/IMG_20221204_131030.webp",
+              comment: "石碑・説明板",
+            },
+          ],
+        },
+        {
+          name: "氷川神社参道",
+          kana: "ひかわじんじゃさんどう",
+          coordinate: [35.897803, 139.631498],
+          icon: "shrine",
+          description:
+            "武蔵国一宮である氷川神社の参道が旧中山道から伸びています。" +
+            "中山道が出来た当初はこの参道が街道だったそうです。",
+          pictures: [
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2025/01-18/PXL_20250118_012818269.webp",
+              comment: "一の鳥居",
+            },
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2025/01-18/PXL_20250118_012835356.webp",
+              comment: "武蔵国一宮石柱",
+            },
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2025/01-18/PXL_20250118_013009507.webp",
+              comment: "一の鳥居ひろば",
+            },
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2025/01-18/PXL_20250118_020153262.MP.webp",
+              comment: "観光ルート案内板、元中山道であることがわかる",
+            },
+          ],
+        },
+        // 4. 大宮宿
+        {
+          name: "安政7年の道しるべ",
+          coordinate: [35.921162, 139.622756],
+          icon: "monument",
+          description:
+            "安政7年 (1860) に建てられたという道標があります。" +
+            "神奈川の大山と青梅の御嶽山への登拝者向けの道を示しているそうです。",
+          pictures: [
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2022/12-04/IMG_20221204_142535.webp",
+              comment: "道標",
+            },
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2022/12-04/IMG_20221204_142529.webp",
+              comment: "説明板",
+            },
+          ],
+        },
+        {
+          name: "東大成の庚申塔",
+          kana: "ひがしおおなりのこうしんとう",
+          coordinate: [35.932352, 139.617314],
+          icon: "monument",
+          description: "元禄10年 (1697) に建てられた庚申塔が鎮座しています。鳥居も置かれています。",
+          pictures: [
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2022/12-04/IMG_20221204_145956.webp",
+              comment: "庚申塔",
+            },
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2022/12-04/IMG_20221204_145947.webp",
+              comment: "説明板",
+            },
+          ],
+        },
+        {
+          name: "橋供養塔",
+          coordinate: [35.93842, 139.612808],
+          icon: "monument",
+          description:
+            "交差点の角にある供養塔がありますが、「橋供養塔」以外の判読は難しいです。" +
+            "古地図と照らし合わせてもここに川はありませんが、近辺には複数の用水路があります。",
+          pictures: [
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2022/12-04/IMG_20221204_151134.webp",
+              comment: "橋供養塔",
+            },
+          ],
+        },
+        // 5. 上尾宿
+        // 6. 桶川宿
+        // 7. 鴻巣宿
+        // 8. 熊谷宿
+        // 9. 深谷宿
+        // 10. 本庄宿
+        // 11. 新町宿
+        // 12. 倉賀野宿
+        // 13. 高崎宿
+        // 14. 板鼻宿
+        // 15. 安中宿
+        // 16. 松井田宿
+        // 17. 坂本宿
+        // 18. 軽井沢宿
+        // 19. 沓掛宿
+        // 20. 追分宿
+        // 21. 小田井宿
+        // 22. 岩村田宿
+        // 23. 塩名田宿
+        // 24. 八幡宿
+        // 25. 望月宿
+        // 26. 芦田宿
+        // 27. 長久保宿
+        // 28. 和田宿
+        // 29. 下諏訪宿
+        // 30. 塩尻宿
+        // 31. 洗馬宿
+        // 32. 本山宿
+        // 33. 贄川宿
+        // 34. 奈良井宿
+        // 35. 藪原宿
+        // 36. 宮ノ越宿
+        // 37. 福島宿
+        // 38. 上松宿
+        // 39. 須原宿
+        // 40. 野尻宿
+        // 41. 三留野宿
+        // 42. 妻籠宿
+        // 43. 馬籠宿
+        // 44. 落合宿
+        // 45. 中津川宿
+        // 46. 大井宿
+        // 47. 大湫宿
+        // 48. 細久手宿
+        // 49. 御嶽宿
+        // 50. 伏見宿
+        // 51. 太田宿
+        // 52. 鵜沼宿
+        // 53. 加納宿
+        // 54. 河渡宿
+        // 55. 美江寺宿
+        // 56. 赤坂宿
+        // 57. 垂井宿
+        // 58. 関ヶ原宿
+        // 59. 今須宿
+        // 60. 柏原宿
+        // 61. 醒井宿
+        // 62. 番場宿
+        // 63. 鳥居本宿
+        // 64. 高宮宿
+        // 65. 愛知川宿
+        // 66. 武佐宿
+        // 67. 守山宿
+        // 68. 草津宿
+        // 69. 大津宿
+        // 三条大橋
+        ...kusatsuToSanjyoSpots,
+      ];
       const spotLayer = L.featureGroup();
       setMarkers(L, spotOverlay, spotLayer, spots);
       initIconUpdater(L, map, spotLayer, spots);
       initPopupSlider(spotLayer);
 
       // Route
+      L.polyline(nihonbashiToHiraoRoute, { color: "red", weight: 5 }).addTo(routeOverlay);
       L.polyline(nakasendoRoute, { color: "red", weight: 5 }).addTo(routeOverlay);
+      L.polyline(kusatsuToSanjyoRoute, { color: "red", weight: 5 }).addTo(routeOverlay);
       L.polyline(shokiNakasendoRoute, { color: "lightcoral", weight: 5 }).addTo(shokiRouteOverlay);
 
       // GPX
@@ -202,9 +646,10 @@
       setGpx(L, gpxOverlay, "gpx/kagaorange_2023-05-27.gpx", "blue"); // #12-13 伏見→美江寺, 美江寺→醒井
       setGpx(L, gpxOverlay, "gpx/kagaorange_2023-07-15.gpx", "blue"); // #14-16 醒井→武佐, 武佐→大津, 大津→三条大橋
       setGpx(L, gpxOverlay, "gpx/kagaorange_2024-09-14.gpx", "blue"); // 初期中山道
+      setGpx(L, gpxOverlay, "gpx/kagaorange_2025-01-18.gpx", "blue"); // 氷川神社
 
       // Spot list
-      initSpotList(spots);
+      initSpotList(spots, iconTypes);
     </script>
   </body>
 </html>
