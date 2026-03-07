@@ -68,7 +68,7 @@
     <script src="https://cdn.jsdelivr.net/npm/isbot@5/index.iife.min.js"></script>
     <link rel="stylesheet" href="map_style.css?v=3" />
     <link rel="stylesheet" href="spot_list.css?v=1" />
-    <script src="map_helper.js?v=3"></script>
+    <script src="map_helper.js?v=4"></script>
     <script src="spot_list.js?v=1"></script>
     <script src="nakasendo.js?v=2"></script>
     <script src="spot_nihonbashi.js?v=1"></script>
@@ -121,8 +121,8 @@
         { name: "6. 桶川宿", coordinate: [36.001748, 139.564861] },
         { name: "7. 鴻巣宿", coordinate: [36.059117, 139.513497] },
         { name: "8. 熊谷宿", coordinate: [36.14501, 139.382873] },
-        { name: "9. 深谷宿", coordinate: [36.195183, 139.27914] },
-        { name: "10. 本庄宿", coordinate: [36.240552, 139.188328] },
+        { name: "9. 深谷宿", coordinate: [36.195212, 139.279157] },
+        { name: "10. 本庄宿", coordinate: [36.241803, 139.188292] },
         { name: "11. 新町宿", coordinate: [36.278419, 139.105987] },
         { name: "12. 倉賀野宿", coordinate: [36.296355, 139.048643] },
         { name: "13. 高崎宿", coordinate: [36.322306, 139.007028] },
@@ -883,10 +883,464 @@
           ],
         },
         // 9. 深谷宿
+        {
+          name: "旧深谷宿常夜燈 (東)",
+          kana: "きゅうふかやしゅくじょうやとう",
+          coordinate: [36.194527, 139.293084],
+          icon: "monument",
+          description:
+            "深谷宿の東の入口に建っている常夜燈です。" +
+            "煉瓦工場の貨物線跡を転用したあかね通りと旧中山道の交差部に位置しています。",
+          pictures: [
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2023/01-21/IMG_20230121_073611.webp",
+              comment: "常夜燈",
+            },
+          ],
+        },
+        {
+          name: "深谷本陣遺構",
+          kana: "ふかやほんじんいこう",
+          coordinate: [36.195212, 139.279157],
+          icon: "honjin",
+          description:
+            "飯島印刷所の前に標柱と説明板があります。敷地の奥には遺構が残っているそうです。",
+        },
+        {
+          name: "旧深谷宿常夜燈 (西)",
+          kana: "きゅうふかやしゅくじょうやとう",
+          coordinate: [36.194789, 139.27365],
+          icon: "monument",
+          description:
+            "天保11年 (1840) に富士山信仰で有名な富士講の人たちの手により建立されたとのことです。",
+          pictures: [
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2023/01-21/IMG_20230121_080432.webp",
+              comment: "常夜燈",
+            },
+          ],
+        },
+        {
+          name: "蛇喰古墳",
+          kana: "じゃばみこふん",
+          coordinate: [36.212725, 139.244755],
+          icon: "monument",
+          description:
+            "埼玉県の調査によると6世紀後半に築造されたものだそうです。" +
+            "塚の中央には石祠が鎮座しています。",
+          pictures: [
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2023/01-21/IMG_20230121_085035.webp",
+              comment: "蛇喰古墳",
+            },
+          ],
+        },
+        {
+          name: "馬頭尊・中山道古道",
+          kana: "ばとうそん・なかせんどうこどう",
+          coordinate: [36.219443, 139.235859],
+          icon: "monument",
+          description:
+            "江戸時代と現代の道の変遷について記された平成23年 (2011) の「中山道古道について」という石碑が交差点に置かれています。" +
+            "その左手には馬頭尊が鎮座しています。",
+          pictures: [
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2023/01-21/IMG_20230121_090515.webp",
+              comment: "馬頭尊・中山道古道について",
+            },
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2023/01-21/IMG_20230121_090526.webp",
+              comment: "中山道案内板",
+            },
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2023/01-21/IMG_20230121_090701.webp",
+              comment: "村社寅稲荷神社・旧中山道案内板",
+            },
+          ],
+        },
+        {
+          name: "百庚申",
+          kana: "ひゃくこうしん",
+          coordinate: [36.220563, 139.23477],
+          icon: "monument",
+          description:
+            "万延元年 (1860) から同2年にかけて建立された多数の庚申塔が並んでいます。" +
+            "説明板では、桜田門外の変や黒船来航によって揺らぐ民衆心理と庚申の年が重なったことが建立の背景にあると解説しています。" +
+            "奥には八坂神社があります。",
+          pictures: [
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2023/01-21/IMG_20230121_090821.webp",
+              comment: "百庚申",
+            },
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2023/01-21/IMG_20230121_090836.webp",
+              comment: "説明板",
+            },
+          ],
+        },
+        {
+          name: "八幡大神社",
+          kana: "はちまんだいじんじゃ",
+          coordinate: [36.233401, 139.221936],
+          icon: "shrine",
+          description:
+            "鎌倉時代に鶴岡八幡宮を奉還して創建され江戸時代に再興し今に至ります。" +
+            "年2回奉納される神楽が有名のようです。",
+          pictures: [
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2023/01-21/IMG_20230121_094256.webp",
+              comment: "八幡大神社",
+            },
+          ],
+        },
+        {
+          name: "子育地蔵尊",
+          coordinate: [36.236347, 139.218231],
+          icon: "monument",
+          description:
+            "子育地蔵尊と書かれたお地蔵さんが鎮座しており、その隣には庚申塔も並んでいます。",
+          pictures: [
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2023/01-21/IMG_20230121_094937.webp",
+              comment: "子育地蔵尊",
+            },
+          ],
+        },
         // 10. 本庄宿
+        {
+          name: "田村本陣の門",
+          coordinate: [36.241591, 139.184609],
+          icon: "honjin",
+          description:
+            "田村本陣の門は本来の場所から 300〜400m ほど西に移動したところで保存されています。" +
+            "本庄宿には田村本陣と内田本陣があり、前者を北本陣、後者を南本陣といったそうです。" +
+            "跡地は転用されており痕跡は見当たりません。",
+        },
+        {
+          name: "旧本庄仲町郵便局",
+          coordinate: [36.240672, 139.186275],
+          icon: "building",
+          description:
+            "国登録有形文化財。" +
+            "昭和9年 (1934) 建築の木造2階建の局舎ですが、現在は使われていません。",
+          pictures: [
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2023/01-21/IMG_20230121_103246.webp",
+              comment: "旧本庄仲町郵便局",
+            },
+          ],
+        },
+        {
+          name: "旧本庄商業銀行煉瓦倉庫",
+          coordinate: [36.240753, 139.183308],
+          icon: "building",
+          description:
+            "明治29年 (1896) に建設された旧本庄商業銀行の倉庫で、融資の担保となった大量の繭を保管するために建てられたそうです。" +
+            "深谷で作った煉瓦を使っているそうです。",
+          pictures: [
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2023/01-21/IMG_20230121_103844.webp",
+              comment: "旧本庄商業銀行煉瓦倉庫",
+            },
+          ],
+        },
+        {
+          name: "本庄宿碑・浮世絵タイル",
+          coordinate: [36.243242, 139.176075],
+          icon: "monument",
+          description:
+            "本庄宿の西端にあたる交差点に本庄宿と書かれた石碑や六十九次の浮世絵が描かれたタイルがあります。<br/>" +
+            "石碑やタイルでは言及されていませんが、この交差点は下仁田街道の起点でもあり、長野県の追分宿で中山道と合流します。" +
+            "中山道よりも女性が通りやすかったらしく、上州姫街道との別名もあります。",
+          pictures: [
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2023/01-21/IMG_20230121_104952.webp",
+              comment: "本庄宿碑",
+            },
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2023/01-21/IMG_20230121_105118.webp",
+              comment: "中山道六十九次浮世絵タイル",
+            },
+          ],
+        },
+        {
+          name: "浅間山古墳",
+          kana: "せんげんやまこふん",
+          coordinate: [36.254246, 139.159071],
+          icon: "monument",
+          description:
+            "古墳時代後期の7世紀後半に築造された円墳で、石室も備わっています。" +
+            "古墳は浅間神社になっており、鳥居をくぐって上ることができます。",
+          pictures: [
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2023/01-21/IMG_20230121_112208.webp",
+              comment: "浅間山古墳",
+            },
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2023/01-21/IMG_20230121_112244.webp",
+              comment: "説明板",
+            },
+          ],
+        },
+        {
+          name: "三国道入口",
+          coordinate: [36.265145, 139.136238],
+          icon: "monument",
+          description:
+            "埼玉県のウェブサイトにあるコラムによると、ここは角渕へ向かう三国街道の分岐点で、" +
+            "新町宿が成立するまではここが上州、越後に向かう主要道路だったそうです。",
+          pictures: [
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2023/01-21/IMG_20230121_124252.webp",
+              comment: "三国道入口",
+            },
+          ],
+        },
+        {
+          name: "畑児塚",
+          coordinate: [36.265713, 139.134884],
+          icon: "monument",
+          description:
+            "上里町のウェブサイトの解説によると、これは畑時能の墓だそうです。<br/>" +
+            "塚の向かいには、武田信玄の甥で家康の家臣でもある河窪信俊が再興した陽雲寺の参道が伸びています。",
+          pictures: [
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2023/01-21/IMG_20230121_124559.webp",
+              comment: "畑児塚",
+            },
+          ],
+        },
+        {
+          name: "勝場一里塚跡",
+          kana: "かつばいちりづかあと",
+          coordinate: [36.26614, 139.126981],
+          icon: "ichirizuka",
+          description: "日本橋から23里 (約90.3km) の一里塚跡で、石碑と祠があります。",
+          pictures: [
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2023/01-21/IMG_20230121_125818.webp",
+              comment: "勝場一里塚跡",
+            },
+          ],
+        },
+        {
+          name: "神流川古戦場と渡し場",
+          coordinate: [36.266182, 139.124547],
+          icon: "watashi",
+          description:
+            "天正10年 (1582) に織田信長の武将滝川一益と北条氏直・北条氏邦が戦った神流川合戦について記された説明板があり、" +
+            "江戸時代には中山道の渡し場があったことにも触れています。<br/>" +
+            "2022年に新しい神流川橋が下流側に架けられたため、神流川を渡るにはそちらに迂回する必要があります。",
+          pictures: [
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2023/01-21/IMG_20230121_130117.webp",
+              comment: "神流川古戦場と渡し場 説明板",
+            },
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2023/01-21/IMG_20230121_130407.webp",
+              comment: "神流川古戦場 説明板",
+            },
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2023/01-21/IMG_20230121_130250.webp",
+              comment: "旧神流川橋 (通行止)",
+            },
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2023/01-21/IMG_20230121_130521.webp",
+              comment: "旧神流川橋 (左)・新神流川橋 (右)",
+            },
+          ],
+        },
+        {
+          name: "見通し灯籠",
+          coordinate: [36.270524, 139.113853],
+          icon: "monument",
+          description:
+            "国道から旧道が分岐する地点に文化12年 (1815) に建てられた道案内のための常夜灯があります。" +
+            "ただし現在建っているものは昭和53年 (1978) に復元されたものだそうです。",
+          pictures: [
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2023/01-21/IMG_20230121_131952.webp",
+              comment: "見通し灯籠",
+            },
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2023/01-21/IMG_20230121_132015.webp",
+              comment: "西側から見たところ",
+            },
+          ],
+        },
         // 11. 新町宿
+        {
+          name: "明治天皇新町行在所",
+          kana: "めいじてんのうしんまちあんざいしょ",
+          coordinate: [36.27625, 139.109443],
+          icon: "building",
+          description:
+            "明治11年 (1878) の北陸・東海地域の巡幸の際に宿泊された建物が行在所公園に保存されています。",
+          pictures: [
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2023/01-21/IMG_20230121_135406.webp",
+              comment: "明治天皇新町行在所",
+            },
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2023/01-21/IMG_20230121_135504.webp",
+              comment: "説明板",
+            },
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2023/01-21/IMG_20230121_133102.webp",
+              comment: "行在所公園",
+            },
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2023/01-21/IMG_20230121_135351.webp",
+              comment: "広重が新町を描いた浮世絵",
+            },
+          ],
+        },
+        {
+          name: "小林本陣跡",
+          coordinate: [36.278407, 139.105979],
+          icon: "honjin",
+          description:
+            "道端に標柱と説明板があります。新町宿には久保本陣や三俣脇本陣もあったそうです。",
+        },
         // 12. 倉賀野宿
+        {
+          name: "倉賀野追分",
+          kana: "くらがのおいわけ",
+          coordinate: [36.295206, 139.054728],
+          icon: "monument",
+          description:
+            "倉賀野宿の東端部から日光例幣使街道が分岐しており、道標や常夜燈が並んでいます。" +
+            "道標には「左 日光道」「右 江戸道」と彫られています。" +
+            "常夜燈は文化十年 (1814) のものだそうです。" +
+            "常夜燈の後ろにある建物は閻魔堂といい、阿弥陀如来像が鎮座しているそうです。",
+          pictures: [
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2023/01-21/IMG_20230121_153213.webp",
+              comment: "道標・常夜燈",
+            },
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2023/01-21/IMG_20230121_153225.webp",
+              comment: "説明板",
+            },
+          ],
+        },
+        {
+          name: "倉賀野宿本陣跡",
+          kana: "くらがのしゅくほんじんあと",
+          coordinate: [36.296355, 139.048643],
+          icon: "honjin",
+          description:
+            "クスリのアオキ前に石碑と説明板があり、勅使河原家が本陣の任に当たっていたことなどが記されています。",
+          pictures: [
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2023/01-21/IMG_20230121_154144.webp",
+              comment: "石碑・説明板",
+            },
+          ],
+        },
+        {
+          name: "倉賀野宿脇本陣跡 (須賀家)",
+          kana: "くらがのしゅくわきほんじんあと",
+          coordinate: [36.296805, 139.046588],
+          icon: "building",
+          description:
+            "表門は江戸時代に建てられたもので、建物は明治36年 (1903) に再建されたものだそうです。" +
+            "うだつが左側にのみ上がっています。",
+          pictures: [
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2023/01-21/IMG_20230121_154427.webp",
+              comment: "脇本陣跡",
+            },
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2023/01-21/IMG_20230121_154457.webp",
+              comment: "石碑",
+            },
+          ],
+        },
+        {
+          name: "倉賀野宿高札場跡",
+          kana: "くらがのしゅくこうさつばあと",
+          coordinate: [36.296893, 139.046115],
+          icon: "kosatsuba",
+          description:
+            "復元された高札場が展示されています。" +
+            "高札場とは法度や掟書が書かれた木の板を掲げておく場所です。",
+          pictures: [
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2023/01-21/IMG_20230121_154535.webp",
+              comment: "高札場 (復元)",
+            },
+          ],
+        },
+        {
+          name: "倉賀野一里塚跡",
+          kana: "くらがのいちりづかあと",
+          coordinate: [36.298178, 139.039842],
+          icon: "ichirizuka",
+          description:
+            "日本橋から25里 (約98.2km) の一里塚跡には説明板があり、えのきが植えられていたことなどが記されています。" +
+            "なお、説明板では26里となっています。",
+          pictures: [
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2023/01-21/IMG_20230121_155344.webp",
+              comment: "説明板",
+            },
+          ],
+        },
+        {
+          name: "左道通行",
+          coordinate: [36.299911, 139.034904],
+          icon: "monument",
+          description:
+            "昭和7年 (1932) 製の左道通行と彫られた石造物があります。" +
+            "旧中山道に並木道を挟んで車線を増やしたため、方向を案内するために設置されたもののようです。",
+          pictures: [
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2023/01-21/IMG_20230121_160810.webp",
+              comment: "左道通行",
+            },
+          ],
+        },
+        {
+          name: "粕沢の旧道",
+          coordinate: [36.304988, 139.028051],
+          icon: "guide",
+          description:
+            "国道の北側の倉賀野町西上正六バス停付近から粕沢橋の手前までの間のわずかな区間に旧道の道筋が残っています。<br/>" +
+            "橋の手前の分岐を北東側に進んだ突き当りには粕沢立場跡を示す説明板もあるそうです。<br/>" +
+            "[京方] 精肉店の手前を右折、すぐに左折します。<br/>" +
+            "[江戸方] 粕沢橋を渡ってすぐ左手に伸びる細い道を進みます。",
+          pictures: [
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2023/01-21/IMG_20230121_162723.webp",
+              comment: "旧道の南端",
+            },
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2023/01-21/IMG_20230121_162421.webp",
+              comment: "旧道の北端",
+            },
+          ],
+        },
         // 13. 高崎宿
+        {
+          name: "水村園",
+          kana: "みずむらえん",
+          coordinate: [36.33056, 139.003142],
+          icon: "building",
+          description:
+            "安政4年 (1857) 創業の老舗の茶舗。" +
+            "敷地内に国登録有形文化財の土蔵があり、そこには現存する日本最古といわれる明治14年 (1881) 産の茶葉が保管されているそうです。",
+          pictures: [
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2023/01-21/IMG_20230121_172550.webp",
+              comment: "水村園",
+            },
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2023/01-21/IMG_20230121_172518.webp",
+              comment: "説明板",
+            },
+          ],
+        },
         // 14. 板鼻宿
         // 15. 安中宿
         // 16. 松井田宿
