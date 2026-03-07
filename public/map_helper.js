@@ -239,21 +239,21 @@ const buildPopupContent = (markerData) => {
  * @param markers マーカー一覧
  */
 const setMarkers = (leaflet, overlay, layer, markers) => {
-  for (let i = 0; i < markers.length; i++) {
-    if (!markers[i].icon) {
+  for (const marker of markers) {
+    if (!marker.icon) {
       const divIcon = leaflet.divIcon({
-        html: '<div class="div-icon">' + markers[i].name + "</div>",
+        html: '<div class="div-icon">' + marker.name + "</div>",
         iconSize: [0, 0],
       });
-      layer.addLayer(leaflet.marker(markers[i].coordinate, { icon: divIcon }).addTo(overlay));
+      layer.addLayer(leaflet.marker(marker.coordinate, { icon: divIcon }).addTo(overlay));
       continue;
     }
-    const iconType = iconTypes.get(markers[i].icon ?? "default");
+    const iconType = iconTypes.get(marker.icon ?? "default");
     layer.addLayer(
       leaflet
-        .marker(markers[i].coordinate, { icon: createIcon(leaflet, iconType.icon, iconType.color) })
+        .marker(marker.coordinate, { icon: createIcon(leaflet, iconType.icon, iconType.color) })
         .addTo(overlay)
-        .bindPopup(buildPopupContent(markers[i])),
+        .bindPopup(buildPopupContent(marker)),
     );
   }
 };
