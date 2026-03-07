@@ -60,16 +60,47 @@
   <body>
     <a href="./" class="logo-link"><img src="logo160.png" alt="旧街道足跡マップ" /></a>
     <h1 style="padding-top: 3px">
-      <span class="hidden-on-mobile">
+      <span class="hidden-on-mobile" style="margin-right: 6px">
         <a href="./"><span class="logo-font">旧街道足跡マップ</span> α版</a>
         <span class="sep">&gt;</span>
         地図座標取得ツール
       </span>
-      <label style="margin-left: 10px; color: green; font-family: monospace">
-        <span class="hidden-on-mobile">座標:</span>
+      <label style="color: green; font-family: monospace">
+        座標:
         <input id="location" size="24" class="padding-top: 0" />
       </label>
-      <button id="history" style="height: 24px">履歴</button>
+      <label
+        for="history"
+        style="
+          font-family: monospace;
+          user-select: none;
+          cursor: pointer;
+          color: white;
+          background: gray;
+          border: solid 1px black;
+          padding: 2px;
+          margin-left: 3px;
+          margin-right: 6px;
+        "
+      >
+        履歴
+        <button id="history" style="display: none"></button>
+      </label>
+      <label
+        for="gpx-file"
+        style="
+          font-family: monospace;
+          user-select: none;
+          cursor: pointer;
+          color: white;
+          background: gray;
+          border: solid 1px black;
+          padding: 2px;
+        "
+      >
+        GPX...
+        <input id="gpx-file" name="file" type="file" multiple style="display: none" />
+      </label>
     </h1>
     <div id="map" style="cursor: crosshair; display: block"></div>
     <pre
@@ -81,10 +112,11 @@
         right: 0;
         left: 0;
         margin: 0;
-        padding: 10px;
+        padding: 20px;
         color: lightgreen;
         background: black;
         display: none;
+        overflow-y: scroll;
       "
     ></pre>
     <script>
@@ -112,6 +144,31 @@
             .bindPopup(lat + "," + lng),
         );
       });
+      const buttonGpxFile = document.getElementById("gpx-file");
+      buttonGpxFile.addEventListener(
+        "change",
+        () => {
+          const bounds = L.latLngBounds();
+          for (const file of buttonGpxFile.files) {
+            const url = window.URL.createObjectURL(file);
+            new L.GPX(url, {
+              async: true,
+              polyline_options: { color: "blue", weight: 2 },
+              markers: { startIcon: null, endIcon: null },
+            })
+              .on("error", (e) => console.error("GPX の読み込みに失敗しました: " + String(e)))
+              .on("loaded", async (e) => {
+                window.URL.revokeObjectURL(url);
+                await navigator.locks.request("gpx-files", async () => {
+                  bounds.extend(e.target.getBounds());
+                  map.fitBounds(bounds);
+                });
+              })
+              .addTo(map);
+          }
+        },
+        false,
+      );
     </script>
   </body>
 </html>
