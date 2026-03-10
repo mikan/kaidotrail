@@ -80,6 +80,10 @@ const initSpotList = (spots, iconTypes) => {
   const btm1 = createBackToMapButton();
   btm1.style.marginTop = "10px";
   spotList.appendChild(btm1);
+  const passList = spots.filter((spot) => spot.icon === "pass");
+  if (passList.length > 0) {
+    buildTable(passList, "峠", spotList, iconTypes);
+  }
   const honjinList = spots.filter((spot) => spot.icon === "honjin");
   if (honjinList.length > 0) {
     buildTable(honjinList, "本陣", spotList, iconTypes);
@@ -88,7 +92,9 @@ const initSpotList = (spots, iconTypes) => {
   if (ichirizukaList.length > 0) {
     buildTable(ichirizukaList, "一里塚", spotList, iconTypes);
   }
-  const otherList = spots.filter((spot) => spot.icon !== "honjin" && spot.icon !== "ichirizuka");
+  const otherList = spots.filter(
+    (spot) => spot.icon !== "pass" && spot.icon !== "honjin" && spot.icon !== "ichirizuka",
+  );
   if (otherList.length > 0) {
     buildTable(otherList, "その他", spotList, iconTypes);
   }
