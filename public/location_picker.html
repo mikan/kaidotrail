@@ -60,7 +60,7 @@
       gtag("config", "G-BHV6TYCEL3");
     </script>
     <link rel="stylesheet" href="map_style.css?v=1" />
-    <script src="map_helper.js?v=1"></script>
+    <script src="map_helper.js?v=2"></script>
   </head>
   <body>
     <a href="./" class="logo-link"><img src="logo160.png" alt="旧街道足跡マップ" /></a>
@@ -135,7 +135,12 @@
       const inputLocation = document.getElementById("location");
       inputLocation.addEventListener("focus", () => inputLocation.select());
       const map = L.map("map");
-      initMap(L, map);
+      const layerControl = initMap(L, map);
+      activateKonjakuMap(L, layerControl, "kanto", "00");
+      activateKonjakuMap(L, layerControl, "matsumoto", "00");
+      activateKonjakuMap(L, layerControl, "chukyo", "2man");
+      activateKonjakuMap(L, layerControl, "omi", "2man");
+      activateKonjakuMap(L, layerControl, "keihansin", "2man");
       initQueryParamUpdater(map, () => map.setView([35.6839621, 139.7743418], 13));
       map.on("click", (e) => {
         const lat = Math.round(e.latlng.lat * 10000000) / 10000000;
@@ -158,7 +163,7 @@
             const url = window.URL.createObjectURL(file);
             new L.GPX(url, {
               async: true,
-              polyline_options: { color: "blue", weight: 2 },
+              polyline_options: { color: "lime", weight: 2 },
               markers: { startIcon: null, endIcon: null },
             })
               .on("error", (e) => console.error("GPX の読み込みに失敗しました: " + String(e)))

@@ -7,6 +7,7 @@ let current = 0;
  * @param leaflet Leaflet 本体
  * @param map 地図インスタンス
  * @param overlays オーバーレイ構成
+ * @return {*} レイヤーコントロール
  */
 const initMap = (leaflet, map, overlays) => {
   const tileLayers = [];
@@ -32,11 +33,11 @@ const initMap = (leaflet, map, overlays) => {
   tileLayers[4] = leaflet.tileLayer(
     "http://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}",
     {
-      attribution: 'Tiles &copy; <a href="http://www.esrij.com/"> Esri Japan </a>',
+      attribution: 'Tiles &copy; <a href="http://www.esrij.com/" target="_blank">Esri Japan</a>',
     },
   );
   tileLayers[3].addTo(map); // Google マップをデフォルトにする
-  leaflet.control
+  const layerControl = leaflet.control
     .layers(
       {
         "国土地理院 標準地図": tileLayers[0],
@@ -49,6 +50,26 @@ const initMap = (leaflet, map, overlays) => {
     )
     .addTo(map);
   leaflet.control.locate().addTo(map);
+
+  // Legend
+  if (overlays) {
+    const hasAltRoute = Object.keys(overlays).filter((k) => k.endsWith("ルート")).length > 1;
+    const legend = leaflet.control({ position: "topright" });
+    legend.onAdd = () => {
+      const div = leaflet.DomUtil.create("div", "map-legend");
+      div.innerHTML =
+        `凡例<br/>` +
+        `<span style="color: red"><i class="fa-solid fa-minus"></i> おすすめルート</span><br/>` +
+        (hasAltRoute
+          ? `<span style="color: lightcoral"><i class="fa-solid fa-minus"></i> 代替ルート</span><br/>`
+          : ``) +
+        `<span style="color: blue"><i class="fa-solid fa-minus"></i> GPS ログ</span><br/>`;
+      return div;
+    };
+    legend.addTo(map);
+  }
+
+  return layerControl;
 };
 
 /**
@@ -401,4 +422,21 @@ const initOwnGpx = (leaflet, map) => {
   if (q.get("landing") === "gpx") {
     toggleOwnGpx();
   }
+};
+
+/**
+ * 今昔マップを追加します。
+ *
+ * @param leaflet Leaflet 本体
+ * @param layerControl initMap() が返却した LayerControl
+ * @param dataSet データセットフォルダ銘
+ * @param age 時期フォルダ銘
+ */
+const activateKonjakuMap = (leaflet, layerControl, dataSet, age) => {
+  layerControl.addBaseLayer(
+    leaflet.tileLayer(`https://ktgis.net/kjmapw/kjtilemap/${dataSet}/${age}/{z}/{x}/{-y}.png`, {
+      attribution: '<a href="https://ktgis.net/kjmapw/data.html" target="_blank">今昔マップ</a>',
+    }),
+    `今昔マップ <span style="font-size: 0.7em">${dataSet}/${age}</span>`,
+  );
 };

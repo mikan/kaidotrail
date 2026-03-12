@@ -67,7 +67,7 @@
       gtag("config", "G-BHV6TYCEL3");
     </script>
     <link rel="stylesheet" href="map_style.css?v=3" />
-    <script src="map_helper.js?v=4"></script>
+    <script src="map_helper.js?v=5"></script>
     <script src="tokaido.js?v=3"></script>
     <script src="section_kusatsu.js?v=1"></script>
   </head>
@@ -91,13 +91,19 @@
       spotOverlay.addTo(map);
       const gpxOverlay = L.layerGroup();
       gpxOverlay.addTo(map);
-      initMap(L, map, {
+      const layerControl = initMap(L, map, {
         宿場: stationOverlay,
         見どころ: spotOverlay,
         おすすめ歩行ルート: routeOverlay,
         佐屋街道ルート: sayaRouteOverlay,
         "kagaorange の軌跡": gpxOverlay,
       });
+      activateKonjakuMap(L, layerControl, "kanto", "00");
+      activateKonjakuMap(L, layerControl, "hamamatsu", "2man");
+      activateKonjakuMap(L, layerControl, "chukyo", "2man");
+      activateKonjakuMap(L, layerControl, "tsu", "2man");
+      activateKonjakuMap(L, layerControl, "omi", "2man");
+      activateKonjakuMap(L, layerControl, "keihansin", "2man");
 
       // Stations
       const stations = [

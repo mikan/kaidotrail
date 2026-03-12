@@ -73,7 +73,7 @@
     </script>
     <link rel="stylesheet" href="map_style.css?v=6" />
     <link rel="stylesheet" href="spot_list.css?v=2" />
-    <script src="map_helper.js?v=7"></script>
+    <script src="map_helper.js?v=8"></script>
     <script src="spot_list.js?v=2"></script>
     <script src="nakasendo.js?v=4"></script>
     <script src="spot_nihonbashi.js?v=1"></script>
@@ -112,7 +112,7 @@
       spotOverlay.addTo(map);
       const gpxOverlay = L.layerGroup();
       gpxOverlay.addTo(map);
-      initMap(L, map, {
+      const layerControl = initMap(L, map, {
         宿場: stationOverlay,
         見どころ: spotOverlay,
         おすすめ歩行ルート: routeOverlay,
@@ -121,6 +121,11 @@
         和田峠古道ルート: wadaOldRouteOverlay,
         "kagaorange の軌跡": gpxOverlay,
       });
+      activateKonjakuMap(L, layerControl, "kanto", "00");
+      activateKonjakuMap(L, layerControl, "matsumoto", "00");
+      activateKonjakuMap(L, layerControl, "chukyo", "2man");
+      activateKonjakuMap(L, layerControl, "omi", "2man");
+      activateKonjakuMap(L, layerControl, "keihansin", "2man");
 
       // Stations
       const stations = [

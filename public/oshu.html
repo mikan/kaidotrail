@@ -67,7 +67,7 @@
       gtag("config", "G-BHV6TYCEL3");
     </script>
     <link rel="stylesheet" href="map_style.css?v=4" />
-    <script src="map_helper.js?v=3"></script>
+    <script src="map_helper.js?v=4"></script>
     <script src="oshu.js?v=2"></script>
   </head>
   <body>
@@ -88,12 +88,14 @@
       spotOverlay.addTo(map);
       const gpxOverlay = L.layerGroup();
       gpxOverlay.addTo(map);
-      initMap(L, map, {
+      const layerControl = initMap(L, map, {
         宿場: stationOverlay,
         見どころ: spotOverlay,
         おすすめ歩行ルート: routeOverlay,
         "kagaorange の軌跡": gpxOverlay,
       });
+      activateKonjakuMap(L, layerControl, "kanto", "00");
+      activateKonjakuMap(L, layerControl, "kanto", "01");
 
       // Stations
       const stations = [

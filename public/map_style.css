@@ -26,12 +26,13 @@ h1 a {
   left: 0;
   right: 0;
   margin: 0 auto;
-  top: 150px;
+  top: 30px;
   text-align: center;
   z-index: 1000;
+  user-select: none;
 }
 #zoom-in-message span {
-  padding: 6px;
+  padding: 4px;
   font-size: 18px;
   font-weight: bold;
   color: green;
@@ -142,6 +143,16 @@ h1 a {
   .hidden-on-mobile {
     display: none !important;
   }
+}
+
+.map-legend {
+  text-align: right;
+  font-weight: bold;
+  line-height: 1.2em;
+  user-select: none;
+  -webkit-text-stroke: 2px white;
+  text-stroke: 2px white;
+  paint-order: stroke;
 }
 
 .non-map-screen {
