@@ -352,8 +352,12 @@ const initOwnGpx = (leaflet, map) => {
   const ownGpx = document.getElementById("own-gpx");
   const backToMap = document.createElement("button");
   backToMap.innerHTML = "<i class='fa-solid fa-circle-arrow-left'></i> 地図に戻る";
+  backToMap.style.marginTop = "10px";
   backToMap.addEventListener("click", toggleOwnGpx);
   ownGpx.appendChild(backToMap);
+  const h2 = document.createElement("h2");
+  h2.innerText = "GPX ファイル表示機能 (実験中)";
+  ownGpx.appendChild(h2);
   const p1 = document.createElement("p");
   p1.innerText =
     "GPX ファイルを指定すると、地図に重ねて表示することができます。GPX ファイルの軌跡は緑色の線で表示されます。" +
