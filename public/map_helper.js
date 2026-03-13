@@ -157,6 +157,14 @@ const initPopupSlider = (layer) => {
     for (let i = 0; i < arrowLeftElements.length; i++) {
       arrowLeftElements[i].addEventListener("click", arrowLeftClickHandler);
     }
+    const layerControl = document.getElementsByClassName("leaflet-top");
+    for (const lc of layerControl) {
+      lc.style.display = "none";
+    }
+    const zoomInMessage = document.getElementById("zoom-in-message");
+    if (zoomInMessage) {
+      zoomInMessage.style.display = "none";
+    }
   });
   layer.on("popupclose", () => {
     current = 0;
@@ -167,6 +175,10 @@ const initPopupSlider = (layer) => {
     const arrowLeftElements = document.getElementsByClassName("arrow-left");
     for (let i = 0; i < arrowLeftElements.length; i++) {
       arrowLeftElements[i].removeEventListener("click", arrowLeftClickHandler);
+    }
+    const layerControl = document.getElementsByClassName("leaflet-top");
+    for (const lc of layerControl) {
+      lc.style.display = "block";
     }
   });
 };
