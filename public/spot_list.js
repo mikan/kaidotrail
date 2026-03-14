@@ -25,16 +25,33 @@ const toggleSpotList = () => {
 };
 
 /**
+ * 種別のタイトルにジャンプするアイコンを構築します。
+ *
+ * @param id id属性のサフィックス
+ * @param iconTypes アイコン定義のマップ
+ * @return {HTMLAnchorElement} aタグ
+ */
+const createJumpIcon = (id, iconTypes) => {
+  const iconType = iconTypes.get(id);
+  const jumpIcon = document.createElement("a");
+  jumpIcon.href = `#spot-link-${id}`;
+  jumpIcon.innerHTML = `<i class="fa-solid ${iconType.icon}" style="color: ${iconType.color}"></i>`;
+  return jumpIcon;
+};
+
+/**
  * 表を生成します。
  *
  * @param spots スポット一覧
  * @param name 名前
  * @param parent 追加対象の要素
  * @param iconTypes アイコン定義のマップ
+ * @param id ジャンプ先に設定するid属性
  */
-const buildTable = (spots, name, parent, iconTypes) => {
+const buildTable = (spots, name, parent, iconTypes, id = "default") => {
   const title = document.createElement("h2");
   title.innerText = name;
+  title.id = `spot-link-${id}`;
   parent.appendChild(title);
   const table = document.createElement("table");
   spots.forEach((spot) => {
@@ -87,24 +104,54 @@ const initSpotList = (spots, iconTypes) => {
   buttonOpenSpotList.addEventListener("click", toggleSpotList);
   const btm1 = createBackToMapButton();
   btm1.style.marginTop = "10px";
+  btm1.style.marginBottom = "10px";
   spotList.appendChild(btm1);
-  const passList = spots.filter((spot) => spot.icon === "pass");
+  const iconPane = document.createElement("div");
+  iconPane.className = "spot-link-icons";
+  const passList = [],
+    honjinList = [],
+    ichirizukaList = [],
+    watashiList = [],
+    otherList = [];
+  spots.forEach((spot) => {
+    switch (spot.icon) {
+      case "pass":
+        passList.push(spot);
+        break;
+      case "honjin":
+        honjinList.push(spot);
+        break;
+      case "ichirizuka":
+        ichirizukaList.push(spot);
+        break;
+      case "watashi":
+        watashiList.push(spot);
+        break;
+      default:
+        otherList.push(spot);
+        break;
+    }
+  });
+  spotList.appendChild(iconPane);
   if (passList.length > 0) {
-    buildTable(passList, "峠", spotList, iconTypes);
+    iconPane.appendChild(createJumpIcon("pass", iconTypes));
+    buildTable(passList, "峠", spotList, iconTypes, "pass");
   }
-  const honjinList = spots.filter((spot) => spot.icon === "honjin");
   if (honjinList.length > 0) {
-    buildTable(honjinList, "本陣", spotList, iconTypes);
+    iconPane.appendChild(createJumpIcon("honjin", iconTypes));
+    buildTable(honjinList, "本陣", spotList, iconTypes, "honjin");
   }
-  const ichirizukaList = spots.filter((spot) => spot.icon === "ichirizuka");
   if (ichirizukaList.length > 0) {
-    buildTable(ichirizukaList, "一里塚", spotList, iconTypes);
+    iconPane.appendChild(createJumpIcon("ichirizuka", iconTypes));
+    buildTable(ichirizukaList, "一里塚", spotList, iconTypes, "ichirizuka");
   }
-  const otherList = spots.filter(
-    (spot) => spot.icon !== "pass" && spot.icon !== "honjin" && spot.icon !== "ichirizuka",
-  );
+  if (watashiList.length > 0) {
+    iconPane.appendChild(createJumpIcon("watashi", iconTypes));
+    buildTable(watashiList, "渡場", spotList, iconTypes, "watashi");
+  }
   if (otherList.length > 0) {
-    buildTable(otherList, "その他", spotList, iconTypes);
+    iconPane.appendChild(createJumpIcon("default", iconTypes));
+    buildTable(otherList, "その他", spotList, iconTypes, "default");
   }
   const picCount = spots
     .map((spot) => (spot.pictures ? spot.pictures.length : 0))
