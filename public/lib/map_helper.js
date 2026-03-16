@@ -288,7 +288,7 @@ const buildPopupContent = (markerData) => {
       `&spot=${markerData.name}`;
     content +=
       `<div class="edit-request-link">` +
-      `<a href="${formUrl}" target="_blank"><i class="fa-solid fa-pen-to-square"></i> 修正依頼</a>` +
+      `<a href="${formUrl}" target="_blank"><i class="fa-solid fa-pen-to-square"></i> 修正</a>` +
       `</div>`;
   }
   content += `</div>`;
