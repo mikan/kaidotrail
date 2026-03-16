@@ -83,13 +83,31 @@ const buildTable = (spots, name, parent, iconTypes, id = "default") => {
 /**
  * マップに戻るボタンを生成します。
  *
+ * @param mt {number} margin-top
+ * @param mb {number} margin-bottom
  * @return {HTMLButtonElement} マップに戻るボタン
  */
-const createBackToMapButton = () => {
+const createBackToMapButton = (mt = 0, mb = 0) => {
   const backToMap = document.createElement("button");
   backToMap.innerHTML = "<i class='fa-solid fa-circle-arrow-left'></i> 地図に戻る";
+  backToMap.style.marginTop = `${mt}px`;
+  backToMap.style.marginBottom = `${mb}px`;
   backToMap.addEventListener("click", toggleSpotList);
   return backToMap;
+};
+
+/**
+ * トップに戻るボタンを生成します。
+ *
+ * @param ml {number} margin-left
+ * @return {HTMLButtonElement} トップに戻るボタン
+ */
+const createBackToTopButton = (ml = 5) => {
+  const backToTop = document.createElement("button");
+  backToTop.innerHTML = "<i class='fa-solid fa-circle-arrow-up'></i> 先頭に戻る";
+  backToTop.style.marginLeft = `${ml}px`;
+  backToTop.addEventListener("click", () => window.scrollTo(0, 0));
+  return backToTop;
 };
 
 /**
@@ -102,9 +120,7 @@ const initSpotList = (spots, iconTypes) => {
   const buttonOpenSpotList = document.getElementById("spot-list-open");
   const spotList = document.getElementById("spot-list");
   buttonOpenSpotList.addEventListener("click", toggleSpotList);
-  const btm1 = createBackToMapButton();
-  btm1.style.marginTop = "10px";
-  btm1.style.marginBottom = "10px";
+  const btm1 = createBackToMapButton(0, 10);
   spotList.appendChild(btm1);
   const iconPane = document.createElement("div");
   iconPane.className = "spot-link-icons";
@@ -112,6 +128,11 @@ const initSpotList = (spots, iconTypes) => {
     honjinList = [],
     ichirizukaList = [],
     watashiList = [],
+    bridgeList = [],
+    kosatsubaList = [],
+    shrineList = [],
+    templeList = [],
+    monumentList = [],
     otherList = [];
   spots.forEach((spot) => {
     switch (spot.icon) {
@@ -127,41 +148,54 @@ const initSpotList = (spots, iconTypes) => {
       case "watashi":
         watashiList.push(spot);
         break;
+      case "bridge":
+        bridgeList.push(spot);
+        break;
+      case "kosatsuba":
+        kosatsubaList.push(spot);
+        break;
+      case "shrine":
+        shrineList.push(spot);
+        break;
+      case "temple":
+        templeList.push(spot);
+        break;
+      case "monument":
+        monumentList.push(spot);
+        break;
       default:
         otherList.push(spot);
         break;
     }
   });
   spotList.appendChild(iconPane);
-  if (passList.length > 0) {
-    iconPane.appendChild(createJumpIcon("pass", iconTypes));
-    buildTable(passList, "峠", spotList, iconTypes, "pass");
-  }
-  if (honjinList.length > 0) {
-    iconPane.appendChild(createJumpIcon("honjin", iconTypes));
-    buildTable(honjinList, "本陣", spotList, iconTypes, "honjin");
-  }
-  if (ichirizukaList.length > 0) {
-    iconPane.appendChild(createJumpIcon("ichirizuka", iconTypes));
-    buildTable(ichirizukaList, "一里塚", spotList, iconTypes, "ichirizuka");
-  }
-  if (watashiList.length > 0) {
-    iconPane.appendChild(createJumpIcon("watashi", iconTypes));
-    buildTable(watashiList, "渡場", spotList, iconTypes, "watashi");
-  }
-  if (otherList.length > 0) {
-    iconPane.appendChild(createJumpIcon("default", iconTypes));
-    buildTable(otherList, "その他", spotList, iconTypes, "default");
-  }
+  const buildIconSection = (id, name, list) => {
+    if (list.length === 0) {
+      return;
+    }
+    iconPane.appendChild(createJumpIcon(id, iconTypes));
+    buildTable(list, name, spotList, iconTypes, id);
+    const btm = createBackToMapButton(10, 0);
+    spotList.appendChild(btm);
+    const btt = createBackToTopButton();
+    spotList.appendChild(btt);
+  };
+  buildIconSection("pass", "峠", passList);
+  buildIconSection("honjin", "本陣", honjinList);
+  buildIconSection("ichirizuka", "一里塚", ichirizukaList);
+  buildIconSection("watashi", "渡場", watashiList);
+  buildIconSection("bridge", "橋", bridgeList);
+  buildIconSection("kosatsuba", "高札場", kosatsubaList);
+  buildIconSection("shrine", "神社", shrineList);
+  buildIconSection("temple", "寺", templeList);
+  buildIconSection("monument", "道標・記念碑・石仏・石塔・常夜燈等", monumentList);
+  buildIconSection("default", "その他", otherList);
   const picCount = spots
     .map((spot) => (spot.pictures ? spot.pictures.length : 0))
     .reduce((acc, v) => acc + v, 0);
   const counter = document.createElement("p");
   counter.innerHTML = `全 ${spots.length} 地点 (写真 ${picCount} 枚)`;
   spotList.appendChild(counter);
-  const btm2 = createBackToMapButton();
-  btm2.style.marginBottom = "10px";
-  spotList.appendChild(btm2);
   const q = new URLSearchParams(location.search);
   if (q.get("landing") === "spots") {
     toggleSpotList();
