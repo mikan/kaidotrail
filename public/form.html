@@ -53,7 +53,7 @@
       </div>
       <form id="my-form" action="https://formspree.io/f/mzdjjreg" method="POST">
         <h3><i class="fa-solid fa-message"></i> 連絡内容</h3>
-        <p>
+        <p id="spot-overview">
           <i class="fa-solid fa-map-pin"></i> <b><span id="spot"></span></b>
           <code>[<span id="coordinate"></span>]</code> (page: <span id="kaido"></span>)<br />
           <input id="kaido-h" type="hidden" name="kaido" />
@@ -98,8 +98,8 @@
             </label>
             <!--suppress HtmlFormInputWithoutLabel -->
             <input id="img1-url" type="text" name="img1-url" hidden />
-            <span id="img1-status" style="padding-right: 5px"></span>
-            <label for="img1-date">撮影日:</label>
+            <span id="img1-status" style="padding-right: 2px"></span>
+            <label for="img1-date"></label>
             <input id="img1-date" type="date" name="img1-date" />
           </div>
           <div>
@@ -109,8 +109,8 @@
             </label>
             <!--suppress HtmlFormInputWithoutLabel -->
             <input id="img2-url" type="text" name="img2-url" hidden />
-            <span id="img2-status" style="padding-right: 5px"></span>
-            <label for="img2-date">撮影日:</label>
+            <span id="img2-status" style="padding-right: 2px"></span>
+            <label for="img2-date"></label>
             <input id="img2-date" type="date" name="img2-date" />
           </div>
           <div>
@@ -120,8 +120,8 @@
             </label>
             <!--suppress HtmlFormInputWithoutLabel -->
             <input id="img3-url" type="text" name="img3-url" hidden />
-            <span id="img3-status" style="padding-right: 5px"></span>
-            <label for="img3-date">撮影日:</label>
+            <span id="img3-status" style="padding-right: 2px"></span>
+            <label for="img3-date"></label>
             <input id="img3-date" type="date" name="img3-date" />
           </div>
           <div>
@@ -193,12 +193,16 @@
     <script>
       // アカウント入力欄トグル
       const q = new URLSearchParams(location.search);
-      document.getElementById("kaido").innerText = q.get("kaido");
-      document.getElementById("kaido-h").value = q.get("kaido");
-      document.getElementById("coordinate").innerText = q.get("coordinate");
-      document.getElementById("coordinate-h").value = q.get("coordinate");
-      document.getElementById("spot").innerText = q.get("spot");
-      document.getElementById("spot-h").value = q.get("spot");
+      if (q.get("kaido")) {
+        document.getElementById("kaido").innerText = q.get("kaido");
+        document.getElementById("kaido-h").value = q.get("kaido");
+        document.getElementById("coordinate").innerText = q.get("coordinate");
+        document.getElementById("coordinate-h").value = q.get("coordinate");
+        document.getElementById("spot").innerText = q.get("spot");
+        document.getElementById("spot-h").value = q.get("spot");
+      } else {
+        document.getElementById("spot-overview").style.display = "none";
+      }
       const inputSocial = document.getElementById("social");
       const inputName = document.getElementById("name");
       const inputEmail = document.getElementById("email");
@@ -246,13 +250,11 @@
 
       // 写真アップロード
       const submitButton = document.getElementById("my-form-button");
-      const detectDate = (file, prefix) => {
+      const detectDate = (file, elm) => {
         EXIF.getData(file, function () {
           const dateTime = EXIF.getTag(this, "DateTimeOriginal");
           if (dateTime) {
-            document.getElementById(prefix + "-date").value = dateTime
-              .split(" ")[0]
-              .replaceAll(":", "-");
+            elm.value = dateTime.split(" ")[0].replaceAll(":", "-");
           }
         });
       };
@@ -260,13 +262,14 @@
         const status = document.getElementById(prefix + "-status");
         const imgUrl = document.getElementById(prefix + "-url");
         const preview = document.getElementById(prefix + "-preview");
+        const imgDate = document.getElementById(prefix + "-date");
         if (e.target.files.length < 1) {
           status.textContent = "";
           imgUrl.value = "";
           preview.innerHTML = "";
           return;
         }
-        detectDate(e.target.files[0], prefix);
+        detectDate(e.target.files[0], imgDate);
         status.style.color = "blue";
         status.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i>';
         submitButton.disabled = true;
@@ -283,6 +286,7 @@
               const previewImg = document.createElement("img");
               previewImg.src = data.data.medium ? data.data.medium.url : data.data.url;
               preview.appendChild(previewImg);
+              imgDate.required = true;
             } else {
               status.style.color = "red";
               status.textContent = "アップロード失敗: " + JSON.stringify(data);
