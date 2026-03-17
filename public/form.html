@@ -18,6 +18,12 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/exif-js/2.3.0/exif.min.js"
+      integrity="sha512-xsoiisGNT6Dw2Le1Cocn5305Uje1pOYeSzrpO3RD9K+JTpVH9KqSXksXqur8cobTEKJcFz0COYq4723mzo88/Q=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
     <!--suppress ES6ConvertVarToLetConst, EqualityComparisonWithCoercionJS -->
     <!-- prettier-ignore -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -91,7 +97,7 @@
             </label>
             <!--suppress HtmlFormInputWithoutLabel -->
             <input id="img1-url" type="text" name="img1-url" hidden />
-            <span id="img1-status" style="padding-right: 10px"></span>
+            <span id="img1-status" style="padding-right: 5px"></span>
             <label for="img1-date">撮影日:</label>
             <input id="img1-date" type="date" name="img1-date" />
           </div>
@@ -102,7 +108,7 @@
             </label>
             <!--suppress HtmlFormInputWithoutLabel -->
             <input id="img2-url" type="text" name="img2-url" hidden />
-            <span id="img2-status" style="padding-right: 10px"></span>
+            <span id="img2-status" style="padding-right: 5px"></span>
             <label for="img2-date">撮影日:</label>
             <input id="img2-date" type="date" name="img2-date" />
           </div>
@@ -113,7 +119,7 @@
             </label>
             <!--suppress HtmlFormInputWithoutLabel -->
             <input id="img3-url" type="text" name="img3-url" hidden />
-            <span id="img3-status" style="padding-right: 10px"></span>
+            <span id="img3-status" style="padding-right: 5px"></span>
             <label for="img3-date">撮影日:</label>
             <input id="img3-date" type="date" name="img3-date" />
           </div>
@@ -140,7 +146,8 @@
         <p>
           投稿が反映された場合、貢献者または著作者としてクレジットの表記を行います。 X または GitHub
           アカウントを指定した場合はアイコン付きで表記します。
-          クレジット表記を希望されない方は、匿名希望を選択してください。
+          クレジット表記を希望されない方は、匿名希望を選択してください
+          (写真を投稿する場合は著作者を明確にするため選択できません)。
         </p>
         <div>
           <input type="radio" id="user-type-x" name="user-type" value="x" required />
@@ -238,6 +245,16 @@
 
       // 写真アップロード
       const submitButton = document.getElementById("my-form-button");
+      const detectDate = (file, prefix) => {
+        EXIF.getData(file, function () {
+          const dateTime = EXIF.getTag(this, "DateTimeOriginal");
+          if (dateTime) {
+            document.getElementById(prefix + "-date").value = dateTime
+              .split(" ")[0]
+              .replaceAll(":", "-");
+          }
+        });
+      };
       const handleUpload = (e, prefix) => {
         const status = document.getElementById(prefix + "-status");
         const imgUrl = document.getElementById(prefix + "-url");
@@ -248,8 +265,9 @@
           preview.innerHTML = "";
           return;
         }
+        detectDate(e.target.files[0], prefix);
         status.style.color = "blue";
-        status.textContent = "アップロード中...";
+        status.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i>';
         submitButton.disabled = true;
         const formData = new FormData();
         formData.append("image", e.target.files[0]);
@@ -257,13 +275,12 @@
         fetch(`https://api.imgbb.com/1/upload?key=${apiKey}`, { method: "POST", body: formData })
           .then((response) => response.json())
           .then((data) => {
-            console.log(data);
             if (data.success) {
               status.style.color = "green";
-              status.textContent = "アップロード完了";
+              status.innerHTML = '<i class="fa-solid fa-check"></i>';
               imgUrl.value = data.data.url;
               const previewImg = document.createElement("img");
-              previewImg.src = data.data.medium.url;
+              previewImg.src = data.data.medium ? data.data.medium.url : data.data.url;
               preview.appendChild(previewImg);
             } else {
               status.style.color = "red";
