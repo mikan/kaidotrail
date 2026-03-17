@@ -26,6 +26,7 @@
       'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-MTM7SMZG');</script>
     <link rel="stylesheet" href="lib/map_style.css?v=1" />
+    <link rel="stylesheet" href="lib/form.css?v=1" />
   </head>
   <body>
     <!-- prettier-ignore -->
@@ -38,16 +39,15 @@
     </h1>
     <div class="non-map-screen" style="display: block">
       <p>このフォームから街道情報の修正や更新をリクエストすることができます。</p>
-      <p>
-        写真の投稿機能は開発中で、現在このフォームからは行えません。
-        写真を寄贈してくださる方は、お手数ですがその旨を連絡内容に記載ください。
-        管理人から折り返し連絡いたします。
-      </p>
+      <div style="display: none">
+        <input id="img1-input" type="file" accept="image/*" />
+        <input id="img2-input" type="file" accept="image/*" />
+        <input id="img3-input" type="file" accept="image/*" />
+      </div>
       <form id="my-form" action="https://formspree.io/f/mzdjjreg" method="POST">
-        <h3>連絡内容</h3>
+        <h3><i class="fa-solid fa-message"></i> 連絡内容</h3>
         <p>
-          対象スポット:
-          <b><span id="spot"></span></b>
+          <i class="fa-solid fa-map-pin"></i> <b><span id="spot"></span></b>
           <code>[<span id="coordinate"></span>]</code> (page: <span id="kaido"></span>)<br />
           <input id="kaido-h" type="hidden" name="kaido" />
           <input id="coordinate-h" type="hidden" name="coordinate" />
@@ -63,9 +63,75 @@
             <li>4枚目の写真に写り込んでいるナンバープレートを加工で消してください。</li>
           </ul>
         </div>
-        <h3>連絡先およびクレジット表記</h3>
+        <h3><i class="fa-solid fa-camera"></i> 写真投稿</h3>
+        <input id="enable-photo" type="checkbox" />
+        <label for="enable-photo">写真を投稿する</label>
+        <div id="photo-pane" style="display: none">
+          <p>
+            <span style="color: red; font-weight: bold">
+              <i class="fa-solid fa-triangle-exclamation"></i> 重要
+            </span>
+            投稿した写真を管理者が本サイトに掲載することを決定した場合は
+            <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.ja" target="_blank"
+              >CC BY-SA 4.0</a
+            >
+            ライセンスで公開されます。同意いただける場合は、アップロードにお進みください。
+          </p>
+          <p>
+            <span style="color: darkblue; font-weight: bold">
+              <i class="fa-solid fa-circle-info"></i> 備考
+            </span>
+            写真の著作者を明確にするため、匿名希望でのアップロードはできません。ご了承ください。
+          </p>
+          <div>
+            写真1
+            <label for="img1-input" class="upload-button">
+              <i class="fa-solid fa-cloud"></i> アップロード
+            </label>
+            <!--suppress HtmlFormInputWithoutLabel -->
+            <input id="img1-url" type="text" name="img1-url" hidden />
+            <span id="img1-status"></span>
+          </div>
+          <div>
+            写真2
+            <label for="img2-input" class="upload-button">
+              <i class="fa-solid fa-cloud"></i> アップロード
+            </label>
+            <!--suppress HtmlFormInputWithoutLabel -->
+            <input id="img2-url" type="text" name="img2-url" hidden />
+            <span id="img2-status"></span>
+          </div>
+          <div>
+            写真3
+            <label for="img3-input" class="upload-button">
+              <i class="fa-solid fa-cloud"></i> アップロード
+            </label>
+            <!--suppress HtmlFormInputWithoutLabel -->
+            <input id="img3-url" type="text" name="img3-url" hidden />
+            <span id="img3-status"></span>
+          </div>
+          <div>
+            <span id="img1-preview" class="upload-preview"></span>
+            <span id="img2-preview" class="upload-preview"></span>
+            <span id="img3-preview" class="upload-preview"></span>
+          </div>
+          <input id="agree-license" type="checkbox" name="agree-license" />
+          <label for="agree-license">
+            添付した写真が本サイトに掲載される場合 CC BY-SA 4.0
+            ライセンスで公開されることに同意します
+          </label>
+          <br />
+          <input id="agree-original" type="checkbox" name="agree-original" />
+          <label for="agree-original">添付した写真は自分自身が撮影したオリジナルの作品です</label>
+          <br />
+          <input id="agree-edit" type="checkbox" name="agree-edit" />
+          <label for="agree-edit">
+            添付した写真が管理者によって回転やトリミング等の軽微な加工が施される可能性があることに同意します
+          </label>
+        </div>
+        <h3><i class="fa-solid fa-user"></i> 連絡先およびクレジット表記</h3>
         <p>
-          投稿が反映された場合、クレジットの表記を行います。 X または GitHub
+          投稿が反映された場合、貢献者または著作者としてクレジットの表記を行います。 X または GitHub
           アカウントを指定した場合はアイコン付きで表記します。
           クレジット表記を希望されない方は、匿名希望を選択してください。
         </p>
@@ -118,25 +184,100 @@
       document.getElementById("coordinate-h").value = q.get("coordinate");
       document.getElementById("spot").innerText = q.get("spot");
       document.getElementById("spot-h").value = q.get("spot");
+      const inputSocial = document.getElementById("social");
+      const inputName = document.getElementById("name");
+      const inputEmail = document.getElementById("email");
       document.getElementById("user-type-x").addEventListener("change", (e) => {
-        document.getElementById("social").disabled = !e.target.checked;
-        document.getElementById("name").disabled = e.target.checked;
-        document.getElementById("email").disabled = e.target.checked;
+        inputSocial.disabled = !e.target.checked;
+        inputSocial.required = e.target.checked;
+        inputName.disabled = e.target.checked;
+        inputName.required = !e.target.checked;
+        inputEmail.disabled = e.target.checked;
+        inputEmail.required = !e.target.checked;
       });
       document.getElementById("user-type-github").addEventListener("change", (e) => {
-        document.getElementById("social").disabled = !e.target.checked;
-        document.getElementById("name").disabled = e.target.checked;
-        document.getElementById("email").disabled = e.target.checked;
+        inputSocial.disabled = !e.target.checked;
+        inputSocial.required = e.target.checked;
+        inputName.disabled = e.target.checked;
+        inputName.required = !e.target.checked;
+        inputEmail.disabled = e.target.checked;
+        inputEmail.required = !e.target.checked;
       });
       document.getElementById("user-type-custom").addEventListener("change", (e) => {
-        document.getElementById("social").disabled = e.target.checked;
-        document.getElementById("name").disabled = !e.target.checked;
-        document.getElementById("email").disabled = !e.target.checked;
+        inputSocial.disabled = e.target.checked;
+        inputSocial.required = !e.target.checked;
+        inputName.disabled = !e.target.checked;
+        inputName.required = e.target.checked;
+        inputEmail.disabled = !e.target.checked;
+        inputEmail.required = e.target.checked;
       });
       document.getElementById("user-type-anonymous").addEventListener("click", (e) => {
-        document.getElementById("social").disabled = e.target.checked;
-        document.getElementById("name").disabled = e.target.checked;
-        document.getElementById("email").disabled = e.target.checked;
+        inputSocial.disabled = e.target.checked;
+        inputSocial.required = !e.target.checked;
+        inputName.disabled = e.target.checked;
+        inputName.required = !e.target.checked;
+        inputEmail.disabled = e.target.checked;
+        inputEmail.required = !e.target.checked;
+      });
+
+      // 写真入力欄トグル
+      document.getElementById("enable-photo").addEventListener("change", (e) => {
+        document.getElementById("photo-pane").style.display = e.target.checked ? "block" : "none";
+        document.getElementById("agree-license").required = e.target.checked;
+        document.getElementById("agree-original").required = e.target.checked;
+        document.getElementById("agree-edit").required = e.target.checked;
+        document.getElementById("user-type-anonymous").disabled = e.target.checked;
+      });
+
+      // 写真アップロード
+      const submitButton = document.getElementById("my-form-button");
+      const handleUpload = (e, prefix) => {
+        const status = document.getElementById(prefix + "-status");
+        const imgUrl = document.getElementById(prefix + "-url");
+        const preview = document.getElementById(prefix + "-preview");
+        if (e.target.files.length < 1) {
+          status.textContent = "";
+          imgUrl.value = "";
+          preview.innerHTML = "";
+          return;
+        }
+        status.style.color = "blue";
+        status.textContent = "アップロード中...";
+        submitButton.disabled = true;
+        const formData = new FormData();
+        formData.append("image", e.target.files[0]);
+        const apiKey = "dd5513160c1b66da6da4b1e1f6d85741";
+        fetch(`https://api.imgbb.com/1/upload?key=${apiKey}`, { method: "POST", body: formData })
+          .then((response) => response.json())
+          .then((data) => {
+            console.log(data);
+            if (data.success) {
+              status.style.color = "green";
+              status.textContent = "アップロード完了";
+              imgUrl.value = data.data.url;
+              const previewImg = document.createElement("img");
+              previewImg.src = data.data.medium.url;
+              preview.appendChild(previewImg);
+            } else {
+              status.style.color = "red";
+              status.textContent = "アップロード失敗: " + JSON.stringify(data);
+            }
+          })
+          .catch((e) => {
+            console.error(e);
+            status.style.color = "red";
+            status.textContent = "アップロード失敗: " + String(e);
+          })
+          .finally(() => (submitButton.disabled = false));
+      };
+      document.getElementById("img1-input").addEventListener("change", (e) => {
+        handleUpload(e, "img1");
+      });
+      document.getElementById("img2-input").addEventListener("change", (e) => {
+        handleUpload(e, "img2");
+      });
+      document.getElementById("img3-input").addEventListener("change", (e) => {
+        handleUpload(e, "img3");
       });
 
       // フォーム送信処理
