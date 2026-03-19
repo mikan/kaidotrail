@@ -198,7 +198,7 @@ const initSpotList = (spots, iconTypes) => {
   buildIconSection("shrine", "神社", shrineList);
   buildIconSection("temple", "寺", templeList);
   buildIconSection("monument", "道標・記念碑・石仏・石塔・常夜燈等", monumentList);
-  buildIconSection("building", "建造物", buildingList);
+  buildIconSection("building", "現存建造物", buildingList);
   buildIconSection("default", "その他", otherList);
   const picCount = spots
     .map((spot) => (spot.pictures ? spot.pictures.length : 0))
