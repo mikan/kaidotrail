@@ -1,5 +1,83 @@
 /** 東海道と中山道の共通区間のスポット一覧 */
-const kusatsuToSanjyoSpots = [];
+const kusatsuToSanjyoSpots = [
+  {
+    name: "追分道標",
+    kana: "おいわけみちしるべ",
+    coordinate: [35.018102, 135.960927],
+    icon: "monument",
+    description:
+      "「左 中仙道美のぢ」「右東海道いせみち」と彫られた道標があり、その上部に常夜燈の火袋があります。" +
+      "文化13年 (1816) に建てられ、火袋の部分は何度も取り替えられたものの、道標部分は当時のものが残っているそうです。",
+    url: "https://kanko-kusatsu.com/spot/oiwakemitishirube",
+    pictures: [
+      {
+        url: "https://kaidotrail.github.io/img/kagaorange/2023/07-16/PXL_20230716_032818617.webp",
+        comment: "追分道標",
+      },
+      {
+        url: "https://kaidotrail.github.io/img/kagaorange/2023/07-16/PXL_20230716_032805097.webp",
+        comment: "説明板",
+      },
+    ],
+  },
+  {
+    name: "草津宿高札場跡",
+    kana: "くさつしゅくこうさつばあと",
+    coordinate: [35.018174, 135.960835],
+    icon: "kosatsuba",
+    description: "草津川ずい道の入口に高札場が再現されています。",
+    pictures: [
+      {
+        url: "https://kaidotrail.github.io/img/kagaorange/2023/07-16/PXL_20230716_032922664.webp",
+        comment: "高札場",
+      },
+    ],
+  },
+  {
+    name: "草津宿本陣 (田中七左衛門本陣)",
+    kana: "くさつじゅくほんじん (たなかしちざえもんほんじん) ",
+    coordinate: [35.0177048, 135.9603757],
+    icon: "honjin",
+    description:
+      "草津宿に2軒あった本陣のうちの1軒で、建物が現存する本陣としては最大級です。国指定史跡になっています。" +
+      "見学することができ、畳廊下、上段の間、庭園、住居部、台所など敷地内を隅々まで見て回れます。",
+    url: "https://www.city.kusatsu.shiga.jp/kusatsujuku/honjin/",
+    pictures: [
+      {
+        url: "https://kaidotrail.github.io/img/kagaorange/2023/07-16/PXL_20230716_033139192.webp",
+        comment: "草津宿本陣",
+      },
+      {
+        url: "https://kaidotrail.github.io/img/kagaorange/2023/07-16/PXL_20230716_033412676.webp",
+        comment: "畳廊下",
+      },
+      {
+        url: "https://kaidotrail.github.io/img/kagaorange/2023/07-16/PXL_20230716_034112258.webp",
+        comment: "庭園",
+      },
+      {
+        url: "https://kaidotrail.github.io/img/kagaorange/2023/07-16/PXL_20230716_034056403.webp",
+        comment: "明治天皇草津行在所碑",
+      },
+      {
+        url: "https://kaidotrail.github.io/img/kagaorange/2023/07-16/PXL_20230716_033613438.webp",
+        comment: "上段雪隠",
+      },
+      {
+        url: "https://kaidotrail.github.io/img/kagaorange/2023/07-16/PXL_20230716_034156964.webp",
+        comment: "湯殿",
+      },
+      {
+        url: "https://kaidotrail.github.io/img/kagaorange/2023/07-16/PXL_20230716_034758830.webp",
+        comment: "かまど",
+      },
+      {
+        url: "https://kaidotrail.github.io/img/kagaorange/2023/07-16/PXL_20230716_035511931.webp",
+        comment: "井戸",
+      },
+    ],
+  },
+];
 
 /** 東海道と中山道の共通区間のおすすめ歩行ルート */
 const kusatsuToSanjyoRoute = [
