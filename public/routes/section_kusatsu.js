@@ -45,7 +45,7 @@ const kusatsuToSanjyoSpots = [
     pictures: [
       {
         url: "https://kaidotrail.github.io/img/kagaorange/2023/07-16/PXL_20230716_033139192.webp",
-        comment: "草津宿本陣",
+        comment: "草津宿田中七左衛門本陣",
       },
       {
         url: "https://kaidotrail.github.io/img/kagaorange/2023/07-16/PXL_20230716_033412676.webp",
@@ -74,6 +74,308 @@ const kusatsuToSanjyoSpots = [
       {
         url: "https://kaidotrail.github.io/img/kagaorange/2023/07-16/PXL_20230716_035511931.webp",
         comment: "井戸",
+      },
+    ],
+  },
+  {
+    name: "草津宿本陣 (田中九蔵本陣)",
+    kana: "くさつじゅくほんじん (たなかくぞうほんじん)",
+    coordinate: [35.016931, 135.959905],
+    icon: "honjin",
+    description:
+      "草津宿のもう1つの本陣跡は、明治10年 (1877) に知新學校 (草津小学校の前身) が建てられたことで現存していないとのことです。",
+    pictures: [
+      {
+        url: "https://kaidotrail.github.io/img/kagaorange/2023/07-16/PXL_20230716_040244943.webp",
+        comment: "草津宿田中九蔵本陣",
+      },
+    ],
+  },
+  {
+    name: "草津宿街道交流館",
+    kana: "くさつじゅくかいどうこうりゅうかん",
+    coordinate: [35.015773, 135.958972],
+    icon: "building",
+    description:
+      "草津宿に関する様々な史料や解説、版画づくりなどの体験ができます。" +
+      "本陣とセットで見学できる共通券がおすすめです。",
+    url: "https://www.city.kusatsu.shiga.jp/kusatsujuku/koryukan/",
+    pictures: [
+      {
+        url: "https://kaidotrail.github.io/img/kagaorange/2023/07-16/PXL_20230716_044356003.webp",
+        comment: "草津宿田中九蔵本陣",
+      },
+      {
+        url: "https://kaidotrail.github.io/img/kagaorange/2023/07-16/PXL_20230716_044648089.webp",
+        comment: "版画体験コーナー",
+      },
+      {
+        url: "https://kaidotrail.github.io/img/kagaorange/2023/07-16/PXL_20230716_045340833.webp",
+        comment: "草津宿模型",
+      },
+    ],
+  },
+  {
+    name: "野路一里塚跡",
+    kana: "のじいちりづかあと",
+    coordinate: [35.003226, 135.951981],
+    icon: "ichirizuka",
+    description:
+      "日本橋から東海道経由で119里 (約467.3km) の一里塚跡で、" +
+      "野路上北池公園内に石碑や説明板、モニュメント的な土盛りがあります。",
+    pictures: [
+      {
+        url: "https://kaidotrail.github.io/img/kagaorange/2023/07-16/PXL_20230716_052717032.webp",
+        comment: "説明板",
+      },
+      {
+        url: "https://kaidotrail.github.io/img/kagaorange/2023/07-16/PXL_20230716_052731604.webp",
+        comment: "石碑",
+      },
+      {
+        url: "https://kaidotrail.github.io/img/kagaorange/2023/07-16/PXL_20230716_052831221.webp",
+        comment: "野路上北池公園",
+      },
+    ],
+  },
+  {
+    name: "野路萩の玉川",
+    kana: "のじはぎのたまがわ",
+    coordinate: [34.997406, 135.947885],
+    icon: "monument",
+    description:
+      "萩の玉川と彫られた石碑が小さな池の奥にあります。" +
+      "景勝地として多くの貴族や詩人などが訪れ歌を詠んだそうです。" +
+      "また中世の頃には野路駅が置かれ宿場として栄えていたそうです。",
+    url: "http://noji-city.com/publics/index/40/",
+    pictures: [
+      {
+        url: "https://kaidotrail.github.io/img/kagaorange/2023/07-16/PXL_20230716_054143803.webp",
+        comment: "野路萩の玉川",
+      },
+      {
+        url: "https://kaidotrail.github.io/img/kagaorange/2023/07-16/PXL_20230716_054158798.webp",
+        comment: "説明板",
+      },
+    ],
+  },
+  {
+    name: "浄財辯財天神社",
+    kana: "じょうざいべんざいてんじんじゃ",
+    coordinate: [34.995114, 135.94443],
+    icon: "shrine",
+    description:
+      "弁天池という大きな池があり、その中に弁財天の鎮座する小島があります。" +
+      "弁財天へは細いコンクリートの橋を通ってお参りできます。",
+    pictures: [
+      {
+        url: "https://kaidotrail.github.io/img/kagaorange/2023/07-16/PXL_20230716_054830151.webp",
+        comment: "弁天池",
+      },
+      {
+        url: "https://kaidotrail.github.io/img/kagaorange/2023/07-16/PXL_20230716_054930325.webp",
+        comment: "参道",
+      },
+      {
+        url: "https://kaidotrail.github.io/img/kagaorange/2023/07-16/PXL_20230716_055059126.webp",
+        comment: "社殿",
+      },
+    ],
+  },
+  {
+    name: "明治天皇御東遷御駐輦之所",
+    kana: "めいじてんのうごとうせんごちゅうれんのところ",
+    coordinate: [34.986665, 135.935702],
+    icon: "monument",
+    description:
+      "月輪寺という曹洞宗のお寺の参道に明治天皇御東遷御駐輦之所と彫られた石碑があります。" +
+      "御東遷、つまり東京巡幸の際の休憩所ということになります。" +
+      "東京巡幸の聖蹟は東海道にしかないので、京を目指す中山道69次ウォーカーにとっては新鮮なものです。",
+    pictures: [
+      {
+        url: "https://kaidotrail.github.io/img/kagaorange/2023/07-16/PXL_20230716_062437767.webp",
+        comment: "明治天皇御東遷御駐輦之所",
+      },
+    ],
+  },
+  {
+    name: "大萱一里塚跡",
+    kana: "おおがやいちりづかあと",
+    coordinate: [34.983505, 135.928242],
+    icon: "ichirizuka",
+    description:
+      "日本橋から東海道経由で120里 (約471.3km) の一里塚跡で、大きな石碑と説明板があります。" +
+      "説明板によると、塚は明治末期に消失してしまったそうです。" +
+      "月輪池 (つきのわいけ) 一里塚跡とも呼ばれています。",
+    pictures: [
+      {
+        url: "https://kaidotrail.github.io/img/kagaorange/2023/07-16/PXL_20230716_063736835.webp",
+        comment: "大萱一里塚跡",
+      },
+    ],
+  },
+  {
+    name: "瀬田の唐橋",
+    kana: "せたのからはし",
+    coordinate: [34.972948, 135.906685],
+    icon: "bridge",
+    description:
+      "かつては瀬田川にかかる唯一の橋で、琵琶湖周辺を陸路で移動する際の最重要拠点でした。" +
+      "現在の橋は昭和54年 (1979) に架けられたもので比較的新しいですが、" +
+      "擬宝珠 (ぎぼし) や緩やかなアーチなどの特徴が引き継がれています。",
+    pictures: [
+      {
+        url: "https://kaidotrail.github.io/img/kagaorange/2023/07-16/PXL_20230716_073016694.MP.webp",
+        comment: "瀬田唐橋",
+      },
+      {
+        url: "https://kaidotrail.github.io/img/kagaorange/2023/07-16/PXL_20230716_073332989.webp",
+        comment: "琵琶湖方面",
+      },
+    ],
+  },
+  {
+    name: "此付近露国皇太子遭難之地",
+    kana: "このふきんろこくこうたいしそうなんのち",
+    coordinate: [35.006983, 135.86483],
+    icon: "monument",
+    description:
+      "此付近露国皇太子遭難之地と彫られた石碑があります。" +
+      "明治24年 (1891) にロシアの皇太子が切り付けられて負傷した大津事件の現場がこのあたりであることを示しています。",
+    pictures: [
+      {
+        url: "https://kaidotrail.github.io/img/kagaorange/2023/07-16/PXL_20230716_093827017.webp",
+        comment: "此付近露国皇太子遭難之地",
+      },
+    ],
+  },
+  {
+    name: "大津宿大塚嘉右衛門本陣跡",
+    kana: "おおつじゅくおおつかかえもんほんじんあと",
+    coordinate: [35.005952, 135.861515],
+    icon: "honjin",
+    description:
+      "大津宿にあった2つの本陣のうちの1つです。" +
+      "明治天皇聖跡と書かれた大きな石碑があるほか、石碑に標柱に説明板にとにぎやかです。",
+    pictures: [
+      {
+        url: "https://kaidotrail.github.io/img/kagaorange/2023/07-17/PXL_20230716_212610395.webp",
+        comment: "大津宿大塚嘉右衛門本陣跡",
+      },
+    ],
+  },
+  {
+    name: "大津宿肥前屋九左衛門本陣跡",
+    kana: "おおつじゅくひぜんやくざえもんほんじんあと",
+    coordinate: [35.00516, 135.861235],
+    icon: "honjin",
+    description: "大津宿のもう1つの本陣、肥前屋九左衛門本陣跡は観光案内板があるのみです。",
+    pictures: [
+      {
+        url: "https://kaidotrail.github.io/img/kagaorange/2023/07-17/PXL_20230716_212759634.webp",
+        comment: "大津宿大塚嘉右衛門本陣跡",
+      },
+    ],
+  },
+  {
+    name: "逢坂山関址",
+    kana: "あいさかやませきあと",
+    coordinate: [34.994225, 135.855593],
+    icon: "sekisho",
+    description:
+      "逢坂の頂上に逢坂山関址と彫られた石碑と常夜燈があります。" +
+      "観光協会のウェブサイトによると、平安時代には不破、鈴鹿と並ぶ三関のひとつであったそうですが、" +
+      "正確な位置はわかっていないようです。",
+    url: "https://otsu.or.jp/thingstodo/spot85",
+    pictures: [
+      {
+        url: "https://kaidotrail.github.io/img/kagaorange/2023/07-17/PXL_20230716_215120663.webp",
+        comment: "逢坂山関址",
+      },
+    ],
+  },
+  {
+    name: "大津絵販売之地",
+    kana: "おおつえはんばいのち",
+    coordinate: [34.994273, 135.855165],
+    icon: "monument",
+    description:
+      "平成25年 (2013) の大津絵販売之地と彫られた石碑があります。" +
+      "大津絵はこの地が発祥の仏画・世俗画で、旅人の土産物として人気だったそうです。",
+    pictures: [
+      {
+        url: "https://kaidotrail.github.io/img/kagaorange/2023/07-17/PXL_20230716_215205964.webp",
+        comment: "大津絵販売之地",
+      },
+    ],
+  },
+  {
+    name: "大津算盤の始祖・片岡庄兵衛",
+    kana: "おおつそろばんのしそ・かたおかしょうべえ",
+    coordinate: [34.992327, 135.849555],
+    icon: "monument",
+    description:
+      "「大津算盤の始祖・片岡庄兵衛」と刻まれた説明板が付いた石碑があります。" +
+      "明国から長崎に渡来した算盤を参考にして慶長17年 (1612) に製造を始めたそうです。" +
+      "石碑の裏には荷車の車輪と、荷車用の敷石として使われた車石が置かれています。",
+    pictures: [
+      {
+        url: "https://kaidotrail.github.io/img/kagaorange/2023/07-17/PXL_20230716_220251376.webp",
+        comment: "大津算盤の始祖・片岡庄兵衛の碑",
+      },
+    ],
+  },
+  {
+    name: "走井一里塚跡",
+    kana: "はしりいいちりづかあと",
+    coordinate: [34.992055, 135.848987],
+    icon: "ichirizuka",
+    description:
+      "日本橋から東海道経由で123里 (約483.1km) の一里塚跡で、" +
+      "「右一里丁 左大谷町」とだけ彫られた石碑があります。",
+    pictures: [
+      {
+        url: "https://kaidotrail.github.io/img/kagaorange/2023/07-17/PXL_20230716_220342519.webp",
+        comment: "右一里丁 左大谷町",
+      },
+    ],
+  },
+  {
+    name: "髭茶屋追分",
+    kana: "ひげちゃやおいわけ",
+    coordinate: [34.990985, 135.836363],
+    icon: "monument",
+    description:
+      "東海道は右手方向で、左手は伏見を経由して奈良方面や大阪 (大坂) 方面に向かう奈良・京街道です。" +
+      "東海道53次と東海道57次の分かれ道でもあります。",
+    pictures: [
+      {
+        url: "https://kaidotrail.github.io/img/kagaorange/2023/07-17/PXL_20230716_222359941.webp",
+        comment: "髭茶屋追分",
+      },
+      {
+        url: "https://kaidotrail.github.io/img/kagaorange/2023/07-17/PXL_20230716_222414468.webp",
+        comment: "道標",
+      },
+    ],
+  },
+  {
+    name: "車石・車道",
+    kana: "くるまいし・くるまみち",
+    coordinate: [34.991165, 135.835478],
+    icon: "monument",
+    description:
+      "閑栖寺の説明板があり、文化2年 (1805) に牛舎の通行を楽にするために歩車分離工事が行われ、" +
+      "この付近は京に向かって右側が車石の敷かれた車道、西側が人馬道になったそうです。" +
+      "花崗岩の厚板石でできた車石も展示されています。",
+    pictures: [
+      {
+        url: "https://kaidotrail.github.io/img/kagaorange/2023/07-17/PXL_20230716_222551723.webp",
+        comment: "車石説明板",
+      },
+      {
+        url: "https://kaidotrail.github.io/img/kagaorange/2023/07-17/PXL_20230716_222604514.webp",
+        comment: "閑栖寺",
       },
     ],
   },
