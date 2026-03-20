@@ -286,7 +286,7 @@ const buildPopupContent = (markerData) => {
     content += `<br/>`;
   }
   const formUrl =
-    `form.html?` +
+    `form_edit.html?` +
     `kaido=${location.pathname.split("/").slice(-1)[0].replace(".html", "")}` +
     `&coordinate=${markerData.coordinate[0]},${markerData.coordinate[1]}` +
     `&spot=${markerData.name}`;
