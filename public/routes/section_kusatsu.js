@@ -347,7 +347,10 @@ const kusatsuToSanjyoSpots = [
     icon: "monument",
     description:
       "東海道は右手方向で、左手は伏見を経由して奈良方面や大阪 (大坂) 方面に向かう奈良・京街道です。" +
-      "東海道53次と東海道57次の分かれ道でもあります。",
+      "東海道53次と東海道57次の分かれ道でもあります。" +
+      "大津歴博のウェブサイトによると、置かれている道標は復元したもので、" +
+      "「みぎハ京ミチ」「ひだりハふしミミち」と彫られているそうです。",
+    url: "https://www.rekihaku.otsu.shiga.jp/db/jiten/data/102.html",
     pictures: [
       {
         url: "https://kaidotrail.github.io/img/kagaorange/2023/07-17/PXL_20230716_222359941.webp",
@@ -376,6 +379,110 @@ const kusatsuToSanjyoSpots = [
       {
         url: "https://kaidotrail.github.io/img/kagaorange/2023/07-17/PXL_20230716_222604514.webp",
         comment: "閑栖寺",
+      },
+    ],
+  },
+  {
+    name: "明治天皇御遺跡",
+    kana: "めいじてんのうごいせき",
+    coordinate: [34.99127, 135.816818],
+    icon: "monument",
+    description:
+      "かつて奴茶屋という戦国自体からの茶店があり、明治天皇も御東幸の際を含め3回立ち寄ったそうです。" +
+      "石碑と説明板があるほか、山科駅前にある旧東海道の説明板でも紹介されています。",
+    pictures: [
+      {
+        url: "https://kaidotrail.github.io/img/kagaorange/2023/07-17/PXL_20230716_230435484.MP.webp",
+        comment: "旧東海道 説明板",
+      },
+    ],
+  },
+  {
+    name: "五条別れ道標",
+    kana: "ごじょうわかれみちしるべ",
+    coordinate: [34.991173, 135.811462],
+    icon: "monument",
+    description:
+      "宝永4年 (1707) の道標で「右ハ 三条通」「左ハ 五条橋 ひがしにし六条大佛 今ぐまきよみず 道」と彫られています。" +
+      "「ひがしにし六条」は六条沿いにある東本願寺と西本願寺、「大佛」は現存しない方広寺の大仏、" +
+      "「今ぐま」は今熊野観音寺、「きよみず」は清水寺をそれぞれ指していると考えられます。",
+    pictures: [
+      {
+        url: "https://kaidotrail.github.io/img/kagaorange/2023/07-17/PXL_20230716_231213239.webp",
+        comment: "五条別れ道標",
+      },
+    ],
+  },
+  {
+    name: "車石広場",
+    kana: "くるまいしひろば",
+    coordinate: [34.999771, 135.793241],
+    icon: "monument",
+    description: "",
+    pictures: [
+      {
+        url: "https://kaidotrail.github.io/img/kagaorange/2023/07-17/PXL_20230716_234833056.MP.webp",
+        comment: "車石広場",
+      },
+      {
+        url: "https://kaidotrail.github.io/img/kagaorange/2023/07-17/PXL_20230716_234853501.webp",
+        comment: "三条通整備事業記念碑",
+      },
+    ],
+  },
+  {
+    name: "三条大橋",
+    kana: "さんじょうおおはし",
+    coordinate: [35.009044, 135.771801],
+    icon: "monument",
+    description:
+      "鴨川に架かる橋で、東海道53次・中山道69次の西の起点です。" +
+      "西詰の北側に高札場跡があり、説明板があります。" +
+      "西詰の南側に東海道中膝栗毛の弥次郎兵衛と喜多八の像があります。",
+    pictures: [
+      {
+        url: "https://kaidotrail.github.io/img/kagaorange/2023/07-17/PXL_20230717_003119146.webp",
+        comment: "三条大橋",
+      },
+      {
+        url: "https://kaidotrail.github.io/img/kagaorange/2023/07-17/PXL_20230717_003017195.webp",
+        comment: "鴨川下流方向",
+      },
+      {
+        url: "https://kaidotrail.github.io/img/kagaorange/2023/07-17/PXL_20230717_003155793.webp",
+        comment: "高札場跡",
+      },
+      {
+        url: "https://kaidotrail.github.io/img/kagaorange/2023/07-17/PXL_20230717_003101657.MP.webp",
+        comment: "東海道中膝栗毛の弥次喜多像",
+      },
+    ],
+  },
+  {
+    name: "池田屋騒動之址",
+    kana: "いけだやそうどうのあと",
+    coordinate: [35.008935, 135.769864],
+    icon: "monument",
+    description: "池田屋事件の池田屋の跡地は居酒屋になっています。その名も「旅籠茶屋 池田屋」。",
+    pictures: [
+      {
+        url: "https://kaidotrail.github.io/img/kagaorange/2023/07-17/PXL_20230717_003508985.webp",
+        comment: "池田屋騒動之址・旅籠茶屋 池田屋",
+      },
+    ],
+  },
+  {
+    name: "河原町三条",
+    coordinate: [35.008774, 135.768993],
+    icon: "camera",
+    description:
+      "三条通のここから西は商店街のアーケードになっています。" +
+      "交差する河原町通は現在では祇園祭で山鉾が通過する大通りですが、これは昭和初期の工事によるもので、" +
+      "山鉾も以前は寺町通を通っていたそうです。",
+    pictures: [
+      {
+        url: "https://kaidotrail.github.io/img/kagaorange/2023/07-17/PXL_20230717_010921063.webp",
+        comment: "1番目 長刀鉾 (なぎなたぼこ)",
       },
     ],
   },
