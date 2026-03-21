@@ -857,7 +857,8 @@ const kusatsuToSanjyoSpots = [
     description:
       "鴨川に架かる橋で、東海道53次・中山道69次の西の起点です。" +
       "西詰の北側に高札場跡があり、説明板があります。" +
-      "西詰の南側に東海道中膝栗毛の弥次郎兵衛と喜多八の像があります。",
+      "西詰の南側に東海道中膝栗毛の弥次郎兵衛と喜多八の像があります。" +
+      "東詰の南側に御所の方角を向いて皇室の衰微を嘆く尊王家の武士の像と石碑 (高山彦九郎皇居望拝之趾) があります。",
     pictures: [
       {
         url: "https://kaidotrail.github.io/img/kagaorange/2023/07-17/PXL_20230717_003119146.webp",
@@ -874,6 +875,10 @@ const kusatsuToSanjyoSpots = [
       {
         url: "https://kaidotrail.github.io/img/kagaorange/2023/07-17/PXL_20230717_003101657.MP.webp",
         comment: "東海道中膝栗毛の弥次喜多像",
+      },
+      {
+        url: "https://kaidotrail.github.io/img/kagaorange/2023/07-17/PXL_20240505_023234531.webp",
+        comment: "高山彦九郎皇居望拝之趾",
       },
     ],
   },
@@ -902,6 +907,26 @@ const kusatsuToSanjyoSpots = [
       {
         url: "https://kaidotrail.github.io/img/kagaorange/2023/07-17/PXL_20230717_010921063.webp",
         comment: "1番目 長刀鉾 (なぎなたぼこ)",
+      },
+    ],
+  },
+  {
+    name: "建礼門",
+    kana: "けんれいもん",
+    coordinate: [35.02323, 135.762116],
+    icon: "monument",
+    description:
+      "京都御所の南に位置する門で、明治天皇が明治元年に東京に向けて出発された際の出発点です。" +
+      "特別な時にだけ開かれ、特別な人しか通ることができませんが、間近で見ることはできます。",
+    url: "https://kyoto-gosho.kunaicho.go.jp/gate/2C70",
+    pictures: [
+      {
+        url: "https://kaidotrail.github.io/img/kagaorange/2024/05-05/PXL_20240505_032308177.webp",
+        comment: "建礼門",
+      },
+      {
+        url: "https://kaidotrail.github.io/img/kagaorange/2024/05-05/PXL_20240505_032025934.webp",
+        comment: "遠景",
       },
     ],
   },
