@@ -29,7 +29,7 @@ const nihonbashiSpot = {
       comment: "先代の東京市道路元標",
     },
     {
-      url: "https://kaidotrail.github.io/img/kagaorange/2022/12-04/IMG_20221204_052010.webp",
+      url: "https://kaidotrail.github.io/img/kagaorange/2025/05-05/IMG_20250505_082320.webp",
       comment: "麒麟像",
     },
   ],

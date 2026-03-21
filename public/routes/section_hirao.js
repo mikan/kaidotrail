@@ -10,6 +10,10 @@ const nihonbashiToHiraoSpots = [
       "なお、近くにある由来碑によると、名主である今川氏の尽力により架けられた橋なので今川橋となったそうです。",
     pictures: [
       {
+        url: "https://kaidotrail.github.io/img/kagaorange/2025/05-05/IMG_20250505_083814.webp",
+        comment: "今川橋由来碑",
+      },
+      {
         url: "https://kaidotrail.github.io/img/kagaorange/2025/05-05/IMG_20250505_084052.webp",
         comment: "今川橋交差点",
       },
@@ -107,6 +111,26 @@ const nihonbashiToHiraoSpots = [
       "さらにその後、針を誤飲してしまった女が御影を飲み込んだところ針を吐き出すことができたとの言い伝えが重なって" +
       "「とげぬき地蔵尊」と言われるようになったそうです。",
     url: "https://togenuki.jp",
+  },
+  {
+    name: "巣鴨庚申堂",
+    kana: "すがもこうしんどう",
+    coordinate: [35.739245, 139.730466],
+    icon: "monument",
+    description:
+      "文亀2年 (1502) 建立された大変古い庚申塔があったものの砕けてしまったので明暦3年 (1657) に造り直した庚申塔" +
+      "とのことです。江戸名所図会にも描かれる名所で、現在は立派なお堂に納められ信奉されています。",
+    url: "https://www.sugamokoushin.com",
+    pictures: [
+      {
+        url: "https://kaidotrail.github.io/img/kagaorange/2025/05-05/IMG_20250505_115750.webp",
+        comment: "巣鴨庚申堂",
+      },
+      {
+        url: "https://kaidotrail.github.io/img/kagaorange/2025/05-05/IMG_20250505_115738.webp",
+        comment: "入口",
+      },
+    ],
   },
   {
     name: "板橋平尾宿",
