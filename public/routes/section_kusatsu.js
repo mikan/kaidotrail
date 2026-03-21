@@ -428,6 +428,12 @@ const kusatsuToSanjyoSpots = [
     ],
   },
   {
+    name: "迂回",
+    coordinate: [35.0047391, 135.8717877],
+    icon: "guide",
+    description: "横断歩道がないため、付近の交差点に迂回してください。",
+  },
+  {
     name: "天孫神社",
     kana: "てんそんじんじゃ",
     coordinate: [35.005685, 135.867273],
@@ -487,11 +493,23 @@ const kusatsuToSanjyoSpots = [
     icon: "honjin",
     description:
       "大津宿にあった2つの本陣のうちの1つです。" +
-      "明治天皇聖跡と書かれた大きな石碑があるほか、石碑に標柱に説明板にとにぎやかです。",
+      "明治天皇聖跡と書かれた大きな石碑があるほか、石碑に標柱に車石に説明板にとにぎやかです。",
     pictures: [
       {
-        url: "https://kaidotrail.github.io/img/kagaorange/2023/07-17/PXL_20230716_212610395.webp",
-        comment: "大津宿大塚嘉右衛門本陣跡",
+        url: "https://kaidotrail.github.io/img/kagaorange/2024/05-05/PXL_20240504_223402104.webp",
+        comment: "大津宿本陣跡 石碑",
+      },
+      {
+        url: "https://kaidotrail.github.io/img/kagaorange/2024/05-05/PXL_20240504_223444280.webp",
+        comment: "明治天皇聖跡碑",
+      },
+      {
+        url: "https://kaidotrail.github.io/img/kagaorange/2024/05-05/PXL_20240504_223417046.webp",
+        comment: "大津宿本陣跡 説明板",
+      },
+      {
+        url: "https://kaidotrail.github.io/img/kagaorange/2024/05-05/PXL_20240504_223421159.webp",
+        comment: "車石 説明板",
       },
     ],
   },
@@ -504,7 +522,11 @@ const kusatsuToSanjyoSpots = [
     pictures: [
       {
         url: "https://kaidotrail.github.io/img/kagaorange/2023/07-17/PXL_20230716_212759634.webp",
-        comment: "大津宿大塚嘉右衛門本陣跡",
+        comment: "大津宿肥前屋九左衛門本陣跡",
+      },
+      {
+        url: "https://kaidotrail.github.io/img/kagaorange/2024/05-05/PXL_20240504_223628954.webp",
+        comment: "説明板 (内容は大塚嘉右衛門本陣)",
       },
     ],
   },
@@ -522,6 +544,10 @@ const kusatsuToSanjyoSpots = [
         url: "https://kaidotrail.github.io/img/kagaorange/2023/07-17/PXL_20230716_215120663.webp",
         comment: "逢坂山関址",
       },
+      {
+        url: "https://kaidotrail.github.io/img/kagaorange/2024/05-05/PXL_20240504_230100720.webp",
+        comment: "説明板",
+      },
     ],
   },
   {
@@ -536,6 +562,25 @@ const kusatsuToSanjyoSpots = [
       {
         url: "https://kaidotrail.github.io/img/kagaorange/2023/07-17/PXL_20230716_215205964.webp",
         comment: "大津絵販売之地",
+      },
+    ],
+  },
+  {
+    name: "蝉丸神社",
+    kana: "せみまるじんじゃ",
+    coordinate: [34.994696, 135.854045],
+    icon: "shrine",
+    description:
+      "平安時代の琵琶法師である蝉丸を祀る神社で、創祀は天慶9年 (946)、現在の社殿は萬治3年 (1660) のものだそうです。" +
+      "関蝉丸神社の分社で、関蝉丸神社の上社は逢坂の途中、下社は逢坂の入口にあります。",
+    pictures: [
+      {
+        url: "https://kaidotrail.github.io/img/kagaorange/2024/05-05/PXL_20240504_230644867.webp",
+        comment: "本殿",
+      },
+      {
+        url: "https://kaidotrail.github.io/img/kagaorange/2024/05-05/PXL_20240504_230500597.webp",
+        comment: "参道",
       },
     ],
   },
@@ -622,6 +667,14 @@ const kusatsuToSanjyoSpots = [
       "石碑と説明板があるほか、山科駅前にある旧東海道の説明板でも紹介されています。",
     pictures: [
       {
+        url: "https://kaidotrail.github.io/img/kagaorange/2024/05-05/PXL_20240505_001200910.MP.webp",
+        comment: "明治天皇御遺跡 石碑",
+      },
+      {
+        url: "https://kaidotrail.github.io/img/kagaorange/2024/05-05/PXL_20240505_001205360.MP.webp",
+        comment: "明治天皇御遺跡 説明板",
+      },
+      {
         url: "https://kaidotrail.github.io/img/kagaorange/2023/07-17/PXL_20230716_230435484.MP.webp",
         comment: "旧東海道 説明板",
       },
@@ -638,8 +691,34 @@ const kusatsuToSanjyoSpots = [
       "「今ぐま」は今熊野観音寺、「きよみず」は清水寺をそれぞれ指していると考えられます。",
     pictures: [
       {
-        url: "https://kaidotrail.github.io/img/kagaorange/2023/07-17/PXL_20230716_231213239.webp",
+        url: "https://kaidotrail.github.io/img/kagaorange/2024/05-05/PXL_20240505_001852754.MP.webp",
         comment: "五条別れ道標",
+      },
+    ],
+  },
+  {
+    name: "亀の水不動尊",
+    kana: "かめのみずふどうそん",
+    coordinate: [34.99495, 135.798396],
+    icon: "monument",
+    description:
+      "ここより少し坂を上ったところにある「日ノ岡の峠道」の説明板によると、" +
+      "木食正禅上人 (もくじきしょうぜんしょうにん) が享保19年 (1734) 頃から道路の改修に取り組み、" +
+      "峠道の維持管理をする「梅香庵」を建て、井戸を掘って亀の口から水を落として量救水 (りょうぐすい) と" +
+      "名付けて旅人や牛馬に提供したり、湯茶の接待をしたりしたとあります。" +
+      "この不動尊は木食正禅の貢献を今に伝えているようです。",
+    pictures: [
+      {
+        url: "https://kaidotrail.github.io/img/kagaorange/2024/05-05/PXL_20240505_004636626.webp",
+        comment: "亀の水不動尊 参道",
+      },
+      {
+        url: "https://kaidotrail.github.io/img/kagaorange/2024/05-05/PXL_20240505_004606831.webp",
+        comment: "入口",
+      },
+      {
+        url: "https://kaidotrail.github.io/img/kagaorange/2023/07-17/PXL_20230716_234501501.webp",
+        comment: "日ノ岡の峠道 説明板",
       },
     ],
   },
@@ -659,6 +738,114 @@ const kusatsuToSanjyoSpots = [
       {
         url: "https://kaidotrail.github.io/img/kagaorange/2023/07-17/PXL_20230716_234853501.webp",
         comment: "三条通整備事業記念碑",
+      },
+    ],
+  },
+  {
+    name: "日ノ岡峠",
+    kana: "ひのおかとうげ",
+    coordinate: [35.002131, 135.792078],
+    icon: "pass",
+    description:
+      "標高 90m〜100m 程の峠で、九条山とも呼ばれています。" +
+      "粟田口刑場跡の説明板があり、古来からの公開処刑場だったそうです。" +
+      "江戸時代には磔、獄門、火刑が行われ、明治5年 (1872) には解剖所も設けられたとのことです。",
+    pictures: [
+      {
+        url: "https://kaidotrail.github.io/img/kagaorange/2024/05-05/PXL_20240505_011202089.MP.webp",
+        comment: "粟田口刑場跡",
+      },
+      {
+        url: "https://kaidotrail.github.io/img/kagaorange/2024/05-05/PXL_20240505_011146051.webp",
+        comment: "九条山交差点",
+      },
+    ],
+  },
+  {
+    name: "ねじりまんぽ",
+    coordinate: [35.008582, 135.790091],
+    icon: "monument",
+    description:
+      "蹴上インクラインの下を通る歩行者用トンネルで、ねじれるようにレンガが積まれているのが特徴です。" +
+      "「まんぽ」はトンネルを意味する古い言葉だそうです。" +
+      "西側の歩道からアクセスする場合は蹴上駅の出入口を経由するのが便利です。",
+    url: "https://biwakososui.kyoto.travel/midokoro/212",
+    pictures: [
+      {
+        url: "https://kaidotrail.github.io/img/kagaorange/2024/05-05/PXL_20240505_020427326.webp",
+        comment: "ねじりまんぽ 東側",
+      },
+      {
+        url: "https://kaidotrail.github.io/img/kagaorange/2024/05-05/PXL_20240505_012706007.webp",
+        comment: "ねじりまんぽ 西側",
+      },
+    ],
+  },
+  {
+    name: "蹴上インクライン・蹴上船溜",
+    kana: "けあげいんくらいん・けあげふなだまり",
+    coordinate: [35.007435, 135.791054],
+    icon: "monument",
+    description:
+      "琵琶湖疏水の船をケーブルカーで上げ下げしていた場所で、2025年に南禅寺水路閣などと共に国宝に指定されました。" +
+      "街道筋からはねじりまんぽを経由してアクセスするのが便利です。",
+    pictures: [
+      {
+        url: "https://kaidotrail.github.io/img/kagaorange/2024/05-05/PXL_20240505_012949845.webp",
+        comment: "蹴上インクライン",
+      },
+      {
+        url: "https://kaidotrail.github.io/img/kagaorange/2024/05-05/PXL_20240505_013454062.webp",
+        comment: "蹴上インクライン",
+      },
+      {
+        url: "https://kaidotrail.github.io/img/kagaorange/2024/05-05/PXL_20240505_013438913.webp",
+        comment: "蹴上船溜",
+      },
+    ],
+  },
+  {
+    name: "南禅寺水路閣",
+    kana: "なんぜんじすいろかく",
+    coordinate: [35.010583, 135.793945],
+    icon: "bridge",
+    description:
+      "レンガで造られた水路橋で、2025年にインクラインなどと共に国宝に指定されました。" +
+      "琵琶湖疏水から分水した水を水力発電所に送るために建設されましたが、" +
+      "現在は上水道として利用されているそうです。",
+    url: "https://nanzenji.or.jp/equipment/sosui",
+    pictures: [
+      {
+        url: "https://kaidotrail.github.io/img/kagaorange/2024/05-05/PXL_20240505_014914937.webp",
+        comment: "南禅寺水路閣",
+      },
+      {
+        url: "https://kaidotrail.github.io/img/kagaorange/2024/05-05/PXL_20240505_014820823.webp",
+        comment: "水路閣橋脚",
+      },
+      {
+        url: "https://kaidotrail.github.io/img/kagaorange/2024/05-05/PXL_20240505_014608537.webp",
+        comment: "水路閣上部",
+      },
+    ],
+  },
+  {
+    name: "南禅寺",
+    kana: "",
+    coordinate: [35.01126, 135.793637],
+    icon: "temple",
+    description:
+      "臨済宗南禅寺派の大本山で、方丈や古文書、境内の隅にある水路閣が国宝に指定されているほか、" +
+      "三門や勅使門など多数の重要文化財があります。",
+    url: "https://nanzenji.or.jp",
+    pictures: [
+      {
+        url: "https://kaidotrail.github.io/img/kagaorange/2024/05-05/PXL_20240505_015445413.webp",
+        comment: "法堂",
+      },
+      {
+        url: "https://kaidotrail.github.io/img/kagaorange/2024/05-05/PXL_20240505_015827383.webp",
+        comment: "三門",
       },
     ],
   },
