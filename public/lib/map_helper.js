@@ -289,7 +289,9 @@ const buildPopupContent = (markerData) => {
     if (markerData.url) {
       const displayUrl = markerData.url.replace("https://", "").replace("http://", "");
       content +=
-        `<i class="fa-solid fa-globe"></i>` +
+        (markerData.url.endsWith(".pdf")
+          ? `<i class="fa-solid fa-file-pdf" style="color:red"></i>`
+          : `<i class="fa-solid fa-globe" style="color:darkblue"></i>`) +
         `<a href="${markerData.url}" target="_blank">${displayUrl}</a> `;
     }
     if (markerData.x) {
@@ -299,7 +301,7 @@ const buildPopupContent = (markerData) => {
     }
     if (markerData.instagram) {
       content +=
-        `<i class="fa-brands fa-instagram"></i>` +
+        `<i class="fa-brands fa-instagram" style="color:pink"></i>` +
         `<a href="https://www.instagram.com/${markerData.instagram}/" target="_blank">${markerData.instagram}</a> `;
     }
     content += "</p>";

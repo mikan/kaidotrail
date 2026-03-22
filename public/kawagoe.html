@@ -136,7 +136,10 @@
         { name: "日本橋", coordinate: [35.684112, 139.774533] },
         { name: "1. 平尾追分", coordinate: [35.749627, 139.714079] },
         { name: "2. 上板橋宿", coordinate: [35.752904, 139.694163] },
-        { name: "3. 下練馬宿", coordinate: [35.767327, 139.663621] },
+        { name: "3. 下練馬宿", coordinate: [35.765745, 139.667025] },
+        { name: "4. 白子宿", coordinate: [35.781349, 139.623785] },
+        { name: "5. 膝折宿", coordinate: [35.792577, 139.583056] },
+        { name: "6. 大和田宿", coordinate: [35.807698, 139.554751] },
         { name: "8. 川越城", coordinate: [35.924836, 139.485455] },
       ];
       const stationLayer = L.featureGroup();
@@ -263,7 +266,7 @@
             "環七と R254 の立体交差があります。" +
             "R254 は本郷追分の少し南にある R17 との交差点 (本郷三丁目) が起点で、キロポストには日本橋からの距離も" +
             "併記されています。" +
-            "R254 は川越街道、下仁田街道、そして立科・長和で旧中山道とも重なったのち、松本に至る道路です。",
+            "R254 は川越街道、児玉街道、下仁田街道、そして立科・長和で旧中山道とも重なったのち、松本に至る道路です。",
           pictures: [
             {
               url: "https://kaidotrail.github.io/img/kagaorange/2025/05-05/IMG_20250505_135950.webp",
@@ -417,7 +420,10 @@
           kana: "くようとう",
           coordinate: [35.771347, 139.641075],
           icon: "monument",
-          description: "細い道が分岐するところに判読の難しい供養塔があります。",
+          description:
+            "細い道が分岐するところに判読の難しい供養塔があります。" +
+            "側面に「？塚村」と彫ってあるようにも見えますが、「下赤塚村」なら明治22年 (1889) 以前のもの、" +
+            "「赤塚村」なら以後ということになります。",
           pictures: [
             {
               url: "https://kaidotrail.github.io/img/kagaorange/2025/05-05/IMG_20250505_153629.webp",
@@ -429,9 +435,339 @@
             },
           ],
         },
+        {
+          name: "小治兵衛窪庚申尊",
+          kana: "こじべえくぼこうしんぞん",
+          coordinate: [35.775071, 139.63456],
+          icon: "monument",
+          description:
+            "三猿と青面金剛が彫られた天明3年 (1783) 建立の庚申塔で、" +
+            "屋根付きで花も添えられており厚く信奉されている様子です。" +
+            "説明板によると、このあたりは小治兵衛窪という地名で、" +
+            "「橋を作ってくれた盗人小治兵衛」の民話が残っているそうです。" +
+            "盗みを働いていた悪人が罪滅ぼしに橋を作ったのでしょう。",
+          pictures: [
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2025/05-05/IMG_20250505_154909.webp",
+              comment: "小治兵衛窪庚申尊",
+            },
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2025/05-05/IMG_20250505_154919.webp",
+              comment: "説明板",
+            },
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2025/05-05/IMG_20250505_155028.webp",
+              comment: "庚申塔",
+            },
+          ],
+        },
+        {
+          name: "旧道分岐",
+          coordinate: [35.779212, 139.626428],
+          icon: "guide",
+          description:
+            "<span class='routing'>川越方</span> 新田宿八坂神社のある分岐を右手に進みます。",
+          pictures: [
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2025/05-05/IMG_20250505_160242.webp",
+              comment: "旧道",
+            },
+          ],
+        },
         // 4. 白子宿
+        {
+          name: "白子橋",
+          kana: "しらこばし",
+          coordinate: [35.780859, 139.624438],
+          icon: "bridge",
+          description:
+            "白子川に架かる橋で、清水かつらの「くつが鳴る」の歌詞碑があります。" +
+            "一番の歌詞と二番の歌詞が東西南北の対面に設置されています。" +
+            "この付近は東京都と埼玉県の県境にもなっています。",
+          pictures: [
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2025/05-05/IMG_20250505_160507.webp",
+              comment: "白子橋",
+            },
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2025/05-05/IMG_20250505_160541.webp",
+              comment: "清水かつら歌詞碑 二番",
+            },
+          ],
+        },
+        {
+          name: "白子村道路元標",
+          kana: "しらこむらどうろげんぴょう",
+          coordinate: [35.781349, 139.623785],
+          icon: "monument",
+          description:
+            "道路元標は大正9年 (1920) の旧道路法施工に合わせて全国各市町村に設置されたましたが、" +
+            "白子村の道路元標は街道筋が直角に曲がるところにあります。裏面には埼玉縣と彫られています。" +
+            "東京都と埼玉県の県境は白子橋の東側にあります。",
+          pictures: [
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2025/05-05/IMG_20250505_160653.webp",
+              comment: "白子村道路元標",
+            },
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2025/05-05/IMG_20250505_160717.webp",
+              comment: "裏面",
+            },
+          ],
+        },
+        {
+          name: "大坂ふれあいの森",
+          coordinate: [35.779997, 139.622027],
+          icon: "monument",
+          description:
+            "大坂ふれあいの森と書かれた広場があり、和光市が地主から借りて市民緑地として開放している場所とのことです。" +
+            "入口には白子宿の説明板もあり、江戸時代には潤沢な湧き水があったことなどが記されています。",
+          pictures: [
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2025/05-05/IMG_20250505_161233.webp",
+              comment: "大坂ふれあいの森",
+            },
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2025/05-05/IMG_20250505_161143.webp",
+              comment: "湧き水の町「白子宿」 説明板",
+            },
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2025/05-05/IMG_20250505_161421.webp",
+              comment: "大坂ふれあいの森 案内板",
+            },
+          ],
+        },
+        {
+          name: "下新倉代官屋敷",
+          kana: "しもにいくらだいかんやしき",
+          coordinate: [35.781796, 139.617843],
+          icon: "building",
+          description:
+            "埼玉県景観資源データベースにある PDF によると、" +
+            "建物の西半分が天保13年 (1842) に建てられた代官屋敷の主屋だそうです。",
+          url: "https://www.pref.saitama.lg.jp/documents/64969/1122907003.pdf",
+          pictures: [
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2025/05-05/IMG_20250505_162156.webp",
+              comment: "下新倉代官屋敷",
+            },
+          ],
+        },
+        {
+          name: "旧道分岐",
+          coordinate: [35.785421, 139.603057],
+          icon: "guide",
+          description:
+            "<span class='routing'>川越方</span> 県道の北側に 300m 弱の旧道区間があります。" +
+            "中間付近を和光市と朝霞市の市境が貫いています。",
+          pictures: [
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2025/05-05/IMG_20250505_175016.webp",
+              comment: "旧道分岐",
+            },
+          ],
+        },
+        {
+          name: "旧道分岐",
+          coordinate: [35.790044, 139.587324],
+          icon: "guide",
+          description:
+            "<span class='routing'>川越方</span> 幸町三丁目交差点バス停付近から旧道が右手に分岐しています。",
+          pictures: [
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2025/05-05/IMG_20250505_181142.webp",
+              comment: "旧道分岐",
+            },
+          ],
+        },
         // 5. 膝折宿
+        {
+          name: "高麗家住宅 (膝折宿脇本陣)",
+          kana: "こまけじゅうたく (ひざおりじゅくわきほんじん)",
+          coordinate: [35.792577, 139.583056],
+          icon: "building",
+          description:
+            "説明板があり、村田屋という旅籠を営んでいたそうで、" +
+            "この建物は天明期に作られたものが残っているとのことです。",
+          pictures: [
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2025/05-05/IMG_20250505_181905.webp",
+              comment: "高麗家住宅",
+            },
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2025/05-05/IMG_20250505_181841.webp",
+              comment: "説明板",
+            },
+          ],
+        },
+        {
+          name: "武州里神楽 石山社中",
+          kana: "ぶしゅうさとかぐら いしやましゃちゅう",
+          coordinate: [35.801814, 139.567908],
+          icon: "monument",
+          description:
+            "近くにある野火止 (のびとめ) 氷川神社が発祥で、江戸時代から親しまれてきた神楽だそうです。",
+          pictures: [
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2025/05-05/IMG_20250505_184325.webp",
+              comment: "説明板",
+            },
+          ],
+        },
+        {
+          name: "八雲神社",
+          kana: "やくもじんじゃ",
+          coordinate: [35.802929, 139.565289],
+          icon: "shrine",
+          description:
+            "八雲神社と書かれた大きな案内板と、その横に小さな石祠が鎮座しています。" +
+            "創建不詳ですが、少なくとも江戸時代からはこの地にあるようです。",
+          pictures: [
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2025/05-05/IMG_20250505_184713.webp",
+              comment: "八雲神社",
+            },
+          ],
+        },
+        {
+          name: "野火止神明神社",
+          kana: "のびとめしんめいじんじゃ",
+          coordinate: [35.806537, 139.557998],
+          icon: "shrine",
+          description:
+            "神明神社とありますが境内には稲荷神社もあり、参道には大きな鳥居が4つ並んでいます。",
+          pictures: [
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2025/06-21/IMG_20250621_094911.webp",
+              comment: "八雲神社",
+            },
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2025/06-21/IMG_20250621_094615.webp",
+              comment: "鳥居",
+            },
+          ],
+        },
         // 6. 大和田宿
+        {
+          name: "鬼鹿毛の馬頭観音",
+          kana: "おにかげのばとうかんのん",
+          coordinate: [35.807698, 139.554751],
+          icon: "monument",
+          description:
+            "元禄9年 (1696) に建立された馬頭観音で、説明板によると新座市内で最古・最大の馬頭観音とのことです。" +
+            "川越街道に関する説明板もあり、大和田町に関する新編武蔵風土記の記述が紹介されています。",
+          url: "https://www.city.niiza.lg.jp/site/bunkazai/shitei-onikagenobatoukannon.html",
+          pictures: [
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2025/06-21/IMG_20250621_095453.webp",
+              comment: "鬼鹿毛の馬頭観音",
+            },
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2025/06-21/IMG_20250621_095505.webp",
+              comment: "鬼鹿毛の馬頭観音 説明板",
+            },
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2025/06-21/IMG_20250621_095515.webp",
+              comment: "川越街道 説明板",
+            },
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2025/06-21/IMG_20250621_095701.webp",
+              comment: "馬頭観世音拝禮塔",
+            },
+          ],
+        },
+        {
+          name: "英橋",
+          kana: "はなぶさばし",
+          coordinate: [35.813189, 139.548534],
+          icon: "guide",
+          description:
+            "<span class='routing'>川越方</span> 道路の左側 (南側) 歩道を歩いていると橋に辿り着けないため、" +
+            "右側 (北側) 歩道を歩いてください。",
+        },
+        {
+          name: "英インター",
+          kana: "はなぶさいんたー",
+          coordinate: [35.814152, 139.547515],
+          icon: "guide",
+          description:
+            "<span class='routing'>川越方</span> 交差する浦和所沢バイパスは人道トンネルで横断することができます。",
+          pictures: [
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2025/06-21/IMG_20250621_101356.webp",
+              comment: "英インター",
+            },
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2025/06-21/IMG_20250621_101419.webp",
+              comment: "R254 の歩行者向け道標",
+            },
+          ],
+        },
+        {
+          name: "川越街道碑",
+          coordinate: [35.820695, 139.540563],
+          icon: "monument",
+          description: "新座市と三芳町の境界付近に川越街道と彫られた大きな石碑があります。",
+          pictures: [
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2025/06-21/IMG_20250621_102956.webp",
+              comment: "川越街道碑",
+            },
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2025/06-21/IMG_20250621_103051.webp",
+              comment: "道路管理境界",
+            },
+          ],
+        },
+        {
+          name: "木宮稲荷神社",
+          kana: "きのみやいなりじんじゃ",
+          coordinate: [35.828471, 139.533597],
+          icon: "shrine",
+          description:
+            "寛文元年 (1661) 創建の神社で、八坂神社と浅間神社も併設しています。" +
+            "三芳町のウェブサイトによると、川越街道の拡幅の際に境内を道が通ることになり、" +
+            "名残として路側帯に幟幡が残されていることが紹介されています。",
+          url: "https://www.town.saitama-miyoshi.lg.jp/kanko/rekishi/jisya/kinomiyaInari.html",
+          pictures: [
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2025/06-21/IMG_20250621_105744.webp",
+              comment: "木宮稲荷神社",
+            },
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2025/06-21/IMG_20250621_105619.webp",
+              comment: "鳥居",
+            },
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2025/06-21/IMG_20250621_105717.webp",
+              comment: "標柱",
+            },
+          ],
+        },
+        {
+          name: "川越街道碑",
+          coordinate: [35.830075, 139.533199],
+          icon: "monument",
+          description: "上下線が路側帯で分かれるポイントに大きな川越街道碑があります。",
+          pictures: [
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2025/06-21/IMG_20250621_110223.webp",
+              comment: "川越街道碑",
+            },
+          ],
+        },
+        {
+          name: "川越街道碑",
+          coordinate: [35.83763, 139.52705],
+          icon: "monument",
+          description: "上下線が路側帯で分かれるポイントに大きな川越街道碑があります。",
+          pictures: [
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2025/06-21/IMG_20250621_115736.webp",
+              comment: "川越街道碑",
+            },
+          ],
+        },
         // 7. 大井宿
         // 8. 川越宿
       ];
