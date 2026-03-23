@@ -1,28 +1,11 @@
-/**
- * スポット一覧を表示します。すでに表示している場合は地図表示に戻ります。
- */
-const toggleSpotList = () => {
-  const mapElm = document.getElementById("map");
-  const spotList = document.getElementById("spot-list");
-  if (spotList.style.display === "block") {
-    spotList.style.display = "none";
-    if (mapElm.style.display === "none") {
-      mapElm.style.display = "block";
-    }
-  } else {
-    const nonMapScreens = document.getElementsByClassName("non-map-screen");
-    for (const nonMapScreen of nonMapScreens) {
-      nonMapScreen.style.display = nonMapScreen.id === "spot-list" ? "block" : "none";
-    }
-    mapElm.style.display = "none";
-  }
-  if (spotList.style.display === "block") {
-    const zoomInMessage = document.getElementById("zoom-in-message");
-    if (zoomInMessage) {
-      zoomInMessage.style.display = "none";
-    }
-  }
-};
+/** スポット一覧の DOM が構築済かどうかを示します。 */
+let spotListInitialized = false;
+
+/** スポット一覧 */
+let sourceSpots = [];
+
+/** アイコン定義 */
+let spotListIconTypes = [];
 
 /**
  * 種別のタイトルにジャンプするアイコンを構築します。
@@ -111,15 +94,10 @@ const createBackToTopButton = (ml = 5) => {
 };
 
 /**
- * スポット一覧ページを初期化します。
- *
- * @param spots スポット一覧
- * @param iconTypes アイコン定義
+ * スポット一覧の DOM を構築します。
  */
-const initSpotList = (spots, iconTypes) => {
-  const buttonOpenSpotList = document.getElementById("spot-list-open");
+const buildSpotList = () => {
   const spotList = document.getElementById("spot-list");
-  buttonOpenSpotList.addEventListener("click", toggleSpotList);
   const btm1 = createBackToMapButton(0, 10);
   spotList.appendChild(btm1);
   const iconPane = document.createElement("div");
@@ -136,7 +114,7 @@ const initSpotList = (spots, iconTypes) => {
     monumentList = [],
     buildingList = [],
     otherList = [];
-  spots.forEach((spot) => {
+  sourceSpots.forEach((spot) => {
     switch (spot.icon) {
       case "pass":
         passList.push(spot);
@@ -181,8 +159,8 @@ const initSpotList = (spots, iconTypes) => {
     if (list.length === 0) {
       return;
     }
-    iconPane.appendChild(createJumpIcon(id, iconTypes));
-    buildTable(list, name, spotList, iconTypes, id);
+    iconPane.appendChild(createJumpIcon(id, spotListIconTypes));
+    buildTable(list, name, spotList, spotListIconTypes, id);
     const btm = createBackToMapButton(10, 0);
     spotList.appendChild(btm);
     const btt = createBackToTopButton();
@@ -200,12 +178,56 @@ const initSpotList = (spots, iconTypes) => {
   buildIconSection("monument", "道標・記念碑・石仏・石塔・常夜燈等", monumentList);
   buildIconSection("building", "現存建造物", buildingList);
   buildIconSection("default", "その他", otherList);
-  const picCount = spots
+  const picCount = sourceSpots
     .map((spot) => (spot.pictures ? spot.pictures.length : 0))
     .reduce((acc, v) => acc + v, 0);
   const counter = document.createElement("p");
-  counter.innerHTML = `全 ${spots.length} 地点 (写真 ${picCount} 枚)`;
+  counter.innerHTML = `全 ${sourceSpots.length} 地点 (写真 ${picCount} 枚)`;
   spotList.appendChild(counter);
+};
+
+/**
+ * スポット一覧を表示します。すでに表示している場合は地図表示に戻ります。
+ */
+const toggleSpotList = () => {
+  if (!spotListInitialized) {
+    buildSpotList();
+    spotListInitialized = true;
+  }
+  const mapElm = document.getElementById("map");
+  const spotList = document.getElementById("spot-list");
+  if (spotList.style.display === "block") {
+    spotList.style.display = "none";
+    if (mapElm.style.display === "none") {
+      mapElm.style.display = "block";
+    }
+  } else {
+    const nonMapScreens = document.getElementsByClassName("non-map-screen");
+    for (const nonMapScreen of nonMapScreens) {
+      nonMapScreen.style.display = nonMapScreen.id === "spot-list" ? "block" : "none";
+    }
+    mapElm.style.display = "none";
+  }
+  if (spotList.style.display === "block") {
+    const zoomInMessage = document.getElementById("zoom-in-message");
+    if (zoomInMessage) {
+      zoomInMessage.style.display = "none";
+    }
+  }
+};
+
+/**
+ * スポット一覧ページを利用できるようにします。
+ * DOM の構築は初めて表示するときまで遅延されます。
+ *
+ * @param spots スポット一覧
+ * @param iconTypes アイコン定義
+ */
+const initSpotList = (spots, iconTypes) => {
+  sourceSpots = spots;
+  spotListIconTypes = iconTypes;
+  const buttonOpenSpotList = document.getElementById("spot-list-open");
+  buttonOpenSpotList.addEventListener("click", toggleSpotList);
   const q = new URLSearchParams(location.search);
   if (q.get("landing") === "spots") {
     toggleSpotList();
