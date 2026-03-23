@@ -900,10 +900,7 @@
       setGpx(L, gpxOverlay, "gpx/kagaorange_2025-06-21.gpx", "blue"); // #2 新座→川越
 
       // Spot list
-      initSpotList(spots, iconTypes);
-      if (isbot(navigator.userAgent)) {
-        toggleSpotList();
-      }
+      new SpotList(spots, iconTypes).detectLandingPage(isbot(navigator.userAgent));
     </script>
   </body>
 </html>

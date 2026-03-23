@@ -14803,10 +14803,7 @@
       setGpx(L, gpxOverlay, "gpx/kagaorange_2025-01-18.gpx", "blue"); // 氷川神社
 
       // Spot list
-      initSpotList(spots, iconTypes);
-      if (isbot(navigator.userAgent)) {
-        toggleSpotList();
-      }
+      new SpotList(spots, iconTypes).detectLandingPage(isbot(navigator.userAgent));
 
       // Own GPX
       initOwnGpx(L, map);

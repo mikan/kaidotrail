@@ -1917,10 +1917,7 @@
       setGpx(L, gpxOverlay, "gpx/kagaorange_2024-07-27.gpx", "blue"); // #3 寒川→平塚
 
       // Spot list
-      initSpotList(spots, iconTypes);
-      if (isbot(navigator.userAgent)) {
-        toggleSpotList();
-      }
+      new SpotList(spots, iconTypes).detectLandingPage(isbot(navigator.userAgent));
     </script>
   </body>
 </html>
