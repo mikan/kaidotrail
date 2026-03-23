@@ -60,7 +60,7 @@ class SpotList {
 
   /**
    * 種別のタイトルにジャンプするアイコンを構築します。
-   * @param {string} id id属性のサフィックス
+   * @param {string} id id 属性のサフィックス
    * @returns {HTMLAnchorElement} aタグ
    */
   #createJumpIcon(id) {
@@ -76,13 +76,16 @@ class SpotList {
    * @param {Array} subSpots 処理対象のスポット一覧
    * @param {string} name 名前
    * @param {HTMLDivElement} parent 追加対象の要素
-   * @param {string} id ジャンプ先に設定するid属性
+   * @param {string} id ジャンプ先に設定する id 属性
+   * @param {boolean} selectMode 絞り込みが有効の場合は true
    */
-  #buildTable(subSpots, name, parent, id = "default") {
-    const title = document.createElement("h2");
-    title.innerText = name;
-    title.id = `spot-link-${id}`;
-    parent.appendChild(title);
+  #buildTable(subSpots, name, parent, id = "default", selectMode = false) {
+    if (!selectMode) {
+      const title = document.createElement("h2");
+      title.innerText = name;
+      title.id = `spot-link-${id}`;
+      parent.appendChild(title);
+    }
     const table = document.createElement("table");
     subSpots.forEach((spot) => {
       const tr = document.createElement("tr");
@@ -138,11 +141,30 @@ class SpotList {
     return backToTop;
   }
 
+  /**
+   * 絞り込み解除ボタンを生成します。
+   * @param {number} ml margin-left
+   * @returns {HTMLButtonElement} 絞り込み解除ボタン
+   */
+  #clearSelectButton(ml = 5) {
+    const clearSelect = document.createElement("button");
+    clearSelect.innerHTML = '<i class="fa-solid fa-rectangle-xmark"></i> 絞り込み解除';
+    clearSelect.style.marginLeft = `${ml}px`;
+    clearSelect.addEventListener(
+      "click",
+      () => (window.location.href = location.pathname.split("/").slice(-1)[0] + "?landing=spots"),
+    );
+    return clearSelect;
+  }
+
   /** スポット一覧の DOM を構築します。 */
   #buildSpotList() {
     const spotList = document.getElementById("spot-list");
-    const btm1 = this.#createBackToMapButton(0, 10);
-    spotList.appendChild(btm1);
+    spotList.appendChild(this.#createBackToMapButton(0, 10));
+    const selectIcon = this.#iconMap.get(new URLSearchParams(location.search).get("select"));
+    if (selectIcon) {
+      spotList.appendChild(this.#clearSelectButton());
+    }
     const iconPane = document.createElement("div");
     iconPane.className = "spot-link-icons";
     const passList = [],
@@ -197,13 +219,12 @@ class SpotList {
           break;
       }
     });
-    spotList.appendChild(iconPane);
     const buildIconSection = (id, subSpots) => {
       if (subSpots.length === 0) {
         return;
       }
       iconPane.appendChild(this.#createJumpIcon(id));
-      this.#buildTable(subSpots, this.#iconMap.get(id).description, spotList, id);
+      this.#buildTable(subSpots, this.#iconMap.get(id).description, spotList, id, !!selectIcon);
       const btm = this.#createBackToMapButton(10, 0);
       spotList.appendChild(btm);
       const btt = this.#createBackToTopButton();
