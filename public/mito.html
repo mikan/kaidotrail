@@ -77,6 +77,7 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     ></script>
+    <script src="https://cdn.jsdelivr.net/npm/isbot@5/index.iife.min.js"></script>
     <!--suppress ES6ConvertVarToLetConst, EqualityComparisonWithCoercionJS -->
     <!-- prettier-ignore -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -95,7 +96,9 @@
     <h1>
       <a href="./"><span class="logo-font">旧街道足跡マップ</span></a>
       <span class="sep">&gt;</span>
-      水戸街道 <span style="color: indianred">※攻略中</span>
+      <span id="route-entry">水戸街道</span>
+      <span id="select-entry"></span>
+      <span style="color: indianred">※攻略中</span>
     </h1>
     <div id="map"></div>
     <div id="own-gpx" class="non-map-screen"></div>
@@ -127,10 +130,7 @@
 
       // Spots
       const spots = [];
-      const spotLayer = L.featureGroup();
-      setMarkers(L, spotOverlay, spotLayer, spots);
-      initIconUpdater(L, map, spotLayer, spots);
-      initPopupSlider(spotLayer);
+      initSpots(L, map, spotOverlay, spots);
 
       // GPX
       setGpx(L, gpxOverlay, "gpx/kagaorange_2025-11-22.gpx", "blue"); // #1 千住→取手

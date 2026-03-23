@@ -25,7 +25,7 @@ class SpotList {
    */
   detectLandingPage(isBot = false) {
     const q = new URLSearchParams(location.search);
-    if (q.get("landing") === "spots" || isBot) {
+    if (q.get("landing") === "spots" || q.get("select") || isBot) {
       this.#toggleSpotList();
     }
   }

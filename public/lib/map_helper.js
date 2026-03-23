@@ -1,3 +1,6 @@
+/** canonical メタデータ用のホスト名 */
+const CANONICAL_HOST = "kaidotrail.github.io";
+
 /** ポップアップの画像スライダーの状態 */
 let current = 0;
 
@@ -232,6 +235,81 @@ const initPopupSlider = (layer) => {
 };
 
 /**
+ * スポット一覧の絞り込み機能を有効化します。
+ * @param {Array} spots スポット一覧
+ * @returns {Array} 絞り込まれたスポット一覧
+ */
+const initSpotSelector = (spots) => {
+  const q = new URLSearchParams(location.search);
+  const select = q.get("select");
+  const pathName = location.pathname.split("/").slice(-1)[0];
+  const head = document.getElementsByTagName("head")[0];
+  const canonical = document.createElement("link");
+  const ld = document.createElement("script");
+  ld.type = "application/ld+json";
+  canonical.rel = "canonical";
+  if (select) {
+    const iconType = iconTypes.get(select);
+    if (iconType) {
+      // canonical URL を更新
+      canonical.href = `https://${CANONICAL_HOST}/${pathName}?select=${select}`;
+      head.appendChild(canonical);
+
+      // LD-JSON を更新
+      ld.innerText = JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: "中原街道",
+            item: `https://${CANONICAL_HOST}/${pathName}`,
+          },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: select + "一覧",
+          },
+        ],
+      });
+      head.appendChild(ld);
+
+      // タイトルを更新
+      const routeEntry = document.getElementById("route-entry");
+      if (routeEntry) {
+        routeEntry.innerHTML = `<a href="${pathName}">${routeEntry.innerText}</a>`;
+      }
+      const selectEntry = document.getElementById("select-entry");
+      if (selectEntry) {
+        selectEntry.innerHTML = `<span class="sep">&gt;</span> ${iconType.description}一覧`;
+      }
+
+      // ズームインメッセージを更新
+      const zoomInMessage = document.getElementById("zoom-in-message");
+      if (zoomInMessage) {
+        zoomInMessage.innerHTML = `<span>ズームインすると${iconType.description}が表示されます</span>`;
+      }
+
+      return spots.filter((spot) => spot.icon === select);
+    }
+  }
+  // canonical URL を更新
+  canonical.href = `https://kaidotrail.github.io/${pathName}`;
+  head.appendChild(canonical);
+
+  // LD-JSON を更新
+  ld.innerText = JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [{ "@type": "ListItem", position: 1, name: "中原街道" }],
+  });
+  head.appendChild(ld);
+
+  return spots;
+};
+
+/**
  * 指定したアイコンクラス名と色で地図用アイコンを生成します。
  * @param {*} leaflet Leaflet 本体
  * @param {string} iconName アイコン名
@@ -400,6 +478,23 @@ const updateMarkerIcon = (leaflet, layer, source, isDot) => {
       markers[i].setIcon(createIcon(leaflet, iconType.icon, iconType.color));
     }
   }
+};
+
+/**
+ * 地図にスポット一覧を設定します。
+ * @param {*} leaflet Leaflet 本体
+ * @param {*} map 地図インスタンス
+ * @param {*} spotOverlay スポット一覧オーバーレイ
+ * @param {Array} spots スポット一覧
+ * @returns {Array} 画面に表示するスポット一覧
+ */
+const initSpots = (leaflet, map, spotOverlay, spots) => {
+  const spotLayer = leaflet.featureGroup();
+  const selectedSpots = initSpotSelector(spots);
+  setMarkers(leaflet, spotOverlay, spotLayer, selectedSpots);
+  initIconUpdater(leaflet, map, spotLayer, selectedSpots);
+  initPopupSlider(spotLayer);
+  return selectedSpots;
 };
 
 /**

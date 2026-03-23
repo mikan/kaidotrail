@@ -11,14 +11,6 @@
       name="description"
       content="中原街道のルート解説・史跡等の見どころ紹介・実際に歩いたGPSログをGoogleマップや地理院地図に重ねて見ることができるページです。"
     />
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "BreadcrumbList",
-        "itemListElement": [{ "@type": "ListItem", "position": 1, "name": "中原街道" }]
-      }
-    </script>
-    <link rel="canonical" href="https://kaidotrail.github.io/nakahara.html" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -99,7 +91,8 @@
     <h1>
       <a href="./"><span class="logo-font">旧街道足跡マップ</span></a>
       <span class="sep">&gt;</span>
-      中原街道
+      <span id="route-entry">中原街道</span>
+      <span id="select-entry"></span>
       <button id="spot-list-open" title="見どころ一覧">
         <i class="fa-solid fa-list"></i>
       </button>
@@ -1903,10 +1896,8 @@
           ],
         },
       ];
-      const spotLayer = L.featureGroup();
-      setMarkers(L, spotOverlay, spotLayer, spots);
-      initIconUpdater(L, map, spotLayer, spots);
-      initPopupSlider(spotLayer);
+      const displaySpots = initSpots(L, map, spotOverlay, spots);
+      new SpotList(displaySpots, iconTypes).detectLandingPage(isbot(navigator.userAgent));
 
       // Route
       L.polyline(nakaharaRoute, { color: "red", weight: 5 }).addTo(routeOverlay);
@@ -1916,9 +1907,6 @@
       setGpx(L, gpxOverlay, "gpx/kagaorange_2024-06-29.gpx", "blue"); // #1 虎ノ門→中山
       setGpx(L, gpxOverlay, "gpx/kagaorange_2024-07-20.gpx", "blue"); // #2 中山→寒川
       setGpx(L, gpxOverlay, "gpx/kagaorange_2024-07-27.gpx", "blue"); // #3 寒川→平塚
-
-      // Spot list
-      new SpotList(spots, iconTypes).detectLandingPage(isbot(navigator.userAgent));
     </script>
   </body>
 </html>

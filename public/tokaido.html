@@ -11,14 +11,6 @@
       name="description"
       content="旧東海道・佐屋街道のルート解説・実際に歩いたGPSログをGoogleマップや地理院地図に重ねて見ることができるページです。"
     />
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "BreadcrumbList",
-        "itemListElement": [{ "@type": "ListItem", "position": 1, "name": "東海道53次+佐屋街道" }]
-      }
-    </script>
-    <link rel="canonical" href="https://kaidotrail.github.io/tokaido.html" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -77,6 +69,7 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     ></script>
+    <script src="https://cdn.jsdelivr.net/npm/isbot@5/index.iife.min.js"></script>
     <!--suppress ES6ConvertVarToLetConst, EqualityComparisonWithCoercionJS -->
     <!-- prettier-ignore -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-MTM7SMZG');</script>
@@ -93,7 +86,8 @@
     <h1>
       <a href="./"><span class="logo-font">旧街道足跡マップ</span></a>
       <span class="sep">&gt;</span>
-      東海道53次+佐屋街道
+      <span id="route-entry">東海道53次+佐屋街道</span>
+      <span id="select-entry"></span>
     </h1>
     <div id="map"></div>
     <div id="own-gpx" class="non-map-screen"></div>
@@ -188,10 +182,7 @@
 
       // Spots
       const spots = [];
-      const spotLayer = L.featureGroup();
-      setMarkers(L, spotOverlay, spotLayer, spots);
-      initIconUpdater(L, map, spotLayer, spots);
-      initPopupSlider(spotLayer);
+      initSpots(L, map, spotOverlay, spots);
 
       // Route
       L.polyline(tokaidoEastRoute, { color: "red", weight: 5 }).addTo(routeOverlay);
