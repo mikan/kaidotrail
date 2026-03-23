@@ -198,29 +198,29 @@ class SpotList {
       }
     });
     spotList.appendChild(iconPane);
-    const buildIconSection = (id, name, subSpots) => {
+    const buildIconSection = (id, subSpots) => {
       if (subSpots.length === 0) {
         return;
       }
       iconPane.appendChild(this.#createJumpIcon(id));
-      this.#buildTable(subSpots, name, spotList, id);
+      this.#buildTable(subSpots, this.#iconMap.get(id).description, spotList, id);
       const btm = this.#createBackToMapButton(10, 0);
       spotList.appendChild(btm);
       const btt = this.#createBackToTopButton();
       spotList.appendChild(btt);
     };
-    buildIconSection("pass", "峠", passList);
-    buildIconSection("honjin", "本陣", honjinList);
-    buildIconSection("ichirizuka", "一里塚", ichirizukaList);
-    buildIconSection("sekisho", "関所", sekishoList);
-    buildIconSection("watashi", "渡場", watashiList);
-    buildIconSection("bridge", "橋", bridgeList);
-    buildIconSection("kosatsuba", "高札場", kosatsubaList);
-    buildIconSection("shrine", "神社", shrineList);
-    buildIconSection("temple", "寺", templeList);
-    buildIconSection("monument", "道標・記念碑・石仏・石塔・常夜燈等", monumentList);
-    buildIconSection("building", "現存建造物", buildingList);
-    buildIconSection("default", "その他", otherList);
+    buildIconSection("pass", passList);
+    buildIconSection("honjin", honjinList);
+    buildIconSection("ichirizuka", ichirizukaList);
+    buildIconSection("sekisho", sekishoList);
+    buildIconSection("watashi", watashiList);
+    buildIconSection("bridge", bridgeList);
+    buildIconSection("kosatsuba", kosatsubaList);
+    buildIconSection("shrine", shrineList);
+    buildIconSection("temple", templeList);
+    buildIconSection("monument", monumentList);
+    buildIconSection("building", buildingList);
+    buildIconSection("default", otherList);
     const picCount = this.#spots
       .map((spot) => (spot.pictures ? spot.pictures.length : 0))
       .reduce((acc, v) => acc + v, 0);

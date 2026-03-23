@@ -42,6 +42,10 @@ const createMap = (leaflet) => {
           );
         },
       },
+      {
+        text: '<i class="fa-solid fa-file-code"></i> GPX ファイルを描画...',
+        callback: () => toggleOwnGpx(),
+      },
     ],
   });
 
@@ -115,6 +119,7 @@ const initMap = (leaflet, map, overlays) => {
     };
     legend.addTo(map);
   }
+  initOwnGpx(leaflet, map);
 
   return layerControl;
 };
@@ -245,23 +250,23 @@ const createIcon = (leaflet, iconName, color) => {
 
 /** アイコン種別の定義 */
 const iconTypes = new Map([
-  ["honjin", { icon: "fa-landmark-flag", color: "#8B0000" }],
-  ["ichirizuka", { icon: "fa-mound", color: "#228B22" }],
-  ["kosatsuba", { icon: "fa-scroll", color: "#A0522D" }],
-  ["pass", { icon: "fa-mountain", color: "#006400" }],
-  ["watashi", { icon: "fa-ship", color: "#1E90FF" }],
-  ["bridge", { icon: "fa-bridge", color: "#808080" }],
-  ["guide", { icon: "fa-signs-post", color: "#FF8C00" }],
-  ["building", { icon: "fa-landmark", color: "#8B4513" }],
-  ["monument", { icon: "fa-monument", color: "#696969" }],
-  ["shrine", { icon: "fa-torii-gate", color: "#FF0000" }],
-  ["temple", { icon: "fa-dharmachakra", color: "#000000" }],
-  ["camera", { icon: "fa-camera", color: "#ff00ff" }],
-  ["food", { icon: "fa-utensils", color: "#20b2aa" }],
-  ["shop", { icon: "fa-shop", color: "#8a2be2" }],
-  ["sakagura", { icon: "fa-wine-bottle", color: "#DAA520" }],
-  ["sekisho", { icon: "fa-archway", color: "#a52a2a" }],
-  ["default", { icon: "fa-map-pin", color: "royalblue" }],
+  ["honjin", { icon: "fa-landmark-flag", color: "#8B0000", description: "本陣" }],
+  ["ichirizuka", { icon: "fa-mound", color: "#228B22", description: "一里塚" }],
+  ["kosatsuba", { icon: "fa-scroll", color: "#A0522D", description: "高札場" }],
+  ["pass", { icon: "fa-mountain", color: "#006400", description: "峠" }],
+  ["watashi", { icon: "fa-ship", color: "#1E90FF", description: "渡場" }],
+  ["bridge", { icon: "fa-bridge", color: "#808080", description: "橋" }],
+  ["guide", { icon: "fa-signs-post", color: "#FF8C00", description: "案内" }],
+  ["building", { icon: "fa-landmark", color: "#8B4513", description: "建造物" }],
+  ["monument", { icon: "fa-monument", color: "#696969", description: "モニュメント類" }],
+  ["shrine", { icon: "fa-torii-gate", color: "#FF0000", description: "神社" }],
+  ["temple", { icon: "fa-dharmachakra", color: "#000000", description: "寺" }],
+  ["camera", { icon: "fa-camera", color: "#ff00ff", description: "景勝地" }],
+  ["food", { icon: "fa-utensils", color: "#20b2aa", description: "飲食店" }],
+  ["shop", { icon: "fa-shop", color: "#8a2be2", description: "商店" }],
+  ["sakagura", { icon: "fa-wine-bottle", color: "#DAA520", description: "酒蔵" }],
+  ["sekisho", { icon: "fa-archway", color: "#a52a2a", description: "関所" }],
+  ["default", { icon: "fa-map-pin", color: "royalblue", description: "未分類" }],
 ]);
 
 /**
@@ -455,16 +460,13 @@ const toggleOwnGpx = () => {
  */
 const initOwnGpx = (leaflet, map) => {
   const ownGpx = document.getElementById("own-gpx");
-  if (!ownGpx) {
-    return;
-  }
   const backToMap = document.createElement("button");
   backToMap.innerHTML = "<i class='fa-solid fa-circle-arrow-left'></i> 地図に戻る";
   backToMap.style.marginTop = "10px";
   backToMap.addEventListener("click", toggleOwnGpx);
   ownGpx.appendChild(backToMap);
   const h2 = document.createElement("h2");
-  h2.innerText = "GPX ファイル表示機能 (実験中)";
+  h2.innerText = "GPX ファイル描画 (実験的機能)";
   ownGpx.appendChild(h2);
   const p1 = document.createElement("p");
   p1.innerText =

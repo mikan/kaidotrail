@@ -78,7 +78,7 @@
       'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-MTM7SMZG');</script>
     <link rel="stylesheet" href="lib/map_style.css?v=1" />
-    <script src="lib/map_helper.js?v=4"></script>
+    <script src="lib/map_helper.js?v=5"></script>
   </head>
   <body>
     <!-- prettier-ignore -->
@@ -95,38 +95,7 @@
         座標:
         <input id="location" size="24" class="padding-top: 0" />
       </label>
-      <label
-        for="history"
-        style="
-          font-family: monospace;
-          user-select: none;
-          cursor: pointer;
-          color: white;
-          background: gray;
-          border: solid 1px black;
-          padding: 2px;
-          margin-left: 3px;
-          margin-right: 6px;
-        "
-      >
-        履歴
-        <button id="history" style="display: none"></button>
-      </label>
-      <label
-        for="gpx-file"
-        style="
-          font-family: monospace;
-          user-select: none;
-          cursor: pointer;
-          color: white;
-          background: gray;
-          border: solid 1px black;
-          padding: 2px;
-        "
-      >
-        GPX...
-        <input id="gpx-file" name="file" type="file" multiple style="display: none" />
-      </label>
+      <button id="history">履歴</button>
     </h1>
     <div id="map" style="cursor: crosshair; display: block"></div>
     <pre
@@ -145,6 +114,7 @@
         overflow-y: scroll;
       "
     ></pre>
+    <div id="own-gpx" class="non-map-screen"></div>
     <script>
       const buttonHistory = document.getElementById("history");
       const log = document.getElementById("log");
@@ -176,31 +146,6 @@
             .bindPopup(lat + "," + lng),
         );
       });
-      const buttonGpxFile = document.getElementById("gpx-file");
-      buttonGpxFile.addEventListener(
-        "change",
-        () => {
-          const bounds = L.latLngBounds();
-          for (const file of buttonGpxFile.files) {
-            const url = window.URL.createObjectURL(file);
-            new L.GPX(url, {
-              async: true,
-              polyline_options: { color: "lime", weight: 2 },
-              markers: { startIcon: null, endIcon: null },
-            })
-              .on("error", (e) => console.error("GPX の読み込みに失敗しました: " + String(e)))
-              .on("loaded", async (e) => {
-                window.URL.revokeObjectURL(url);
-                await navigator.locks.request("gpx-files", async () => {
-                  bounds.extend(e.target.getBounds());
-                  map.fitBounds(bounds);
-                });
-              })
-              .addTo(map);
-          }
-        },
-        false,
-      );
     </script>
   </body>
 </html>
