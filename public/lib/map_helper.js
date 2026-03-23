@@ -625,7 +625,7 @@ const activateKonjakuMap = (leaflet, layerControl, dataSet, age) => {
 };
 
 /**
- * 人族測図を追加します。
+ * 迅速測図を追加します。
  * @param {*} leaflet Leaflet 本体
  * @param {*} layerControl initMap() が返却した LayerControl
  */
