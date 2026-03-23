@@ -140,6 +140,7 @@
         { name: "4. 白子宿", coordinate: [35.781349, 139.623785] },
         { name: "5. 膝折宿", coordinate: [35.792577, 139.583056] },
         { name: "6. 大和田宿", coordinate: [35.807698, 139.554751] },
+        { name: "7. 大井宿", coordinate: [35.851458, 139.516912] },
         { name: "8. 川越城", coordinate: [35.924836, 139.485455] },
       ];
       const stationLayer = L.featureGroup();
@@ -691,7 +692,7 @@
           coordinate: [35.814152, 139.547515],
           icon: "guide",
           description:
-            "<span class='routing'>川越方</span> 交差する浦和所沢バイパスは人道トンネルで横断することができます。",
+            "<span class='routing'>川越方</span> 交差する浦和所沢バイパスは人道トンネルで横断できます。",
           pictures: [
             {
               url: "https://kaidotrail.github.io/img/kagaorange/2025/06-21/IMG_20250621_101356.webp",
@@ -769,6 +770,119 @@
           ],
         },
         // 7. 大井宿
+        {
+          name: "下木戸跡",
+          kana: "しもきどあと",
+          coordinate: [35.845789, 139.520203],
+          icon: "monument",
+          description:
+            "標柱があり、側面に説明書きがあります。" +
+            "大井宿の江戸方の入口にあたる場所で、警備のため道幅 6m 余の川越街道を塞ぐように両開きの大扉があり、" +
+            "その左右に緊急通行用のくぐり戸が備えられていたそうです。",
+          pictures: [
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2025/06-21/IMG_20250621_120107.webp",
+              comment: "下木戸跡",
+            },
+          ],
+        },
+        {
+          name: "従是川越迄二里十八丁",
+          kana: "これよりかわごえまでにりじゅうはっちょう",
+          coordinate: [35.851176, 139.51704],
+          icon: "monument",
+          description:
+            "標柱があり、側面に説明書きがあります。" +
+            "ここは大井宿の中心地で、かつてこの地に「従是川越迄二里十八丁」と書かれた柱が建っていたそうです。" +
+            "2里18丁は約 10km です。",
+          pictures: [
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2025/06-21/IMG_20250621_130403.webp",
+              comment: "従是川越迄二里十八丁",
+            },
+          ],
+        },
+        {
+          name: "大井宿本陣跡",
+          kana: "おおいじゅくほんじんあと",
+          coordinate: [35.851458, 139.516912],
+          icon: "honjin",
+          description:
+            "明治期の3度の大火で街並みは焼失してしまったそうですが、掲載されている江戸末期の地割図から当時の様子を" +
+            "想像することができます。",
+          pictures: [
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2025/06-21/IMG_20250621_130452.webp",
+              comment: "大井宿本陣跡",
+            },
+          ],
+        },
+        {
+          name: "大井郷土資料館",
+          kana: "おおいきょうどしりょうかん",
+          coordinate: [35.855088, 139.515126],
+          icon: "building",
+          description:
+            "国登録有形文化財。大井小学校の敷地内に残る旧大井村役場は戦前の作りを今に伝えています。" +
+            "館内は公開されており、様々な企画展示が行われています。" +
+            "大井村は大井町を経たのち平成17年 (2005) に上福岡市と合併、現在はふじみ野市となっています。",
+          url: "https://www.city.fujimino.saitama.jp/soshikiichiran/oikyodoshiryokan/gakugeikakari/2573.html",
+          pictures: [
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2025/06-21/IMG_20250621_130452.webp",
+              comment: "大井郷土資料館",
+            },
+          ],
+        },
+        {
+          name: "旧道分岐",
+          coordinate: [35.8560049, 139.514662],
+          icon: "guide",
+          description: "<span class='routing'>川越方</span> 左手に旧道が分岐しています。",
+          pictures: [
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2025/06-21/IMG_20250621_131408.webp",
+              comment: "旧道分岐",
+            },
+          ],
+        },
+        {
+          name: "角の常夜燈",
+          kana: "かどのじょうやとう",
+          coordinate: [35.859865, 139.510964],
+          icon: "monument",
+          description:
+            "説明板によると、ここが旧川越街道と地蔵街道の交差点で、亀久保村から大山の阿夫利神社へ参詣する際に" +
+            "最初の曲がり角であることから「角の常夜燈」と呼ばれるようになったそうです。" +
+            "享和2年 (1802) 建立で、道標も兼ねています。",
+          pictures: [
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2025/06-21/IMG_20250621_132400.webp",
+              comment: "角の常夜燈",
+            },
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2025/06-21/IMG_20250621_132407.webp",
+              comment: "説明板",
+            },
+          ],
+        },
+        {
+          name: "亀久保神明神社",
+          kana: "かめくぼしんめいじんじゃ",
+          coordinate: [35.864309, 139.509021],
+          icon: "monument",
+          description:
+            "R254 と旧道の分かれ道に神明神社があり、参道の入口は敷地の南側にあります。" +
+            "街道沿いに少し南に下ったところにある地蔵院がこの神社の別当をつとめていたそうで、" +
+            "所沢から勧請してこの地に創立したそうです。",
+          url: "http://www.shinmei-jinja.org/",
+          pictures: [
+            {
+              url: "https://kaidotrail.github.io/img/kagaorange/2025/06-21/IMG_20250621_132407.webp",
+              comment: "亀久保神明神社",
+            },
+          ],
+        },
         // 8. 川越宿
       ];
       const spotLayer = L.featureGroup();
