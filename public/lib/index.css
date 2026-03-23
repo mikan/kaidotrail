@@ -29,6 +29,10 @@ p {
 li {
   font-size: 0.9em;
 }
+li > ul {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
 
 footer {
   text-align: center;
